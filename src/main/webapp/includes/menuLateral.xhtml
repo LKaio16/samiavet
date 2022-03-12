@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+
+ xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+  
+>
+
+<style>
+
+.menu{
+	
+	font-size: 30px;
+}
+.menuitem{
+
+	font-size: 15px;
+}
+.sudmenu{
+	font-size: 20px;
+	
+}
+</style>
+
+<h:form >
+
+	<p:menu styleClass="menu">
+	
+	
+	<p:submenu label="FICHAS" styleClass="sudmenu" icon="ui-icon-clipboard">
+		<p:menuitem value="Cadastrar animal" url="cadastro.xhtml"  styleClass="menuitem"/>
+		<p:menuitem value="Consultar fichas"  url="consultaFichas.xhtml"  styleClass="menuitem"/>
+		<p:menuitem value="Agendamentos"  url="agendamentos.xhtml"  styleClass="menuitem"/>
+	
+	</p:submenu>
+	
+	
+	<p:submenu label="VENDAS" styleClass="sudmenu" >
+		<p:menuitem value="Cadastrar venda" styleClass="menuitem" url="vendas.xhtml"/>
+	</p:submenu>
+	
+	<p:submenu label="PRODUTOS" styleClass="sudmenu" >
+		<p:menuitem value="Cadastrar/Listar produtos" styleClass="menuitem"/>
+	</p:submenu>
+	
+	</p:menu>
+	
+</h:form>
+
+</ui:composition>

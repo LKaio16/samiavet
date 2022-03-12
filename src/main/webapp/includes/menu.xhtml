@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+			<img src="../resources/imagens/SamiaVet.png" class="img-samiavet" style="width:20%"/>
+	
+	<div style="float:right; margin-top:10px;">
+	</div>
+	
+<h:form>  
+ 
+    <p:menubar>
+        <p:submenu label="FICHAS" icon="pi pi-file">
+            <p:menuitem value="Cadastrar animal"  url="cadastro.xhtml"/>
+ 			<p:separator />
+            <p:menuitem value="Consultar animal" url="consultaFichas.xhtml"/>
+           	<p:separator />
+            <p:menuitem value="Agendar evento" url="agendamentos.xhtml" />
+        </p:submenu>
+ 
+        <p:submenu label="PRODUTOS" icon="pi pi-tags">
+             <p:menuitem value="Cadastrar produto"  url="vendas.xhtml"/>
+ 			<p:separator />
+            <p:menuitem value="Consultar produtos"/>
+        </p:submenu>
+ 
+        <p:submenu label="VENDAS" icon="pi pi-shopping-cart">
+          <p:menuitem value="Cadastrar venda"  url="vendas.xhtml"/>
+ 			<p:separator />
+            <p:menuitem value="Consultar vendas"/>
+        </p:submenu>
+ 
+        <p:submenu label="ARQUIVOS" icon="pi pi-folder-open">
+              <p:menuitem value="Upload" url="upload.xhtml"/>
+ 			<p:separator />
+            <p:menuitem value="Download"/>
+            <p:menuitem value="Arquivos" url="arquivos.xhtml"/>
+        </p:submenu>
+ 
+       
+ 
+        <f:facet name="options">
+            <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
+            
+            
+            
+        <p:splitButton value="Usuario"  icon="pi pi-save">
+	            <p:menuitem value="Alterar senha" action="#{buttonView.update}" icon="pi pi-refresh"/>
+	            <p:divider />
+	            <p:menuitem value="Sair" actionListener="#{user.Sair}" icon="pi pi-home"/>
+        </p:splitButton>
+        </f:facet>
+        
+        
+    </p:menubar>
+    
+    
+  
+    
+</h:form>
+	
+</ui:composition>

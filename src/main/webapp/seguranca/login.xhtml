@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    >
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>SAMIAVET</title>
+	<h:outputStylesheet library="css" name="style.css"/>
+	<h:outputScript library="js" name="scripts.js"/>
+	<link rel="icon" href="../resources/imagens/SamiaVet.png" />
+	
+</h:head>
+<h:body style="background-color:#f3f3f3; font-family: 'Open Sans', sans-serif !important;" onload="chamar()">
+	
+	
+	<style>
+	
+	.div-top{
+		 
+		     width: 100% !important;
+		     background: url(../resources/imagens/bg.jpg) repeat-x !important;
+			 padding: 15px 0 0 0 !important;
+			 background-color: black;
+		}
+		.ui-clock{
+    		background-color: black;
+		}
+		button.ui-button{
+ 			background-color:#6ab125;
+ 			border:0px;
+ 		}
+ 		button.ui-button:hover{
+ 			background-color:#78b83b;
+ 		}
+	</style>
+		<p:growl id="msgGlobal" life="5000" />
+	
+	
+		<div class="div-top">
+				<img src="../resources/imagens/SamiaVet.png" class="img-samiavet" style="width:20%"/>
+				<div style="float:right; margin-top:10px;">
+        			<p:clock pattern="HH:mm:ss"/>
+				</div>
+	
+	</div>
+	
+	
+		<center>
+		
+        <h:form style="margin-top:200px;">
+            
+            <p:growl autoUpdate="true"/>
+            
+            <div  class="centerDiv" style="width: 400px">
+            <p:panel>
+                    <f:facet name="header">REALIZAR LOGIN</f:facet>
+            <h:panelGrid columns="2">
+            
+            
+            Login:
+                <h:inputText id="txtLogin" value="#{user.logar.login}" required="true" label="Login"
+                               style="#{ component.valid ? '' : 'border-color:red;'}"/>
+                
+                
+                Senha:
+                <h:inputSecret id="txSenha" value="#{user.logar.senha}" required="true" label="Senha"
+                               style="#{ component.valid ? '' : 'border-color:red;'}"/>
+                
+            </h:panelGrid>
+                    <p:commandButton value="Logar" actionListener="#{user.Logar}" style= "width:180px; margin-left:40px;" update=":msgGlobal"/>
+               
+
+                </p:panel>
+            </div>
+        </h:form>
+         <p:panel style="width: 400px">
+        
+        <h:form>
+         
+			<p:commandLink value="Esqueceu a senha?"  oncomplete="PF('dialogRecuperar').show()" actionListener="#{mudarSenhaBean.enviarEmailRecuperacao}" update=":msgGlobal" />
+        	<p:commandLink value="Alterar senha?" style="margin-left:50px;" update=":msgGlobal" oncomplete="PF('dialogMudar').show()"/>
+        	
+        </h:form>
+        </p:panel>
+		</center>
+ 
+ 
+ 
+  <p:dialog header="RECUPERAR SENHA" showEffect="blind" hideEffect="explode"  widgetVar="dialogRecuperar" height="300px" closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogRecuperar">
+
+
+
+				<h:form id="formRecuperarSenha">
+				
+				<div class="p-col-12 p-md-4">
+            		<p:staticMessage severity="info" summary="OBS:" detail="Código de recuperação foi enviado para o e-mail padrão do sistema." style="width: 100%"/>
+        		</div>
+					<p:panelGrid columns="2" style="margin-left:3px; width:100%;">
+					
+						<p:inputText style="width:100%;" value="#{mudarSenhaBean.codigoInserido}"/>
+						
+						<p:commandButton value="RECUPERAR SENHA" actionListener="#{mudarSenhaBean.direcionarPagina}" style="width:100%;" update=":msgGlobal :formRecuperarSenha"/>
+					
+					</p:panelGrid>
+				
+				
+				
+				<br/><br/><br/><h3>Não recebeu o e-mail?</h3>
+				<p:commandButton value="REENVIAR CÓDIGO" actionListener="#{mudarSenhaBean.reenviarCod}" update=":msgGlobal" />
+				
+				</h:form>
+    </p:dialog>
+ 
+ 
+ 
+ 
+ 
+ 	
+ 
+  <p:dialog header="MUDAR SENHA" showEffect="blind" hideEffect="explode"  widgetVar="dialogMudar" height="300px" closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogMudar">
+
+
+
+				<h:form id="formMudarSenha">
+				
+					 <p:panel header="RECUPERAR SENHA">
+							 <h:panelGrid columns="2">
+								
+								
+								
+									Senha atual:
+					                <h:inputSecret  value="#{mudarSenhaBean.senhaAtual}" required="true" requiredMessage="A senha atual não pode ser vazia"
+					                               />
+									           
+					            	Nova senha:
+					                <h:inputSecret  value="#{mudarSenhaBean.novaSenhaMudanca}" required="true" requiredMessage="A nova atual não pode ser vazia"
+					                               />
+					                
+					                
+					                Confirmar nova senha:
+					                <h:inputSecret value="#{mudarSenhaBean.confirmarSenhaMudanca}" required="true" requiredMessage="A confirmação de nova senha não pode ser vazia"
+					                             />
+					          </h:panelGrid>            
+					                
+					          <p:commandButton value="MUDAR SENHA" actionListener="#{mudarSenhaBean.AlterarSenha}" style= "width:180px; margin-left:120px;" update=":formMudarSenha :msgGlobal" />
+					               
+									           
+											    
+				       	 </p:panel>
+				
+				</h:form>
+    </p:dialog>
+ 
+ 
+<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" >
+            <p:graphicImage value="/resources/imagens/carregando.gif" alt="" style="width:50px; margin-top:15px;"/>
+</p:dialog>
+
+
+</h:body>
+</html>

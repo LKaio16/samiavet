@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    >
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>SAMIAVET</title>
+	<h:outputStylesheet library="css" name="style.css"/>
+	<h:outputScript library="js" name="scripts.js"/>
+	<link rel="icon" href="../resources/imagens/SamiaVet.png" />
+	
+</h:head>
+<h:body style=" font-family: 'Open Sans', sans-serif !important;" onload="chamar()">
+
+
+	<style>
+
+ 		button.ui-button{
+ 			background-color:#6ab125;
+ 			border:0px;
+ 		}
+ 		button.ui-button:hover{
+ 			background-color:#78b83b;
+ 		}
+		.tentando{
+		    border-size:20px;
+		
+		}
+		.outPutLabel{
+		    font-size:30px;
+		    margin-left:450px;
+		}
+		#formCdastroClientes{
+		    margin-top:20px;
+		}
+		.botaoDeletar{
+			margin-left: 50px;
+		}
+		.div{
+		
+			width:100%;
+			display:flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+		}
+		#tabelaClientes{
+		
+			width:80%;
+		}
+		.tituloTabela{
+		
+			font-weight: bold;
+			font-size: 100px;
+			
+		}
+		.statusLabel{
+		
+			margin-top: 10px;
+			margin-left: 5px;
+		}
+		.inputTextHistorico{
+		
+			width:80%;
+		}
+		.botaoOpcoes{
+			border: solid;
+			
+		}
+		.img-samiavet{
+			width:40%;
+		}
+		.fieldsetBotoesOpcao{
+			
+			border:5px;
+			width:280px;
+			background-color:#fafaf4;
+		}
+		.botaoExcluir{
+			margin-left: 10px;
+		}
+		.fieldsetBusca{
+			float:right;
+			width:100%;
+			border:0px;
+		}
+		.inputs{
+			width: 300px;
+			height: 20px;
+			maxlength: 50;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			margin-left: 30px;
+			}
+		.inputFc{
+			
+				width: 100px;
+				height: 20px;
+				maxlength: 50;
+				margin-top: 5px;
+				margin-bottom: 5px;
+				margin-left: 10px;
+		
+		}
+		
+		.inputFr{
+		
+				width: 100px;
+				height: 20px;
+				maxlength: 50;
+				margin-top: 5px;
+				margin-bottom: 5px;
+				margin-left: 10px;
+		
+		}
+		
+		.inputP{
+		
+				width: 100px;
+				height: 20px;
+				maxlength: 50;
+				margin-top: 5px;
+				margin-bottom: 5px;
+				margin-left: 10px;
+		
+		}
+		
+		.inputT{
+		
+				width: 100px;
+				height: 20px;
+				maxlength: 50;
+				margin-top: 5px;
+				margin-bottom: 5px;
+				margin-left: 10px;
+		
+		
+		}
+		.inputData{
+				width: 100px;
+				height: 20px;
+				maxlength: 50;
+				margin-top: 5px;
+				margin-bottom: 5px;
+				margin-left: 10px;
+		
+		}
+		.inputSexo{
+		
+				width: 100px;
+				height: 30px;
+
+		
+		}
+		
+		.outPutTexts{
+			padding-left: 10px;
+			font-size: 15px;
+			
+		}
+		
+		.outPutTextFc{
+		
+			font-size: 15px;
+		}
+		
+		.outPutTextFr{
+		
+			font-size: 15px;
+			padding-left: 10px;
+		}
+		
+		.outPutTextP{
+			font-size: 15px;
+			padding-left: 10px;
+		
+		}
+		
+		.outPutTextT{
+			font-size: 15px;
+			padding-left: 10px;
+		}
+		.inputTextArea{
+		
+			width:80%;
+		}
+		
+		.inputTextAreaEndereco{
+			height:50px;
+			width:40%;
+		}
+		.btn-cadastrar{
+		
+			width:100px;
+			height: 40px;
+			font-size: 15px;
+		}
+		.input{
+			height: 23px;
+		
+		}
+		
+		.tabelaFichas{
+			width:100%;
+			height: 300px;
+		}
+		.email{
+			width:200px;
+		}
+		.separator{
+		
+			width:100%;
+			
+		}
+		.titulo{
+			font-size: 15px;
+			font-weight: bold;
+		}
+		.botaoPesquisar{
+			height: 30px;
+		}
+		.botaoResetar{
+			height: 30px;
+		}
+		.tituloDado{
+		
+			font-weight: bold;
+			
+		}
+		.carregando{
+			width:50px;
+		}
+		.data{
+		
+    		display: block !important;
+    	    font-size: 11px !important;
+    	    float:left;
+		}
+	
+		.botaoExporter{
+			transition: all .2s ease-in-out; 
+			
+		}
+		.botaoExporter:hover{
+			transform: scale(1.1);
+		}
+		.div-top{
+		 
+		     width: 100% !important;
+		     background: url(../resources/imagens/bg.jpg) repeat-x !important;
+			 padding: 15px 0 0 0 !important;
+			 background-color: black;
+		}
+		.ui-clock{
+    		background-color: black;
+		}
+	
+	</style>
+	
+	<div class="div-top">
+				<img src="../resources/imagens/SamiaVet.png" class="img-samiavet" style="width:20%"/>
+				<div style="float:right; margin-top:10px;">
+        			<p:clock pattern="HH:mm:ss"/>
+				</div>
+	
+	</div>
+	
+<h:form>  
+ 
+    <p:menubar>
+        <p:submenu label="FICHAS" icon="pi pi-file">
+            <p:menuitem value="Cadastrar animal"  url="cadastro.xhtml"/>
+ 			<p:separator />
+            <p:menuitem value="Consultar animal" url="consultaFichas.xhtml"/>
+           	<p:separator />
+            <p:menuitem value="Agendar evento" url="agendamentos.xhtml" />
+        </p:submenu>
+ 
+        <p:submenu label="PRODUTOS" icon="pi pi-tags">
+             <p:menuitem value="Cadastrar produto"  url="cadastroProdutos.xhtml"/>
+        </p:submenu>
+ 
+        <p:submenu label="VENDAS" icon="pi pi-shopping-cart">
+          <p:menuitem value="Cadastrar venda"  url="vendas.xhtml"/>
+ 			<p:separator />
+            <p:menuitem value="Consultar vendas" url="consultaVendas.xhtml"/>
+        </p:submenu>
+ 
+        <p:submenu label="ARQUIVOS" icon="pi pi-folder-open">
+              <p:menuitem value="Upload" url="upload.xhtml"/>
+ 			<p:separator />
+            <p:menuitem value="Arquivos" url="arquivos.xhtml"/>
+        </p:submenu>
+ 
+       
+ 		 <p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
+              <p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml"/>
+ 			<p:separator />
+            <p:menuitem value="Consultar servicos" url="consultaServicos.xhtml"/>
+        </p:submenu>
+        <f:facet name="options">
+           
+ 			<p:commandButton id="basic" icon ="pi pi-user"  type="button" style="background-color:#f8f9fa; color: black; border:0px;"/>			
+ 			<p:overlayPanel for="basic" style="width:350px">
+		     <p:commandButton value="Sair" actionListener="#{user.Sair}"  style="width:100%;border-color:white; "/>
+        </p:overlayPanel>	     
+        </f:facet>
+    </p:menubar>
+</h:form>
+	
+		<p:growl id="msgGlobal" life="5000" />
+	
+	
+	
+                
+	  	<h:form id="formTables">
+		    <p:dataTable var="item" value="#{MBVendas.itens}" styleClass="tabelaFichas" widgetVar="tabelaVendas" id="tabelaVendas" emptyMessage="Nenhum cadastro inserido"  paginator="true" rows="10" 
+		    			 paginatorTemplate="{CurrentPageReport} {FirstPageLink}  {PageLinks} {NextPageLink} {RowsPerPageDropdown}"
+		                 currentPageReportTemplate="{startRecord}-{endRecord}"
+		                 rowsPerPageTemplate="10,20,30,40,50" rowKey="#{item.idVenda}" showGridlines="true" size="large">
+		        
+		        
+		        	<f:facet name="header">
+		        	
+		        		<center><h3>VENDAS CADASTRADAS(R$)</h3></center>
+			        		<div style="float:right; margin-top:30px;">
+				        		  <p:commandLink  styleClass="botaoExporter">
+				        		  
+				        		 		 <p:graphicImage value="/resources/imagens/excel.png" style="width:40px;" styleClass="botaoExporter"/>
+		           						 <p:dataExporter type="xls" target="tabelaVendas" fileName="Vendas"
+		                           			options="#{MBVendas.excelOpt}"/>
+		       					 </p:commandLink>
+					        		
+				    			<p:commandLink  style="margin-left:10px;" >
+				    					  <p:graphicImage value="/resources/imagens/iconPdf.png" style="width:30px;" styleClass="botaoExporter"/>
+		          						  <p:dataExporter type="pdf" target="tabelaVendas" fileName="Vendas" options="#{MBVendas.pdfOpt}"/>
+		          						  
+		       					 </p:commandLink>
+	       					</div> 
+	       					
+		        	</f:facet>
+		        
+			        
+			        <p:column headerText="Id" >
+			            <h:outputText value="#{item.idVenda}" />
+			        </p:column>
+			         <p:column headerText="CLIENTE" styleClass="email">
+			            <h:outputText value="#{item.nome_cliente}" />
+			        </p:column>
+			        <p:column headerText="CPF">
+			            <h:outputText value="#{item.cpf}" />
+			        </p:column>
+			        <p:column headerText="DATA">
+			            <h:outputText value="#{item.data_venda}" />
+			        </p:column>
+			         <p:column headerText="PAG.">
+			            <h:outputText value="#{item.forma_pagamento}" />
+			        </p:column>
+			        <p:column headerText="PARCELAS">
+			            <h:outputText value="#{item.parcelas}" />
+		        	</p:column>
+		        	 <p:column headerText="TAXA(%)" >
+			            <h:outputText value="#{item.taxa}" />
+			        </p:column>
+		        	 <p:column headerText="VALOR" >
+			            <h:outputText value="#{item.valor}R$" />
+			        </p:column>
+			        
+			      <f:facet name="footer">
+			      		
+			      			 <span style="font-weight: bold;">TOTAL VALOR DAS VENDAS: #{MBVendas.totalVendas}R$</span>
+			      			<p:commandButton value="LIMPAR VENDAS" actionListener="#{MBVendas.deletar}" style="float:right; margin-bottom:5px;" update=":formTables:tabelaVendas :msgGlobal"/>
+			      </f:facet>
+			      
+		    </p:dataTable>
+		</h:form>
+	
+  
+<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" >
+            <p:graphicImage value="/resources/imagens/carregando.gif" alt="" style="width:50px; margin-top:20px;"/>
+</p:dialog>
+
+
+<script>
+    
+    
+    function chamar(){
+		
+		
+
+		var data = new Date();
+		var dia = String(data.getDate()).padStart(2, '0');
+		var mes = String(data.getMonth() + 1).padStart(2, '0');
+		var ano = data.getFullYear();
+		dataAtual = dia + '/' + mes + '/' + ano;
+		console.log(dataAtual);
+		
+		document.querySelector('.data').textContent = dataAtual
+	}
+	
+    
+    </script>
+
+</h:body>
+</html>

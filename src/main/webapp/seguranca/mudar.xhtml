@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    >
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>SAMIAVET</title>
+	<h:outputStylesheet library="css" name="style.css"/>
+	<h:outputScript library="js" name="scripts.js"/>
+	<link rel="icon" href="../resources/imagens/SamiaVet.png" />
+	
+	
+	<style>
+	
+	.div-top{
+		 
+		     width: 100% !important;
+		     background: url(../resources/imagens/bg.jpg) repeat-x !important;
+			 padding: 15px 0 0 0 !important;
+			 background-color: black;
+		}
+		.ui-clock{
+    		background-color: black;
+		}
+			button.ui-button{
+ 			background-color:#6ab125;
+ 			border:0px;
+ 		}
+ 		button.ui-button:hover{
+ 			background-color:#78b83b;
+ 		}
+	</style>
+	
+	
+</h:head>
+
+
+		
+<h:body style="background-color:#f3f3f3; font-family: 'Open Sans', sans-serif !important;" onload="chamar()">
+<p:growl id="msg"/>
+	
+ <div class="div-top">
+				<img src="../resources/imagens/SamiaVet.png" class="img-samiavet" style="width:20%"/>
+				<div style="float:right; margin-top:10px;">
+        			<p:clock pattern="HH:mm:ss"/>
+				</div>
+		</div>
+		
+		
+		
+		
+		
+				<center>
+		
+            <h:form id="formCadastrar" style="margin-top:200px;">
+        
+                    <div  class="centerDiv" style="width: 400px">
+        
+				        <p:panel header="RECUPERAR SENHA">
+						            <h:panelGrid columns="2">
+							
+				           
+            	Nova senha:
+                <h:inputSecret id="txtLogin" value="#{mudarSenhaBean.novaSenha}" required="true" requiredMessage="A nova atual não pode ser vazia"
+                               />
+                
+                
+                Confirmar nova senha:
+                <h:inputSecret id="txSenha" value="#{mudarSenhaBean.confirmarSenha}" required="true" requiredMessage="A confirmação de nova senha não pode ser vazia"
+                             />
+                   </h:panelGrid>            
+                
+                    <p:commandButton value="MUDAR SENHA" actionListener="#{mudarSenhaBean.recuperarSenha}" style= "width:180px; margin-left:120px;" update=":msg"/>
+               
+				           
+						    
+				       	 </p:panel>
+        </div>
+ 	
+  		
+    </h:form>
+	
+		</center>
+        
+       
+        
+<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+
+<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" >
+            <p:graphicImage value="/resources/imagens/carregando.gif" alt="" style="width:50px; margin-top:15px;"/>
+</p:dialog>
+  <script>
+  
+  
+  function resetar(){
+      window.location.reload();
+  }
+
+  
+  </script>
+</h:body>
+</html>
