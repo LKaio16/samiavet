@@ -128,11 +128,11 @@
         <version>2.1.4</version>
     </dependency>
 <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
-<dependency>
-    <groupId>com.itextpdf</groupId>
-    <artifactId>itextpdf</artifactId>
-    <version>5.3.4</version>
-</dependency>
+	<dependency>
+	    <groupId>com.itextpdf</groupId>
+	    <artifactId>itextpdf</artifactId>
+	    <version>5.3.4</version>
+	</dependency>
 
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
     <dependency>
@@ -157,17 +157,17 @@
 
 
 
-
-<dependency>
-    <groupId>net.glxn</groupId>                 
-    <artifactId>qrgen</artifactId>              
-    <version>1.4</version>
-</dependency>
-<dependency>
-    <groupId>net.sf.barcode4j</groupId>         
-    <artifactId>barcode4j-light</artifactId>    
-    <version>2.0</version>
-</dependency>
+	
+	<dependency>
+	    <groupId>net.glxn</groupId>                 
+	    <artifactId>qrgen</artifactId>              
+	    <version>1.4</version>
+	</dependency>
+	<dependency>
+	    <groupId>net.sf.barcode4j</groupId>         
+	    <artifactId>barcode4j-light</artifactId>    
+	    <version>2.0</version>
+	</dependency>
 
 
     <dependency>
@@ -195,19 +195,19 @@
       <scope>test</scope>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
-<dependency>
-    <groupId>org.apache.commons</groupId>
-    <artifactId>commons-email</artifactId>
-    <version>1.5</version>
-</dependency>
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-email</artifactId>
+	    <version>1.5</version>
+	</dependency>
     
     
     <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
-<dependency>
-    <groupId>javax.mail</groupId>
-    <artifactId>mail</artifactId>
-    <version>1.4.7</version>
-</dependency>
+	<dependency>
+	    <groupId>javax.mail</groupId>
+	    <artifactId>mail</artifactId>
+	    <version>1.4.7</version>
+	</dependency>
     
 
     <!--		Configuração JSF-->
