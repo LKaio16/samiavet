@@ -230,8 +230,8 @@ background-color: black;
         </p:submenu>
  
        
-  <p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
-              <p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml"/>
+  <p:submenu label="SERVIÃ‡OS" icon="pi pi-folder-open">
+              <p:menuitem value="Cadastrar serviÃ§os" url="cadastroServicos.xhtml"/>
   <p:separator />
             <p:menuitem value="Consultar servicos" url="consultaServicos.xhtml"/>
         </p:submenu>
@@ -247,14 +247,11 @@ background-color: black;
 
 <p:growl id="msgGlobal" life="5000" />
 
-<h5>TESTANDO PALAVRAS</h5>
-
-<h1>COLOCANDO ALTERAÇÕES</h1>
 <h:form id="formCadastrar">
        
         <p:card >
              <p:tabView style="background-color:white;">
-       <p:tab title="DADOS PROPRIETÁRIO: ">
+       <p:tab title="DADOS PROPRIETÃRIO: ">
                
                    <h:outputText  value="Nome: " styleClass="outPutTexts"/>
    <p:inputText  styleClass="inputs"  value="#{MBFichaClinica.fichaClinica.nome_proprietario}" placeholder="Nome"/>
@@ -276,15 +273,15 @@ background-color: black;
 <br/>
 <br/>
 
-                   <h:outputText value="Endereço: " styleClass="outPutTexts"/>
+                   <h:outputText value="EndereÃ§o: " styleClass="outPutTexts"/>
                    <br/>
 <br/>
-<p:inputTextarea rows="6" cols="33" styleClass="inputTextAreaEndereco"  value="#{MBFichaClinica.fichaClinica.endereco}" placeholder="Endereço"/>                    
+<p:inputTextarea rows="6" cols="33" styleClass="inputTextAreaEndereco"  value="#{MBFichaClinica.fichaClinica.endereco}" placeholder="EndereÃ§o"/>                    
                    
              
        </p:tab>
         <p:tab title="DADOS ANIMAL:">
-                 <p:tab title="DADOS PROPRIETÁRIO: ">
+                 <p:tab title="DADOS PROPRIETÃRIO: ">
                   <h:outputText  value="ID: " styleClass="outPutTexts"/>
    <p:inputText  styleClass="inputs"  value="#{MBFichaClinica.fichaClinica.identificador}" placeholder="Identificador" style="width:100px;"/>
                   <br/>
@@ -297,13 +294,13 @@ background-color: black;
 
 <br/>
 <br/>
-   <h:outputText  value="Espécie: " styleClass="outPutTexts"/>
-   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.especie_animal}" placeholder="Espécie"/>
+   <h:outputText  value="EspÃ©cie: " styleClass="outPutTexts"/>
+   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.especie_animal}" placeholder="EspÃ©cie"/>
 
 <br/>
 <br/>
-  <h:outputText  value="Raça: " styleClass="outPutTexts"/>
-   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.raca_animal}" placeholder="Raça"/>
+  <h:outputText  value="RaÃ§a: " styleClass="outPutTexts"/>
+   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.raca_animal}" placeholder="RaÃ§a"/>
 
 <br/>
 <br/>
@@ -319,7 +316,7 @@ background-color: black;
    <br/>
    <p:selectOneMenu id="selectOne" styleClass="inputSexo" value="#{MBFichaClinica.fichaClinica.sexo_animal}" placeholder="Sexo">
        <f:selectItem itemLabel="Macho" itemValue="MACHO" />
-       <f:selectItem itemLabel="Fêmea" itemValue="FÊMEA" />
+       <f:selectItem itemLabel="FÃªmea" itemValue="FÃŠMEA" />
    </p:selectOneMenu>
    
    
@@ -336,8 +333,8 @@ background-color: black;
    
    <p:inputText  styleClass="inputP" value="#{MBFichaClinica.fichaClinica.p_animal}" placeholder="P."/>
    
-    <h:outputText  value="T(°C) " styleClass="outPutTextT"/>
-   <p:inputText  styleClass="inputT" value="#{MBFichaClinica.fichaClinica.t_animal}" placeholder="T°C"/>
+    <h:outputText  value="T(Â°C) " styleClass="outPutTextT"/>
+   <p:inputText  styleClass="inputT" value="#{MBFichaClinica.fichaClinica.t_animal}" placeholder="TÂ°C"/>
    
    <br/>
    <br/>
@@ -350,10 +347,10 @@ background-color: black;
    
    <br/>
    <br/>
-<h:outputText  value="Histórico: " styleClass="outPutTexts"/>    
+<h:outputText  value="HistÃ³rico: " styleClass="outPutTexts"/>    
 <br/>
    <br/>
-<p:inputTextarea rows="6" cols="33" styleClass="inputTextArea" value="#{MBFichaClinica.fichaClinica.historico_animal}" placeholder="Histórico"/>
+<p:inputTextarea rows="6" cols="33" styleClass="inputTextArea" value="#{MBFichaClinica.fichaClinica.historico_animal}" placeholder="HistÃ³rico"/>
 <br/>
    <br/>
 <p:commandButton value="CADASTRAR" style="width:100px;height: 40px; font-size: 15px; background-color:#6ab125;" actionListener="#{MBFichaClinica.cadastrar}" update=":formCadastrar :msgGlobal"/>
