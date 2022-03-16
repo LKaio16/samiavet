@@ -179,7 +179,7 @@ public class ProdutosBean {
 			JsfUtil.adicionarMensagemDeSucesso("Produto excluído com sucesso. Confira na tabela abaixo!", null);
 
 		}catch(Exception erro) {
-			JsfUtil.adicionarMensagemDeErro("Ocorreu um erro inesperado.", null);
+			JsfUtil.adicionarMensagemDeErro("Ocorreu um erro inesperado. Este produto não pode ser excluído", null);
 
 		}
 		
