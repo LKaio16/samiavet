@@ -30,15 +30,26 @@ public class Agendamento {
 	@Column(name="datatermino")
 	private String dataTermino;
 	
+	private String dataInicioSemHora;
+	
+	private String horaInicioSemData;
+	
+	
+	private String dataTerminoSemHora;
+	
+	
+	private String horaTerminoSemData;
+	
 	private String observacao;
 	
-	
+
 	
 	
 	
 	
 	public Agendamento(Long id, String titulo, String nomeProprietario, String nomeAnimal, String atendimento,
-			String dataInicio, String dataTermino, String observacao) {
+			String dataInicio, String dataTermino, String dataInicioSemHora, String horaInicioSemData,
+			String dataTerminoSemHora, String horaTerminoSemData, String observacao) {
 		this.id = id;
 		this.titulo = titulo;
 		this.nomeProprietario = nomeProprietario;
@@ -46,10 +57,12 @@ public class Agendamento {
 		this.atendimento = atendimento;
 		this.dataInicio = dataInicio;
 		this.dataTermino = dataTermino;
+		this.dataInicioSemHora = dataInicioSemHora;
+		this.horaInicioSemData = horaInicioSemData;
+		this.dataTerminoSemHora = dataTerminoSemHora;
+		this.horaTerminoSemData = horaTerminoSemData;
 		this.observacao = observacao;
 	}
-	
-	
 	public Agendamento() {
 		
 	}
@@ -100,6 +113,30 @@ public class Agendamento {
 	}
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
+	}
+	public String getDataInicioSemHora() {
+		return dataInicioSemHora;
+	}
+	public void setDataInicioSemHora(String dataInicioSemHora) {
+		this.dataInicioSemHora = dataInicioSemHora;
+	}
+	public String getHoraInicioSemData() {
+		return horaInicioSemData;
+	}
+	public void setHoraInicioSemData(String horaInicioSemData) {
+		this.horaInicioSemData = horaInicioSemData;
+	}
+	public String getDataTerminoSemHora() {
+		return dataTerminoSemHora;
+	}
+	public void setDataTerminoSemHora(String dataTerminoSemHora) {
+		this.dataTerminoSemHora = dataTerminoSemHora;
+	}
+	public String getHoraTerminoSemData() {
+		return horaTerminoSemData;
+	}
+	public void setHoraTerminoSemData(String horaTerminoSemData) {
+		this.horaTerminoSemData = horaTerminoSemData;
 	}
 	
 	

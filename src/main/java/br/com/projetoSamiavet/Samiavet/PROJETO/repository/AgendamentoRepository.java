@@ -11,4 +11,6 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> 
 
 	
 	List<Agendamento> findByNomeAnimal(String nomeAnimal);
+	
+	List<Agendamento> findByDataInicioSemHora(String dataInicioSemHora);
 }

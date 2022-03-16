@@ -35,4 +35,7 @@ public class AgendamentoService {
 	public List<Agendamento> retornaPeloNome(String nome){
 		return this.agendamentoRepository.findByNomeAnimal(nome);
 	}
+	public List<Agendamento> retornaPelaData(String data){
+		return this.agendamentoRepository.findByDataInicioSemHora(data);
+	}
 }

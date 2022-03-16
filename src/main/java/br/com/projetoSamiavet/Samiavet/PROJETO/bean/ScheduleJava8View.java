@@ -61,6 +61,7 @@ public class ScheduleJava8View implements Serializable {
     
     private String pesquisarNome;
     
+    private List<Agendamento> agendamentosDataInicio;
     
     public ScheduleJava8View() {
     	this.agendamento = new Agendamento();
@@ -75,6 +76,12 @@ public class ScheduleJava8View implements Serializable {
         
         List<Agendamento> agendamentos = this.agendamentoService.listarAgendamentos();
         itens = new ArrayList<Agendamento>(agendamentos);
+        
+        
+        String converterDataAtual = String.valueOf(LocalDate.now());
+        
+        this.agendamentosDataInicio = this.agendamentoService.retornaPelaData(converterDataAtual);
+        
         
         for(int cont = 0; cont<agendamentos.size(); cont++) {
         	
@@ -228,7 +235,16 @@ public class ScheduleJava8View implements Serializable {
     
   
      
-    private void addMessage(FacesMessage message) {
+    public List<Agendamento> getAgendamentosDataInicio() {
+		return agendamentosDataInicio;
+	}
+	public void setAgendamentosDataInicio(List<Agendamento> agendamentosDataInicio) {
+		this.agendamentosDataInicio = agendamentosDataInicio;
+	}
+	public void setAgendamentoService(AgendamentoService agendamentoService) {
+		this.agendamentoService = agendamentoService;
+	}
+	private void addMessage(FacesMessage message) {
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
  
@@ -355,8 +371,25 @@ public class ScheduleJava8View implements Serializable {
 	}
 	public void cadastrar() {
 		
+		
+		
 		String converterDataInicio = String.valueOf(event.getStartDate());
 		String converterDataTermino = String.valueOf(event.getEndDate());
+
+		String[] charactersDataInicioSemHora = converterDataInicio.split("T");
+
+		String[] charactersDataTerminoSemHora = converterDataTermino.split("T");
+		
+		
+		this.agendamento.setDataInicioSemHora(charactersDataInicioSemHora[0]);
+		
+		this.agendamento.setHoraInicioSemData(charactersDataInicioSemHora[1]);
+		
+		
+		this.agendamento.setDataTerminoSemHora(charactersDataTerminoSemHora[0]);
+		
+		this.agendamento.setHoraTerminoSemData(charactersDataTerminoSemHora[1]);
+		
 
 		this.agendamento.setDataInicio(converterDataInicio);
 		this.agendamento.setDataTermino(converterDataTermino);
@@ -370,7 +403,31 @@ public class ScheduleJava8View implements Serializable {
 	
 	public void editar(){
 		
+		
+		String dataInicio = this.agendamento.getDataInicio();
+		
+		String dataTermino = this.agendamento.getDataTermino();
+		
+		String[] charactersDataInicioSemHora = dataInicio.split("T");
+
+		String[] charactersDataTerminoSemHora = dataTermino.split("T");
+		
+		
+		
+		this.agendamento.setDataInicioSemHora(charactersDataInicioSemHora[0]);
+		
+		this.agendamento.setHoraInicioSemData(charactersDataInicioSemHora[1]);
+		
+		
+		this.agendamento.setDataTerminoSemHora(charactersDataTerminoSemHora[0]);
+		
+		this.agendamento.setHoraTerminoSemData(charactersDataTerminoSemHora[1]);
+		
+		
+		
 		this.agendamentoService.salvar(this.agendamento);
+		
+		
 		this.agendamento = new Agendamento();
 		init();
 		
