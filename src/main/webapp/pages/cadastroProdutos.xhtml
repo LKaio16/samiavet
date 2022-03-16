@@ -370,7 +370,14 @@
 	      		</p:column>
 	      		
 	      		<p:column headerText="ESTOQUE" style="width:50px;">
-	      			 <h:outputText value="#{produto.quantidade_estoque}" />
+	      			 <div style="#{produto.quantidade_estoque >= 4 ? 'background-color: #0df672' : 'background-color: #f31d1d'};
+	      			 #{produto.quantidade_estoque == 2 or produto.quantidade_estoque == 3 ? 'background-color: #f3f01d' : ''};
+	      			 #{produto.quantidade_estoque >= 4 ? 'color: black' : 'color: white'};
+	      			 #{produto.quantidade_estoque == 2 or produto.quantidade_estoque == 3 ? 'color: black' : ''};   ">
+	      				
+	      			 	<h3 style="margin-left:20px; font-weight: bold; margin-top:20px;">#{produto.quantidade_estoque}</h3>
+	      			 	
+	      			</div> 	
 	      		</p:column>
 	      		
 	      		<p:column headerText="OPÇÕES" style="width:50px;">
@@ -394,7 +401,7 @@
     
      		  <h:form id="formEditar">
     
-       					 <p:panel header="CADASTRAR UM NOVO PRODUTO">
+       					 <p:panel header="EDITAR #{produtosBean.produto.nome.toUpperCase()}">
 								
 					           
 			                    <h:outputText  value="Nome do produto: " styleClass="outPutTexts"/>
@@ -433,7 +440,7 @@
 							  	<p:inputMask id="date"  mask="99/99/9999" styleClass="inputData"  placeholder="Data Valid." value="#{produtosBean.produto.data_validade}"/>
 							    
 							    <br/><br/>
-					    		<p:commandButton value="CADASTRAR" actionListener="#{produtosBean.editarCadastro()}" oncomplete="PF('dialogEditar').hide()"  update=":formCadastrar :formProdutos:tabelaProdutos :msgGlobal" style="width:200px;"/>
+					    		<p:commandButton value="EDITAR" actionListener="#{produtosBean.editarCadastro()}" oncomplete="PF('dialogEditar').hide()"  update=":formCadastrar :formProdutos:tabelaProdutos :msgGlobal" style="width:200px;"/>
 							    
 								    
 				    </p:panel>
