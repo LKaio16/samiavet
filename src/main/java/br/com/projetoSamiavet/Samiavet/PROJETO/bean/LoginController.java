@@ -2,7 +2,6 @@ package br.com.projetoSamiavet.Samiavet.PROJETO.bean;
 
 import java.io.IOException;
 
-
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import br.com.projetoSamiavet.Samiavet.PROJETO.domain.DesativaAlert;
 import br.com.projetoSamiavet.Samiavet.PROJETO.domain.Usuario;
 import br.com.projetoSamiavet.Samiavet.PROJETO.service.UsuarioService;
 import br.com.projetoSamiavet.Samiavet.PROJETO.util.JsfUtil;
@@ -26,6 +26,9 @@ public class LoginController {
 	private UsuarioService userService;
 	
 	
+	
+	@Autowired
+	private ScheduleJava8View calendario;
 	
 	
 	
@@ -43,6 +46,16 @@ public class LoginController {
 
 	public void setLogar(Usuario logar) {
 		this.user = logar;
+	}
+
+	
+	
+	public ScheduleJava8View getCalendario() {
+		return calendario;
+	}
+
+	public void setCalendario(ScheduleJava8View calendario) {
+		this.calendario = calendario;
 	}
 
 	public LoginController() {
@@ -76,11 +89,12 @@ public class LoginController {
 			
 		   ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
 		   ec.redirect(ec.getRequestContextPath() + "/pages/cadastro.xhtml");	
+		   
+		   
 		}
 		
 		
-		
-		
+		this.calendario.init();
 		
 		
 	}
@@ -89,6 +103,7 @@ public class LoginController {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         ec.redirect(ec.getRequestContextPath() + "/seguranca/login.xhtml");	
+        this.calendario.init();
 	}
 	
 	
