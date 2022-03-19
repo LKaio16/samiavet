@@ -42,10 +42,6 @@ public class Agendamento {
 	
 	private String observacao;
 	
-
-	
-	
-	
 	
 	public Agendamento(Long id, String titulo, String nomeProprietario, String nomeAnimal, String atendimento,
 			String dataInicio, String dataTermino, String dataInicioSemHora, String horaInicioSemData,

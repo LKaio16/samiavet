@@ -23,13 +23,15 @@ import org.primefaces.model.ScheduleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.projetoSamiavet.Samiavet.PROJETO.domain.Agendamento;
-import br.com.projetoSamiavet.Samiavet.PROJETO.domain.FichaClinica;
+import br.com.projetoSamiavet.Samiavet.PROJETO.domain.DesativaAlert;
 import br.com.projetoSamiavet.Samiavet.PROJETO.service.AgendamentoService;
+import br.com.projetoSamiavet.Samiavet.PROJETO.service.DesativaAlertService;
 import br.com.projetoSamiavet.Samiavet.PROJETO.util.JsfUtil;
 @Named(value="scheduleJava8View")
 @ViewScoped
 public class ScheduleJava8View implements Serializable {
 	 
+	
     private ScheduleModel eventModel;
      
     private ScheduleModel lazyEventModel;
@@ -56,12 +58,20 @@ public class ScheduleJava8View implements Serializable {
     
     @Autowired
    	private AgendamentoService agendamentoService;
+
+    @Autowired
+    private DesativaAlertService desativaAlertService;
+    
     
     private ArrayList<Agendamento> itens;
     
     private String pesquisarNome;
     
     private List<Agendamento> agendamentosDataInicio;
+    
+    private Boolean mostrarDialog;
+    
+    
     
     public ScheduleJava8View() {
     	this.agendamento = new Agendamento();
@@ -70,7 +80,16 @@ public class ScheduleJava8View implements Serializable {
     @PostConstruct
     public void init() {
     	
-    	JsfUtil.adicionarMensagemDeSucesso("Eventos atualizados!", null);
+    	String pegarData = this.desativaAlertService.retornaData(String.valueOf(LocalDate.now()));
+    	
+    	if(pegarData == null || !pegarData.equals(String.valueOf(LocalDate.now()))) {
+    		this.mostrarDialog = true;
+    	}else if(pegarData.equals(String.valueOf(LocalDate.now()))){
+    		this.mostrarDialog = false;
+    	}
+    	
+    	
+    	
         eventModel = new DefaultScheduleModel();
         
         
@@ -352,8 +371,12 @@ public class ScheduleJava8View implements Serializable {
         this.columnHeaderFormat = columnHeaderFormat;
     }
 
-	
-	
+	public Boolean getMostrarDialog() {
+		return mostrarDialog;
+	}
+	public void setMostrarDialog(Boolean mostrarDialog) {
+		this.mostrarDialog = mostrarDialog;
+	}
 	public Agendamento getAgendamento() {
 		return agendamento;
 	}
@@ -368,6 +391,11 @@ public class ScheduleJava8View implements Serializable {
 	}
 	public void setLazyEventModel(ScheduleModel lazyEventModel) {
 		this.lazyEventModel = lazyEventModel;
+	}
+	
+	
+	public DesativaAlertService getDesativaAlertService() {
+		return desativaAlertService;
 	}
 	public void cadastrar() {
 		
@@ -466,5 +494,27 @@ public class ScheduleJava8View implements Serializable {
 	public void resetar() {
         this.itens = new ArrayList<Agendamento>(this.agendamentoService.listarAgendamentos());
 
+	}
+	
+	
+	public void naoMostrarAlert() {
+		List<DesativaAlert> lista = new ArrayList<DesativaAlert>(this.desativaAlertService.lista());
+		
+		
+		if(lista.size() == 0) {
+			DesativaAlert desativaAlert = new DesativaAlert();
+			this.desativaAlertService.cadastrar(desativaAlert);
+		}else {
+			
+			DesativaAlert desativaAlert = lista.get(0);
+			
+			desativaAlert.setData(String.valueOf(LocalDate.now()));
+			
+			this.desativaAlertService.cadastrar(desativaAlert);
+
+			JsfUtil.adicionarMensagemDeSucesso("O evento só será mostrado no dia seguinte", null);
+		}
+		
+		init();
 	}
 }

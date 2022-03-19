@@ -14,7 +14,7 @@ xmlns:p="http://primefaces.org/ui"
 <link rel="icon" href="../resources/imagens/SamiaVet.png" />
 
 </h:head>
-<h:body style="background-color:#f3f3f3; font-family: 'Open Sans', sans-serif !important;" onload="chamar()">
+<h:body style="background-color:#f3f3f3; font-family: 'Open Sans', sans-serif !important;" onload="PF('dialogEventos').show()">
 <style>
 
 	.fieldset-cliente{
@@ -230,10 +230,10 @@ xmlns:p="http://primefaces.org/ui"
         </p:submenu>
  
        
-  <p:submenu label="SERVIÃ‡OS" icon="pi pi-folder-open">
+  <p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
               <p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml"/>
   <p:separator />
-            <p:menuitem value="Consultar servicos" url="consultaServicos.xhtml"/>
+            <p:menuitem value="Consultar serviços" url="consultaServicos.xhtml"/>
         </p:submenu>
         <f:facet name="options">
            
@@ -364,7 +364,41 @@ xmlns:p="http://primefaces.org/ui"
     </h:form>
 
 
+  
+    <p:dialog header="EVENTOS DO DIA" widgetVar="dialogEventos" showEffect="blind" visible="#{scheduleJava8View.mostrarDialog}" hideEffect="explode"  closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogEventos">
 
+
+
+            <h:form id="formEventos">
+
+	          	 <p:dataTable var="eventos" value="#{scheduleJava8View.agendamentosDataInicio}"  emptyMessage="Nenhum evento agendado para o dia de hoje"   id="tabelaEventos"  style="width:400px;">
+            
+            				
+            				<p:column headerText="Horário de início" style="width:100px;">
+            				
+            					
+            						<h:outputText value="#{eventos.horaInicioSemData}" />
+            				
+            				</p:column>
+            				
+            				<p:column headerText="Titulo" style="width:100px;">
+            				
+            					
+            						<h:outputText value="#{eventos.titulo}" />
+            				
+            				</p:column>
+            
+            
+            				<f:facet name="footer">
+            				
+            					<p:commandButton value="Não mostrar novamente" oncomplete="PF('dialogEventos').hide()"  actionListener="#{scheduleJava8View.naoMostrarAlert}" update=":formEventos :msgGlobal"/>
+            				
+            				</f:facet>
+            	</p:dataTable>
+            </h:form>
+
+
+    </p:dialog> 
 
 
 

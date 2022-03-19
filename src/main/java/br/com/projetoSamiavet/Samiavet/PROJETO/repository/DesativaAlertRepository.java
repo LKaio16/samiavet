@@ -4,11 +4,10 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.projetoSamiavet.Samiavet.PROJETO.domain.ArquivosGeral;
 import br.com.projetoSamiavet.Samiavet.PROJETO.domain.DesativaAlert;
 
-public interface ArquivosGeralRepository extends JpaRepository<ArquivosGeral, Long>  {
+public interface DesativaAlertRepository extends JpaRepository<DesativaAlert, Integer>{
 
 	
-	List<ArquivosGeral> findByNomeArquivo(String nome);
+	List<DesativaAlert> findByData(String data);
 }
