@@ -368,22 +368,18 @@ xmlns:p="http://primefaces.org/ui"
     <p:dialog header="EVENTOS DO DIA" widgetVar="dialogEventos" showEffect="blind" visible="#{scheduleJava8View.mostrarDialog}" hideEffect="explode"  closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogEventos">
 
 
-
             <h:form id="formEventos">
 
 	          	 <p:dataTable var="eventos" value="#{scheduleJava8View.agendamentosDataInicio}"  emptyMessage="Nenhum evento agendado para o dia de hoje"   id="tabelaEventos"  style="width:400px;">
             
-            				
             				<p:column headerText="Horário de início" style="width:100px;">
             				
-            					
             						<h:outputText value="#{eventos.horaInicioSemData}" />
             				
             				</p:column>
             				
             				<p:column headerText="Titulo" style="width:100px;">
             				
-            					
             						<h:outputText value="#{eventos.titulo}" />
             				
             				</p:column>
