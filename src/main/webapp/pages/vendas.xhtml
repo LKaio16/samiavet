@@ -1,448 +1,521 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    >
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SAMIAVET</title>
-<h:outputStylesheet library="css" name="style.css"/>
-<h:outputScript library="js" name="scripts.js"/>
-<link rel="icon" href="../resources/imagens/SamiaVet.png" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>SAMIAVET</title>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputScript library="js" name="scripts.js" />
+	<link rel="icon" href="../resources/imagens/SamiaVet.png" />
 
 </h:head>
-<h:body style="background-color:#f3f3f3; font-family: 'Open Sans', sans-serif !important;" onload="chamar()">
-<style>
-
-.img-samiavet{
-width:40%;
-}
-.inputs{
-width: 200px;
-height: 20px;
-maxlength: 50;
-margin-top: 5px;
-margin-bottom: 5px;
-margin-left:10px;
-}
-.input-cpf{
-width: 100px;
-height: 20px;
-maxlength: 50;
-margin-top: 5px;
-margin-bottom: 5px;
-margin-left: 10px;
-
-}
-.titulo{
-
-font-size: 15px;
-font-weight: bold;
-margin-left:10px;
-}
-.input-codigo{
-
-width: 150px;
-height: 20px;
-maxlength: 50;
-margin-top: 5px;
-margin-bottom: 5px;
-
-}
-.input-total{
-
-width: 100px;
-height: 20px;
-maxlength: 50;
-margin-top: 5px;
-margin-bottom: 5px;
-font-weight: bold;
-margin-left: 10px;
-
-}
-.panel-adicionar{
-
-width:98%;
-
-
+<h:body
+	style="background-color:#f3f3f3; font-family: 'Open Sans', sans-serif !important;"
+	onload="chamar()">
+	<style>
+.img-samiavet {
+	width: 40%;
 }
 
-.input-taxa{
-
-margin-top: 5px;
-width: 100px;
-height: 30px;
-margin-left: 10px;
-
-
-}
-.botao-registrar-cancelar{
-
-width:50%;
-}
-.input-quantidade{
-width:30px;
-}
-.coluna-opcoes{
-width:30px;
-}
-.botao-resetar{
-margin-left: 10px;
+.inputs {
+	width: 200px;
+	height: 20px;
+	maxlength: 50;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
 }
 
-.carregando{
-width:50px;
-}
-.data{
-
-    display: block !important;
-       font-size: 11px !important;
-       float:left;
-}
-.tituloDescricao{
-float:right;
+.input-cpf {
+	width: 100px;
+	height: 20px;
+	maxlength: 50;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
 }
 
+.titulo {
+	font-size: 15px;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.input-codigo {
+	width: 150px;
+	height: 20px;
+	maxlength: 50;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.input-total {
+	width: 100px;
+	height: 20px;
+	maxlength: 50;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.panel-adicionar {
+	width: 98%;
+}
+
+.input-taxa {
+	margin-top: 5px;
+	width: 100px;
+	height: 30px;
+	margin-left: 10px;
+}
+
+.botao-registrar-cancelar {
+	width: 50%;
+}
+
+.input-quantidade {
+	width: 30px;
+}
+
+.coluna-opcoes {
+	width: 30px;
+}
+
+.botao-resetar {
+	margin-left: 10px;
+}
+
+.carregando {
+	width: 50px;
+}
+
+.data {
+	display: block !important;
+	font-size: 11px !important;
+	float: left;
+}
+
+.tituloDescricao {
+	float: right;
+}
 
 .ui-inputfield {
-height:30px;
-       border-color: #6699CC  !important;
-       font-weight: normal !important;
-}
-button.ui-button{
-  background-color:#6ab125;
-  border:0px;
-  }
-  button.ui-button:hover{
-  background-color:#78b83b;
-  }
-.div-top{
-
-    width: 100% !important;
-    background: url(../resources/imagens/bg.jpg) repeat-x !important;
-padding: 15px 0 0 0 !important;
-background-color: black;
-}
-.ui-clock{
-    background-color: black;
+	height: 30px;
+	border-color: #6699CC !important;
+	font-weight: normal !important;
 }
 
+button.ui-button {
+	background-color: #6ab125;
+	border: 0px;
+}
+
+button.ui-button:hover {
+	background-color: #78b83b;
+}
+
+.div-top {
+	width: 100% !important;
+	background: url(../resources/imagens/bg.jpg) repeat-x !important;
+	padding: 15px 0 0 0 !important;
+	background-color: black;
+}
+
+.ui-clock {
+	background-color: black;
+}
 </style>
 
-<div class="div-top">
-<img src="../resources/imagens/SamiaVet.png" class="img-samiavet" style="width:20%"/>
-<div style="float:right; margin-top:10px;">
-        <p:clock pattern="HH:mm:ss"/>
-</div>
-
-</div>
-
-<h:form>  
- 
-    <p:menubar>
-        <p:submenu label="FICHAS" icon="pi pi-file">
-            <p:menuitem value="Cadastrar animal"  url="cadastro.xhtml"/>
-  <p:separator />
-            <p:menuitem value="Consultar animal" url="consultaFichas.xhtml"/>
-            <p:separator />
-            <p:menuitem value="Agendar evento" url="agendamentos.xhtml" />
-        </p:submenu>
- 
-        <p:submenu label="PRODUTOS" icon="pi pi-tags">
-             <p:menuitem value="Cadastrar produto"  url="cadastroProdutos.xhtml"/>
-        </p:submenu>
- 
-        <p:submenu label="VENDAS" icon="pi pi-shopping-cart">
-          <p:menuitem value="Cadastrar venda"  url="vendas.xhtml"/>
-  <p:separator />
-            <p:menuitem value="Consultar vendas" url="consultaVendas.xhtml"/>
-        </p:submenu>
- 
-        <p:submenu label="ARQUIVOS" icon="pi pi-folder-open">
-              <p:menuitem value="Upload" url="upload.xhtml"/>
-  <p:separator />
-            <p:menuitem value="Arquivos" url="arquivos.xhtml"/>
-        </p:submenu>
- 
-       
-  <p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
-              <p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml"/>
-  <p:separator />
-            <p:menuitem value="Consultar servicos" url="consultaServicos.xhtml"/>
-        </p:submenu>
-        <f:facet name="options">
-           
-  <p:commandButton id="basic" icon ="pi pi-user"  type="button" style="background-color:#f8f9fa; color: black; border:0px;"/>
-  <p:overlayPanel for="basic" style="width:350px">
-    <p:commandButton value="Sair" actionListener="#{user.Sair}"  style="width:100%;border-color:white; "/>
-        </p:overlayPanel>    
-        </f:facet>
-    </p:menubar>
-</h:form>
+	<div class="div-top">
+		<img src="../resources/imagens/SamiaVet.png" class="img-samiavet"
+			style="width: 20%" />
+		<div style="float: right; margin-top: 10px;">
+			<p:clock pattern="HH:mm:ss" />
+		</div>
 
-<p:growl id="msgGlobal" life="5000" />
+	</div>
 
-    <h:form id="form-vendas">
-   
-<p:dataTable id="tabela-vendas" value="#{MBVendas.listaProdutosSelecionados}" var="item" rows="10" emptyMessage="Digite o código de barras do produto">
+	<h:form>
 
-<f:facet name="header">
+		<p:menubar>
+			<p:submenu label="FICHAS" icon="pi pi-file">
+				<p:menuitem value="Cadastrar animal" url="cadastro.xhtml" />
+				<p:separator />
+				<p:menuitem value="Consultar animal" url="consultaFichas.xhtml" />
+				<p:separator />
+				<p:menuitem value="Agendar evento" url="agendamentos.xhtml" />
+			</p:submenu>
 
+			<p:submenu label="PRODUTOS" icon="pi pi-tags">
+				<p:menuitem value="Cadastrar produto" url="cadastroProdutos.xhtml" />
+			</p:submenu>
 
-<h:outputText value="CÓDIGO DE BARRAS: " styleClass="titulo"/>
+			<p:submenu label="VENDAS" icon="pi pi-shopping-cart">
+				<p:menuitem value="Cadastrar venda" url="vendas.xhtml" />
+				<p:separator />
+				<p:menuitem value="Consultar vendas" url="consultaVendas.xhtml" />
+			</p:submenu>
 
-<p:inputText styleClass="input-codigo" value="#{MBVendas.codigoBarrasConsulta}"/>
+			<p:submenu label="ARQUIVOS" icon="pi pi-folder-open">
+				<p:menuitem value="Upload" url="upload.xhtml" />
+				<p:separator />
+				<p:menuitem value="Arquivos" url="arquivos.xhtml" />
+			</p:submenu>
 
-<p:commandButton value="ADICIONAR" style="margin-left:20px; background-color:#6ab125;" actionListener="#{MBVendas.listarProdutosSelecionados}" update=":form-vendas:tabela-vendas :msgGlobal"/>
 
+			<p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
+				<p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml" />
+				<p:separator />
+				<p:menuitem value="Consultar servicos" url="consultaServicos.xhtml" />
+			</p:submenu>
+			<f:facet name="options">
 
+				<p:commandButton id="basic" icon="pi pi-user" type="button"
+					style="background-color:#f8f9fa; color: black; border:0px;" />
+				<p:overlayPanel for="basic" style="width:350px">
+					<p:commandButton value="Sair" actionListener="#{user.Sair}"
+						style="width:100%;border-color:white; " />
+				</p:overlayPanel>
+			</f:facet>
+		</p:menubar>
+	</h:form>
 
+	<p:growl id="msgGlobal" life="5000" />
 
-</f:facet>
+	<h:form id="form-vendas">
 
-<f:facet name="footer">
+		<p:dataTable id="tabela-vendas"
+			value="#{MBVendas.listaProdutosSelecionados}" var="item" rows="10"
+			emptyMessage="Digite o código de barras do produto">
 
+			<f:facet name="header">
 
-<p:separator/>
-<h:outputText value="Nome Cliente: " styleClass="titulo"/>
 
-<p:inputText styleClass="inputs" value="#{MBVendas.vendas.nome_cliente}" />
+				<h:outputText value="CÓDIGO DE BARRAS: " styleClass="titulo" />
 
-<h:outputText value="CPF Cliente: " styleClass="titulo"/>
+				<p:inputText styleClass="input-codigo"
+					value="#{MBVendas.codigoBarrasConsulta}" />
 
-<p:inputMask   mask="999.999.999-99" styleClass="input-cpf" value="#{MBVendas.vendas.cpf}" />
+				<p:commandButton value="ADICIONAR"
+					style="margin-left:20px; background-color:#6ab125;"
+					actionListener="#{MBVendas.listarProdutosSelecionados}"
+					update=":form-vendas:tabela-vendas :msgGlobal" />
 
-<h:outputText  value="Taxa: " styleClass="titulo"/>
 
-<p:selectOneMenu id="selectOne" styleClass="input-taxa"  placeholder="TAXA" value="#{MBVendas.vendas.taxa}">
-           <f:selectItem itemLabel="0%" itemValue="0" />
-       <f:selectItem itemLabel="10%" itemValue="10" />
-       <f:selectItem itemLabel="20%" itemValue="20" />
-       <f:selectItem itemLabel="30%" itemValue="30" />
-       <f:selectItem itemLabel="40%" itemValue="40" />
-       <f:selectItem itemLabel="50%" itemValue="50" />
 
-   </p:selectOneMenu>
-   
-   
-<h:outputText  value="Parcelas: " styleClass="titulo"/>
 
-<p:selectOneMenu  styleClass="input-taxa"  placeholder="PARCELAS" value="#{MBVendas.vendas.parcelas}" >
-       <f:selectItem itemLabel="1x" itemValue="1" />
-       <f:selectItem itemLabel="2x" itemValue="2" />
-       <f:selectItem itemLabel="3x" itemValue="3" />
-       <f:selectItem itemLabel="4x" itemValue="4" />
-       <f:selectItem itemLabel="5x" itemValue="5" />
-       <f:selectItem itemLabel="6x" itemValue="6" />
+			</f:facet>
 
-   </p:selectOneMenu>
-   <br/>
-   <br/>
-<h:outputText  value="FORMA DE PAGAMENTO: " styleClass="titulo"/>
-<br/>
-<p:selectOneRadio  unselectable="true"  value="#{MBVendas.vendas.forma_pagamento}" >
-            <f:selectItem itemLabel="A VISTA" itemValue="A VISTA" />
-            <f:selectItem itemLabel="CRÉDITO" itemValue="CRÉDITO" />
-            <f:selectItem itemLabel="DÉBITO" itemValue="DÉBITO" />
-            <f:selectItem itemLabel="TRANSFERÊNCIA" itemValue="TRANSFERÊNCIA" />
-            <f:selectItem itemLabel="PIX" itemValue="PIX" />
-           
-           
-           
-        </p:selectOneRadio>
-   
+			<f:facet name="footer">
 
 
-<p:separator/>
+				<p:separator />
+				<h:outputText value="Nome Cliente: " styleClass="titulo" />
 
-<h:outputText value="TOTAL: " styleClass="titulo"/>
+				<p:inputText styleClass="inputs"
+					value="#{MBVendas.vendas.nome_cliente}" />
 
-<h:outputText styleClass="titulo" value="#{MBVendas.total}" readonly="true"/>
-<p:commandButton value="CALCULAR TOTAL" style="margin-left:10px; background-color:#6ab125" actionListener="#{MBVendas.resetarTotal}" update=":form-vendas:tabela-vendas :msgGlobal"/>
-<p:commandButton icon="pi pi-file-o" style="float:right; margin-left:10px; background-color:#6ab125" oncomplete="PF('dialogComprovante').show()" actionListener="#{MBVendas.gerarComprovante}"/>
+				<h:outputText value="CPF Cliente: " styleClass="titulo" />
 
+				<p:inputMask mask="999.999.999-99" styleClass="input-cpf"
+					value="#{MBVendas.vendas.cpf}" />
 
+				<h:outputText value="Taxa: " styleClass="titulo" />
 
-<p:panelGrid columns="2" style="margin-top:10px;">
-<p:commandButton value="REGISTRAR VENDA"   style="width:50%; margin-left:150px; background-color:#6ab125" actionListener="#{MBVendas.salvar}"  update=":form-vendas:tabela-vendas :msgGlobal :formComprovante">
+				<p:selectOneMenu id="selectOne" styleClass="input-taxa"
+					placeholder="TAXA" value="#{MBVendas.vendas.taxa}">
+					<f:selectItem itemLabel="0%" itemValue="0" />
+					<f:selectItem itemLabel="10%" itemValue="10" />
+					<f:selectItem itemLabel="20%" itemValue="20" />
+					<f:selectItem itemLabel="30%" itemValue="30" />
+					<f:selectItem itemLabel="40%" itemValue="40" />
+					<f:selectItem itemLabel="50%" itemValue="50" />
 
-</p:commandButton>
-<p:commandButton value="CANCELAR" style="width:50%; margin-left:150px; background-color:#6ab125" onclick="PF('dialogCancelar').show()"/>
+				</p:selectOneMenu>
 
-</p:panelGrid>
-</f:facet>
 
+				<h:outputText value="Parcelas: " styleClass="titulo" />
 
-<p:column headerText="CÓDIGO BARRAS">
-<h:outputText value="#{item.codigoBarras}" />
+				<p:selectOneMenu styleClass="input-taxa" placeholder="PARCELAS"
+					value="#{MBVendas.vendas.parcelas}">
+					<f:selectItem itemLabel="1x" itemValue="1" />
+					<f:selectItem itemLabel="2x" itemValue="2" />
+					<f:selectItem itemLabel="3x" itemValue="3" />
+					<f:selectItem itemLabel="4x" itemValue="4" />
+					<f:selectItem itemLabel="5x" itemValue="5" />
+					<f:selectItem itemLabel="6x" itemValue="6" />
 
-</p:column>
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<h:outputText value="FORMA DE PAGAMENTO: " styleClass="titulo" />
+				<br />
+				<p:selectOneRadio unselectable="true"
+					value="#{MBVendas.vendas.forma_pagamento}">
+					<f:selectItem itemLabel="A VISTA" itemValue="A VISTA" />
+					<f:selectItem itemLabel="CRÉDITO" itemValue="CRÉDITO" />
+					<f:selectItem itemLabel="DÉBITO" itemValue="DÉBITO" />
+					<f:selectItem itemLabel="TRANSFERÊNCIA" itemValue="TRANSFERÊNCIA" />
+					<f:selectItem itemLabel="PIX" itemValue="PIX" />
 
 
-<p:column headerText="NOME PRODUTO">
-<h:outputText value="#{item.nome}" />
-</p:column>
 
+				</p:selectOneRadio>
 
 
-<p:column headerText="PREÇO COMPRA (R$)">
-<h:outputText value="#{item.preco_compra}" />
-</p:column>
 
+				<p:separator />
 
+				<h:outputText value="TOTAL: " styleClass="titulo" />
 
-<p:column headerText="PREÇO VENDA (R$)">
-<h:outputText value="#{item.preco_venda}" />
-</p:column>
+				<h:outputText styleClass="titulo" value="#{MBVendas.total}" />
+				<p:commandButton value="CALCULAR TOTAL"
+					style="margin-left:10px; background-color:#6ab125"
+					actionListener="#{MBVendas.resetarTotal}"
+					update=":form-vendas:tabela-vendas :msgGlobal" />
+				<p:commandButton icon="pi pi-file-o"
+					style="float:right; margin-left:10px; background-color:#6ab125"
+					oncomplete="PF('dialogComprovante').show()"
+					actionListener="#{MBVendas.gerarComprovante}" />
 
 
 
-<p:column headerText="DISTRIBUIDORA">
-<h:outputText value="#{item.distribuidora}" />
-</p:column>
+				<p:panelGrid columns="2" style="margin-top:10px;">
+					<p:commandButton value="REGISTRAR VENDA"
+						style="width:50%; margin-left:150px; background-color:#6ab125"
+						actionListener="#{MBVendas.salvar}"
+						update=":form-vendas:tabela-vendas :msgGlobal :formComprovante">
 
+					</p:commandButton>
+					<p:commandButton value="CANCELAR"
+						style="width:50%; margin-left:150px; background-color:#6ab125"
+						onclick="PF('dialogCancelar').show()" />
 
-<p:column headerText="EMPRESA">
-<h:outputText value="#{item.empresa}" />
-</p:column>
+				</p:panelGrid>
+			</f:facet>
 
 
+			<p:column headerText="CÓDIGO BARRAS">
+				<h:outputText value="#{item.codigoBarras}" />
 
-<p:column headerText="DATA REGISTRO">
-<h:outputText value="#{item.data_registro}" />
-</p:column>
+			</p:column>
 
 
-<p:column headerText="VALIDADE">
-<h:outputText value="#{item.data_validade}" />
-</p:column>
+			<p:column headerText="NOME PRODUTO">
+				<h:outputText value="#{item.nome}" />
+			</p:column>
 
 
-<p:column headerText="ESTOQUE">
-<h:outputText value="#{item.quantidade_estoque}" styleClass="input-quantidade"/>
-</p:column>
 
-<p:column headerText="QNT" styleClass="input-quantidade">
-<center><p:inputText value="#{item.quantidade_estoque_subtracao}" styleClass="input-quantidade"/></center>
-</p:column>
+			<p:column headerText="PREÇO COMPRA (R$)">
+				<h:outputText value="#{item.preco_compra}" />
+			</p:column>
 
-<p:column styleClass="coluna-opcoes">
-<p:commandButton   icon="pi pi-trash" style="background-color:#6ab125" onclick="PF('dialogExcluir').show()" update=":formExcluir" actionListener="#{MBVendas.converter}"> <f:setPropertyActionListener target="#{MBVendas.produtosSelecionados}" value="#{item}"/></p:commandButton>
-</p:column>
 
-</p:dataTable>
 
+			<p:column headerText="PREÇO VENDA (R$)">
+				<h:outputText value="#{item.preco_venda}" />
+			</p:column>
 
 
-</h:form>
+			<p:column headerText="PREÇO UNIT (R$)">
+				<h:outputText value="#{item.preco_unitario}" />
+			</p:column>
+			
+			<p:column headerText="DISTRI.">
+				<h:outputText value="#{item.distribuidora}" />
+			</p:column>
 
 
-<p:dialog header="REMOVER PRODUTO" showEffect="blind" hideEffect="explode"  widgetVar="dialogExcluir" height="80" closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogExcluir">
+			<p:column headerText="EMPRESA">
+				<h:outputText value="#{item.empresa}" />
+			</p:column>
 
 
 
-            <h:form id="formExcluir">
-   
-           <h:outputText value="CODIGO BARRAS:" styleClass="titulo" />
-           <h:outputText value="#{MBVendas.produtosSelecionados.codigo_barras}" styleClass="titulo"></h:outputText>
-           
-           <br/>
-           <br/>
-         
-           <p:commandButton value="EXCLUIR" styleClass="botaoDeletar" actionListener="#{MBVendas.excluir}" style="background-color:#6ab125; margin-right:10px;" update=":form-vendas:tabela-vendas :msgGlobal" onclick="PF('dialogExcluir').hide()" />
-           <p:commandButton value="CANCELAR" onclick="PF('dialogExcluir').hide()" style="background-color:#6ab125;"/>
-           
-           
-           
-            </h:form>
+			<p:column headerText="DATA REGISTRO">
+				<h:outputText value="#{item.data_registro}" />
+			</p:column>
 
 
-    </p:dialog>
-   
-   
-   
-     <p:dialog header="CANCELAMENTO" showEffect="blind" hideEffect="explode"  widgetVar="dialogCancelar" height="80" closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogCancelar">
+			<p:column headerText="VALIDADE">
+				<h:outputText value="#{item.data_validade}" />
+			</p:column>
 
 
+			<p:column headerText="ESTOQUE">
+				<h:outputText value="#{item.quantidade_estoque}"
+					styleClass="input-quantidade" />
+			</p:column>
 
-            <h:form id="formCancelar">
-   
-           <h:outputText value="VOCÊ DESEJA MESMO CANCELAR ESSA VENDA?" styleClass="titulo" />
-           
-           <br/>
-           <br/>
-           <p:commandButton value="SIM" style="background-color:#6ab125;" styleClass="botaoDeletar"  actionListener="#{MBVendas.cancelar}" update=":form-vendas:tabela-vendas :msgGlobal" onclick="PF('dialogCancelar').hide()" />
-           <p:commandButton value="NÃO" onclick="PF('dialogCancelar').hide()" style="background-color:#6ab125;"/>
-           
-           
-           
-            </h:form>
+			<p:column headerText="ESTOQUE UNT">
+				<h:outputText value="#{item.estoque_unitario}"
+					styleClass="input-quantidade" />
+			</p:column>
 
+			<p:column headerText="QNT" styleClass="input-quantidade">
+				<center>
+					<p:inputText value="#{item.quantidade_estoque_subtracao}"
+						styleClass="input-quantidade" />
+				</center>
+			</p:column>
 
-    </p:dialog>
-   
-   
-   
-     <p:dialog header="EMIÇÃO DE COMPROVANTE" showEffect="blind" hideEffect="explode"  widgetVar="dialogComprovante" height="150" closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogComprovante">
+			<p:column headerText="QNT UNT" styleClass="input-quantidade">
+				<center>
+					<p:inputText value="#{item.quantidade_estoque_unitario_subtracao}"
+						styleClass="input-quantidade" />
+				</center>
+			</p:column>
 
+			<p:column styleClass="coluna-opcoes">
+				<p:commandButton icon="pi pi-trash" style="background-color:#6ab125"
+					onclick="PF('dialogExcluir').show()" update=":formExcluir"
+					actionListener="#{MBVendas.converter}">
+					<f:setPropertyActionListener
+						target="#{MBVendas.produtosSelecionados}" value="#{item}" />
+				</p:commandButton>
+			</p:column>
 
+		</p:dataTable>
 
-<h:form id="formComprovante">
-<h:outputText value="ENVIAR POR E-MAIL:" styleClass="titulo" />
- 
-<p:panelGrid columns="2" >
 
 
-<p:inputText placeholder="Digite o e-mail de destino" styleClass="input-codigo" value="#{MBVendas.email}"/>
+	</h:form>
 
-<p:commandButton value="ENVIAR" style="background-color:#6ab125" actionListener="#{MBVendas.enviarEmail}" update=":formComprovante :msgGlobal"/>
 
- </p:panelGrid>
-  <br/>
- <h:outputText value="FAZER DOWNLOAD:" styleClass="titulo" />
+	<p:dialog header="REMOVER PRODUTO" showEffect="blind"
+		hideEffect="explode" widgetVar="dialogExcluir" height="80"
+		closable="true" draggable="false" resizable="false" modal="true"
+		appendTo="@(body)" id="dialogExcluir">
 
- <p:panelGrid columns="2" style="width:100%;">
- 
-     <p:commandButton icon =  "pi pi-download"  value="Baixar" ajax="false" actionListener="#{MBVendas.gerarComprovante}" style="width:100%;background-color:#6ab125">
-   
-    <p:fileDownload value="#{MBVendas.file}"></p:fileDownload>
-   </p:commandButton>      
-   
-   
-   
-   
- 
- </p:panelGrid>
-</h:form>
-    </p:dialog>
 
- <script>
-   
-   
-    function chamar(){
 
+		<h:form id="formExcluir">
 
+			<h:outputText value="CODIGO BARRAS:" styleClass="titulo" />
+			<h:outputText value="#{MBVendas.produtosSelecionados.codigo_barras}"
+				styleClass="titulo"></h:outputText>
 
-var data = new Date();
-var dia = String(data.getDate()).padStart(2, '0');
-var mes = String(data.getMonth() + 1).padStart(2, '0');
-var ano = data.getFullYear();
-dataAtual = dia + '/' + mes + '/' + ano;
-console.log(dataAtual);
+			<br />
+			<br />
 
-document.querySelector('.data').textContent = dataAtual
-}
+			<p:commandButton value="EXCLUIR" styleClass="botaoDeletar"
+				actionListener="#{MBVendas.excluir}"
+				style="background-color:#6ab125; margin-right:10px;"
+				update=":form-vendas:tabela-vendas :msgGlobal"
+				onclick="PF('dialogExcluir').hide()" />
+			<p:commandButton value="CANCELAR"
+				onclick="PF('dialogExcluir').hide()"
+				style="background-color:#6ab125;" />
 
-   
-    </script>
 
-<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
 
-<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" >
-            <p:graphicImage value="/resources/imagens/carregando.gif" alt="" style="width:50px; margin-top:20px;"/>
-</p:dialog>
-  </h:body>
-  </html>
+		</h:form>
+
+
+	</p:dialog>
+
+
+
+	<p:dialog header="CANCELAMENTO" showEffect="blind" hideEffect="explode"
+		widgetVar="dialogCancelar" height="80" closable="true"
+		draggable="false" resizable="false" modal="true" appendTo="@(body)"
+		id="dialogCancelar">
+
+
+
+		<h:form id="formCancelar">
+
+			<h:outputText value="VOCÊ DESEJA MESMO CANCELAR ESSA VENDA?"
+				styleClass="titulo" />
+
+			<br />
+			<br />
+			<p:commandButton value="SIM" style="background-color:#6ab125;"
+				styleClass="botaoDeletar" actionListener="#{MBVendas.cancelar}"
+				update=":form-vendas:tabela-vendas :msgGlobal"
+				onclick="PF('dialogCancelar').hide()" />
+			<p:commandButton value="NÃO" onclick="PF('dialogCancelar').hide()"
+				style="background-color:#6ab125;" />
+
+
+
+		</h:form>
+
+
+	</p:dialog>
+
+
+
+	<p:dialog header="EMIÇÃO DE COMPROVANTE" showEffect="blind"
+		hideEffect="explode" widgetVar="dialogComprovante" height="150"
+		closable="true" draggable="false" resizable="false" modal="true"
+		appendTo="@(body)" id="dialogComprovante">
+
+
+
+		<h:form id="formComprovante">
+			<h:outputText value="ENVIAR POR E-MAIL:" styleClass="titulo" />
+
+			<p:panelGrid columns="2">
+
+
+				<p:inputText placeholder="Digite o e-mail de destino"
+					styleClass="input-codigo" value="#{MBVendas.email}" />
+
+				<p:commandButton value="ENVIAR" style="background-color:#6ab125"
+					actionListener="#{MBVendas.enviarEmail}"
+					update=":formComprovante :msgGlobal" />
+
+			</p:panelGrid>
+			<br />
+			<h:outputText value="FAZER DOWNLOAD:" styleClass="titulo" />
+
+			<p:panelGrid columns="2" style="width:100%;">
+
+				<p:commandButton icon="pi pi-download" value="Baixar" ajax="false"
+					actionListener="#{MBVendas.gerarComprovante}"
+					style="width:100%;background-color:#6ab125">
+
+					<p:fileDownload value="#{MBVendas.file}"></p:fileDownload>
+				</p:commandButton>
+
+
+
+
+
+			</p:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<script>
+		function chamar() {
+
+			var data = new Date();
+			var dia = String(data.getDate()).padStart(2, '0');
+			var mes = String(data.getMonth() + 1).padStart(2, '0');
+			var ano = data.getFullYear();
+			dataAtual = dia + '/' + mes + '/' + ano;
+			console.log(dataAtual);
+
+			document.querySelector('.data').textContent = dataAtual
+		}
+	</script>
+
+	<p:ajaxStatus onstart="PF('statusDialog').show()"
+		onsuccess="PF('statusDialog').hide()" />
+
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+		closable="false" resizable="false" showHeader="false">
+		<p:graphicImage value="/resources/imagens/carregando.gif" alt=""
+			style="width:50px; margin-top:20px;" />
+	</p:dialog>
+	
+	
+</h:body>
+</html>
