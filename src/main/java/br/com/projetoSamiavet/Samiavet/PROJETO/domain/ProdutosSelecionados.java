@@ -19,10 +19,16 @@ public class ProdutosSelecionados {
     private String data_validade;
     private Integer quantidade_estoque;
     private Integer quantidade_estoque_subtracao;
+    private Integer quantidade_estoque_unitario_subtracao;
+    private Double preco_unitario;
+	private Integer estoque_unitario;
+	
+	
 
 	public ProdutosSelecionados(String codigoBarras, String nome, Double preco_compra, Double preco_venda,
 			String distribuidora, String empresa, String data_registro, String data_validade,
-			Integer quantidade_estoque, Integer quantidade_estoque_subtracao) {
+			Integer quantidade_estoque, Integer quantidade_estoque_subtracao,
+			Integer quantidade_estoque_unitario_subtracao, Double preco_unitario, Integer estoque_unitario) {
 		
 		this.codigoBarras = codigoBarras;
 		this.nome = nome;
@@ -34,6 +40,9 @@ public class ProdutosSelecionados {
 		this.data_validade = data_validade;
 		this.quantidade_estoque = quantidade_estoque;
 		this.quantidade_estoque_subtracao = quantidade_estoque_subtracao;
+		this.quantidade_estoque_unitario_subtracao = quantidade_estoque_unitario_subtracao;
+		this.preco_unitario = preco_unitario;
+		this.estoque_unitario = estoque_unitario;
 	}
 
 	public ProdutosSelecionados() {
@@ -133,9 +142,29 @@ public class ProdutosSelecionados {
 		this.quantidade_estoque_subtracao = quantidade_estoque_subtracao;
 	}
 
-	
+	public Double getPreco_unitario() {
+		return preco_unitario;
+	}
 
-	
-    
+	public void setPreco_unitario(Double preco_unitario) {
+		this.preco_unitario = preco_unitario;
+	}
+
+	public Integer getEstoque_unitario() {
+		return estoque_unitario;
+	}
+
+	public void setEstoque_unitario(Integer estoque_unitario) {
+		this.estoque_unitario = estoque_unitario;
+	}
+
+	public Integer getQuantidade_estoque_unitario_subtracao() {
+		return quantidade_estoque_unitario_subtracao;
+	}
+
+	public void setQuantidade_estoque_unitario_subtracao(Integer quantidade_estoque_unitario_subtracao) {
+		this.quantidade_estoque_unitario_subtracao = quantidade_estoque_unitario_subtracao;
+	}
+
 	
 }
