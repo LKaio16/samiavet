@@ -425,18 +425,21 @@ public class VendasBean {
 							soma += this.listaProdutosSelecionados.get(cont).getPreco_unitario()
 									* converterEstoqueUnitarioSubtracao;
 
-						} else if (this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao() == 0
+						} else if (this.listaProdutosSelecionados.get(cont)
+								.getQuantidade_estoque_unitario_subtracao() == 0
 								|| this.listaProdutosSelecionados.get(cont)
 										.getQuantidade_estoque_unitario_subtracao() == null) {
 							soma += this.listaProdutosSelecionados.get(cont).getPreco_venda()
 									* (conversaoQuantidadesDouble + converterEstoqueUnitarioSubtracao);
 						} else if (this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_subtracao() != 0
-								&& this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao() != 0) {
+								&& this.listaProdutosSelecionados.get(cont)
+										.getQuantidade_estoque_unitario_subtracao() != 0) {
 							JsfUtil.adicionarMensagemDeErro(
 									"NÃO É POSSÍVEL REALIZAR A VENDA DE UM BLÍSTER E UM UNITÁRIO AO MESMO TEMPO", null);
 						}
 
-					} else if (this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao() == null) {
+					} else if (this.listaProdutosSelecionados.get(cont)
+							.getQuantidade_estoque_unitario_subtracao() == null) {
 
 						this.listaProdutosSelecionados.get(cont).setQuantidade_estoque_unitario_subtracao(0);
 
@@ -452,13 +455,15 @@ public class VendasBean {
 							soma += this.listaProdutosSelecionados.get(cont).getPreco_unitario()
 									* converterEstoqueUnitarioSubtracao;
 
-						} else if (this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao() == 0
+						} else if (this.listaProdutosSelecionados.get(cont)
+								.getQuantidade_estoque_unitario_subtracao() == 0
 								|| this.listaProdutosSelecionados.get(cont)
 										.getQuantidade_estoque_unitario_subtracao() == null) {
 							soma += this.listaProdutosSelecionados.get(cont).getPreco_venda()
 									* (conversaoQuantidadesDouble + converterEstoqueUnitarioSubtracao);
 						} else if (this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_subtracao() != 0
-								&& this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao() != 0) {
+								&& this.listaProdutosSelecionados.get(cont)
+										.getQuantidade_estoque_unitario_subtracao() != 0) {
 							JsfUtil.adicionarMensagemDeErro(
 									"NÃO É POSSÍVEL REALIZAR A VENDA DE UM BLÍSTER E UM UNITÁRIO AO MESMO TEMPO", null);
 						}
@@ -476,13 +481,15 @@ public class VendasBean {
 							soma += this.listaProdutosSelecionados.get(cont).getPreco_unitario()
 									* converterEstoqueUnitarioSubtracao;
 
-						} else if (this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao() == 0
+						} else if (this.listaProdutosSelecionados.get(cont)
+								.getQuantidade_estoque_unitario_subtracao() == 0
 								|| this.listaProdutosSelecionados.get(cont)
 										.getQuantidade_estoque_unitario_subtracao() == null) {
 							soma += this.listaProdutosSelecionados.get(cont).getPreco_venda()
 									* (conversaoQuantidadesDouble + converterEstoqueUnitarioSubtracao);
 						} else if (this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_subtracao() != 0
-								&& this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao() != 0) {
+								&& this.listaProdutosSelecionados.get(cont)
+										.getQuantidade_estoque_unitario_subtracao() != 0) {
 							JsfUtil.adicionarMensagemDeErro(
 									"NÃO É POSSÍVEL REALIZAR A VENDA DE UM BLÍSTER E UM UNITÁRIO AO MESMO TEMPO", null);
 						}
@@ -514,15 +521,12 @@ public class VendasBean {
 				Document document = new Document();
 
 				try {
-					PdfWriter.getInstance(document, new FileOutputStream(
-							"C:\\Users\\kaua.ferreira\\Downloads\\apache-server\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\comprovantes\\"
-									+ this.vendas.getId_venda() + ".pdf"));
+					PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\comprovantes\\" + this.vendas.getId_venda() + ".pdf"));
 
 					document.open();
 					document.add(new Paragraph(
 							"----------------------------------------------------------------------------------------------------------------------"));
-					String filename = "C:\\Users\\kaua.ferreira\\Downloads\\apache-server\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\imagens\\samiavet-copia.png";
-					Font fonteTexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
+					String filename = "C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\imagens\\samiavet-copia.png";					Font fonteTexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
 
 					Font fonteNegrito = FontFactory.getFont(FontFactory.COURIER, 17, Font.BOLD);
 					Font fonteNegrito2 = FontFactory.getFont(FontFactory.COURIER, 15, Font.BOLD);
@@ -533,51 +537,52 @@ public class VendasBean {
 						document.add(image);
 						document.add(new Paragraph(
 								"----------------------------------------------------------------------------------------------------------------------"));
-						document.add(new Paragraph("    N°: " + this.vendas.getId_venda(), fonteNegrito2));
-						document.add(new Paragraph("    PAGAMENTO: " + this.vendas.getForma_pagamento()
+						document.add(new Paragraph("N°: " + this.vendas.getId_venda(), fonteNegrito2));
+						document.add(new Paragraph("PAGAMENTO: " + this.vendas.getForma_pagamento()
 								+ "                   " + "VALOR: " + this.vendas.getValor() + "R$", fonteNegrito2));
-						document.add(new Paragraph("    N° PARCELAS: " + this.vendas.getParcelas(), fonteNegrito2));
+						document.add(new Paragraph("N° PARCELAS: " + this.vendas.getParcelas(), fonteNegrito2));
 						document.add(new Paragraph(
-								"    DATA: " + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/"
-										+ LocalDate.now().getYear() + "        " + "HORA: "
+								"    DATA: " + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue()
+										+ "/" + LocalDate.now().getYear() + "        " + "HORA: "
 										+ LocalDateTime.now().getHour() + ":" + LocalDateTime.now().getMinute(),
 								fonteNegrito2));
 
-						document.add(new Paragraph("    CLIENTE: " + this.vendas.getNome_cliente(), fonteNegrito2));
-						document.add(new Paragraph("    CPF: " + this.vendas.getCpf(), fonteNegrito2));
-						document.add(new Paragraph("          -"));
-						document.add(new Paragraph("          -"));
-						document.add(new Paragraph("          -"));
-						document.add(new Paragraph("          -"));
-						document.add(new Paragraph("          -"));
+						document.add(new Paragraph("CLIENTE: " + this.vendas.getNome_cliente(), fonteNegrito2));
+						document.add(new Paragraph("CPF: " + this.vendas.getCpf(), fonteNegrito2));
+						document.add(new Paragraph("-"));
+						document.add(new Paragraph("-"));
+						document.add(new Paragraph("-"));
+						document.add(new Paragraph("-"));
+						document.add(new Paragraph("-"));
 
 						for (int cont = 0; cont < this.listaProdutosSelecionados.size(); cont++) {
-							
-							
-						    float [] pointColumnWidths = {10F, 10F};   
 
 							
-						    PdfPTable tabela = new PdfPTable(pointColumnWidths);
+							document.add(new Paragraph(
+									"=========================================================================="));
 							
-							
-							tabela.addCell("Produto");       
-							tabela.addCell("QNT");  
-							
-							if(this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao() != null 
-									|| this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao() != 0) {
-								
-								tabela.addCell((this.listaProdutosSelecionados.get(cont).getNome()));    
+							if (this.listaProdutosSelecionados.get(cont)
+									.getQuantidade_estoque_unitario_subtracao() != null
+									|| this.listaProdutosSelecionados.get(cont)
+											.getQuantidade_estoque_unitario_subtracao() != 0) {
 
-								tabela.addCell((String.valueOf(this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao())));    
-							}else {
-								
+								document.add(new Paragraph(this.vendas.getProdutos().get(cont).getNome()
+										+ "  -----------------------------  QTD UNT: "
+										+ this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao(),
+										fonteNegrito2));
+
 							}
 							
-							tabela.addCell((this.listaProdutosSelecionados.get(cont).getNome()));    
+								
+								document.add(new Paragraph(this.vendas.getProdutos().get(cont).getNome()
+										+ "  -----------------------------  QTD: "
+										+ this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_subtracao(),
+										fonteNegrito2));
 
-							tabela.addCell((String.valueOf(this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_subtracao())));    
+								document.add(new Paragraph(
+										"=========================================================================="));
 							
-							document.add(tabela);
+							
 						}
 					} catch (MalformedURLException e) {
 						// TODO Auto-generated catch block
