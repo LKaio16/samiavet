@@ -542,18 +542,19 @@ public class VendasBean {
 								+ "                   " + "VALOR: " + this.vendas.getValor() + "R$", fonteNegrito2));
 						document.add(new Paragraph("N° PARCELAS: " + this.vendas.getParcelas(), fonteNegrito2));
 						document.add(new Paragraph(
-								"    DATA: " + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue()
+								"DATA: " + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue()
 										+ "/" + LocalDate.now().getYear() + "        " + "HORA: "
 										+ LocalDateTime.now().getHour() + ":" + LocalDateTime.now().getMinute(),
 								fonteNegrito2));
 
-						document.add(new Paragraph("CLIENTE: " + this.vendas.getNome_cliente(), fonteNegrito2));
+						document.add(new Paragraph("CLIENTE: " + this.vendas.getNome_cliente() + "             " + "NOME ANIMAL: " + this.vendas.getNomeAnimal() , fonteNegrito2));
 						document.add(new Paragraph("CPF: " + this.vendas.getCpf(), fonteNegrito2));
 						document.add(new Paragraph("-"));
 						document.add(new Paragraph("-"));
 						document.add(new Paragraph("-"));
 						document.add(new Paragraph("-"));
 						document.add(new Paragraph("-"));
+
 
 						for (int cont = 0; cont < this.listaProdutosSelecionados.size(); cont++) {
 

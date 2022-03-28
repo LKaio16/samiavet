@@ -215,13 +215,17 @@ button.ui-button:hover {
 
 
 				<p:separator />
-				<h:outputText value="Nome Cliente: " styleClass="titulo" />
 
+				<h:outputText value="Nome Cliente: " styleClass="titulo" />
 				<p:inputText styleClass="inputs"
 					value="#{MBVendas.vendas.nome_cliente}" />
 
-				<h:outputText value="CPF Cliente: " styleClass="titulo" />
+				<h:outputText value="Nome Animal: " styleClass="titulo" />
+				<p:inputText styleClass="inputs"
+					value="#{MBVendas.vendas.nomeAnimal}" />
 
+
+				<h:outputText value="CPF Cliente: " styleClass="titulo" />
 				<p:inputMask mask="999.999.999-99" styleClass="input-cpf"
 					value="#{MBVendas.vendas.cpf}" />
 
@@ -326,7 +330,7 @@ button.ui-button:hover {
 			<p:column headerText="PREÇO UNIT (R$)">
 				<h:outputText value="#{item.preco_unitario}" />
 			</p:column>
-			
+
 			<p:column headerText="DISTRI.">
 				<h:outputText value="#{item.distribuidora}" />
 			</p:column>
@@ -515,7 +519,7 @@ button.ui-button:hover {
 		<p:graphicImage value="/resources/imagens/carregando.gif" alt=""
 			style="width:50px; margin-top:20px;" />
 	</p:dialog>
-	
-	
+
+
 </h:body>
 </html>

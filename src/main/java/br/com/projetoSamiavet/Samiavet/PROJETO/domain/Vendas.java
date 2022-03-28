@@ -30,7 +30,7 @@ public class Vendas {
 	private String nome_cliente;
 	private String cpf;
 	private String forma_pagamento;
-	
+	private String nomeAnimal;
 	
 	@OneToMany(fetch = FetchType.LAZY)
     private List<Produtos> produtos= new ArrayList<Produtos>();
@@ -39,12 +39,11 @@ public class Vendas {
 	public Vendas() {
 	}
 
-	
-
-
-	public Vendas(Long id_venda, Double valor, Double taxa, int parcelas, String data_venda,
-			String nome_cliente, String cpf, String forma_pagamento, List<Produtos> produtos) {
-		this.idVenda = id_venda;
+	public Vendas(Long idVenda, Double valor, Double taxa, int parcelas, String data_venda, String nome_cliente,
+			String cpf, String forma_pagamento, String nomeAnimal, List<Produtos> produtos) {
+		
+		
+		this.idVenda = idVenda;
 		this.valor = valor;
 		this.taxa = taxa;
 		this.parcelas = parcelas;
@@ -52,10 +51,17 @@ public class Vendas {
 		this.nome_cliente = nome_cliente;
 		this.cpf = cpf;
 		this.forma_pagamento = forma_pagamento;
+		this.nomeAnimal = nomeAnimal;
 		this.produtos = produtos;
 	}
+	
+	public String getNomeAnimal() {
+		return nomeAnimal;
+	}
 
-
+	public void setNomeAnimal(String nomeAnimal) {
+		this.nomeAnimal = nomeAnimal;
+	}
 
 	public Long getId_venda() {
 		return idVenda;
@@ -135,21 +141,13 @@ public class Vendas {
 		this.produtos = produtos;
 	}
 
-
-
-
 	public Long getIdVenda() {
 		return idVenda;
 	}
 
-
-
-
 	public void setIdVenda(Long idVenda) {
 		this.idVenda = idVenda;
 	}
-	
-	
 	
 }
 	
