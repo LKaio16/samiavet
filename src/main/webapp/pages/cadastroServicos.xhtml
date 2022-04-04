@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -168,8 +168,8 @@
         </p:submenu>
  
        
- 		 <p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
-              <p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml"/>
+ 		 <p:submenu label="SERVIÃ‡OS" icon="pi pi-folder-open">
+              <p:menuitem value="Cadastrar serviÃ§os" url="cadastroServicos.xhtml"/>
  			<p:separator />
             <p:menuitem value="Consultar servicos" url="consultaServicos.xhtml"/>
         </p:submenu>
@@ -191,14 +191,14 @@
     <p:fieldset  toggleable="true" toggleSpeed="500">
             <h:form id="formCadastrar">
         
-				  <p:panel header="CADASTRAR UM SERVIÇO">
+				  <p:panel header="CADASTRAR UM SERVIÃ‡O">
 						<p:panelGrid columns="2">
 	                    
 		                    <h:outputText  value="TIPO" styleClass="outPutTexts"/>
-						    <p:inputText  styleClass="inputs" value="#{MBServicos.servicoTemp.tipo}" placeholder="Tipo serviço"/>
+						    <p:inputText  styleClass="inputs" value="#{MBServicos.servicoTemp.tipo}" placeholder="Tipo serviÃ§o"/>
 		 					
-				            <h:outputText  value="DESCRIÇÃO" styleClass="outPutTexts"/>
-						    <p:inputText  styleClass="inputCodigo" value="#{MBServicos.servicoTemp.descricao}"  placeholder="Descrição"/>
+				            <h:outputText  value="DESCRIÃ‡ÃƒO" styleClass="outPutTexts"/>
+						    <p:inputText  styleClass="inputCodigo" value="#{MBServicos.servicoTemp.descricao}"  placeholder="DescriÃ§Ã£o"/>
 							
 						    <h:outputText  value="VALOR" styleClass="outPutTexts"/>
 	              			<p:inputText id="input1" value="#{MBServicos.servicoTemp.valor}"   placeholder="Valor" style="margin-left:5px;"/>
@@ -234,7 +234,7 @@
 		
     
     
-		<p:dataTable id="tabela-servicos" value="#{MBServicos.listaServicoTemp}" var="item" rows="10" emptyMessage="Cadastre um serviço logo em cima">
+		<p:dataTable id="tabela-servicos" value="#{MBServicos.listaServicoTemp}" var="item" rows="10" emptyMessage="Cadastre um serviÃ§o logo em cima">
 		
 		
 		<f:facet name="footer">
@@ -265,9 +265,9 @@
 				<br/>
 		 <p:selectOneRadio  unselectable="true"  value="#{MBServicos.formaPag}" >
             <f:selectItem itemLabel="A VISTA" itemValue="A VISTA" />
-            <f:selectItem itemLabel="CRÉDITO" itemValue="CRÉDITO" />
-            <f:selectItem itemLabel="DÉBITO" itemValue="DÉBITO" />
-            <f:selectItem itemLabel="TRANSFERÊNCIA" itemValue="TRANSFERÊNCIA" />
+            <f:selectItem itemLabel="CRÃ‰DITO" itemValue="CRÃ‰DITO" />
+            <f:selectItem itemLabel="DÃ‰BITO" itemValue="DÃ‰BITO" />
+            <f:selectItem itemLabel="TRANSFERÃŠNCIA" itemValue="TRANSFERÃŠNCIA" />
             <f:selectItem itemLabel="PIX" itemValue="PIX" />
             
             
@@ -287,7 +287,7 @@
 					
 				
 				<p:panelGrid columns="2" style="margin-top:10px;">
-				<p:commandButton value="REGISTRAR SERVIÇO"   style="width:50%; margin-left:150px; background-color:#6ab125" actionListener="#{MBServicos.cadastrar}"  update=":formTabela :msgGlobal">
+				<p:commandButton value="REGISTRAR SERVIÃ‡O"   style="width:50%; margin-left:150px; background-color:#6ab125" actionListener="#{MBServicos.cadastrar}"  update=":formTabela :msgGlobal">
 					
 					</p:commandButton>
 					<p:commandButton value="CANCELAR" style="width:50%; margin-left:150px; background-color:#6ab125" onclick="PF('dialogCancelar').show()"/>
@@ -301,7 +301,7 @@
 			            <h:outputText value="#{item.tipo}" />
 			        </p:column>
 			        
-			        <p:column headerText="DESCRIÇÃO" >
+			        <p:column headerText="DESCRIÃ‡ÃƒO" >
 			            <h:outputText value="#{item.descricao}" />
 			        </p:column>
 			       
@@ -368,12 +368,12 @@
 
             <h:form id="formCancelar">
     			
-	            <h:outputText value="VOCÊ DESEJA MESMO CANCELAR ESSES SERVIÇOS?" styleClass="titulo" />
+	            <h:outputText value="VOCÃŠ DESEJA MESMO CANCELAR ESSES SERVIÃ‡OS?" styleClass="titulo" />
 	            
 	            <br/>
 	            <br/>
 	            <p:commandButton value="SIM"  styleClass="botaoDeletar"   actionListener="#{MBServicos.cancelarServicos}" update=":formTabela :msgGlobal" oncomplete="PF('dialogCancelar').hide()" />
-	            <p:commandButton value="NÃO" style="margin-left:5px;" onclick="PF('dialogCancelar').hide()" />
+	            <p:commandButton value="NÃƒO" style="margin-left:5px;" onclick="PF('dialogCancelar').hide()" />
             
             
             
@@ -386,13 +386,13 @@
     
     
     
-		 <p:dialog header="REMOVER SERVIÇO" showEffect="blind" hideEffect="explode"  widgetVar="dialogExcluir" height="80" closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogExcluir">
+		 <p:dialog header="REMOVER SERVIÃ‡O" showEffect="blind" hideEffect="explode"  widgetVar="dialogExcluir" height="80" closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogExcluir">
 
 
 
             <h:form id="formExcluir">
     			
-	            <h:outputText value="VOCÊ DESEJA MESMO EXCLUIR ESSE SERVIÇO?" styleClass="titulo" />
+	            <h:outputText value="VOCÃŠ DESEJA MESMO EXCLUIR ESSE SERVIÃ‡O?" styleClass="titulo" />
 	            
 	            <br/>
 	            <br/>
@@ -409,7 +409,7 @@
     
     
     
-     <p:dialog header="EMIÇÃO DE COMPROVANTE" showEffect="blind" hideEffect="explode"  widgetVar="dialogComprovante" height="150" closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogComprovante">
+     <p:dialog header="EMIÃ‡ÃƒO DE COMPROVANTE" showEffect="blind" hideEffect="explode"  widgetVar="dialogComprovante" height="150" closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogComprovante">
 
 
 
