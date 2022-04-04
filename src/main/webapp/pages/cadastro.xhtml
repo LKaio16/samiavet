@@ -1,432 +1,474 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    >
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>SAMIAVET</title>
-<h:outputStylesheet library="css" name="style.css"/>
-<h:outputScript library="js" name="scripts.js"/>
-<link rel="icon" href="../resources/imagens/SamiaVet.png" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>SAMIAVET</title>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputScript library="js" name="scripts.js" />
+	<link rel="icon" href="../resources/imagens/SamiaVet.png" />
 
 </h:head>
-<h:body style="background-color:#f3f3f3; font-family: 'Open Sans', sans-serif !important;" onload="PF('dialogEventos').show()">
-<style>
+<h:body
+	style="background-color:#f3f3f3; font-family: 'Open Sans', sans-serif !important;"
+	onload="PF('dialogEventos').show()">
+	<style>
+.fieldset-cliente {
+	float: left;
+}
 
-	.fieldset-cliente{
-		float:left;
-	}
-	.fieldset-animal{
-		float:left;
-	}
-	.label-cpf{
-		padding-left: 80px;
-	}
-	.panel-proprietario{
-		width:100%;
-		font-size: 30px;
-	}
-	.panel-animal{
-		float:left;
-	}
-	.inputs{
-		width: 300px;
-		height: 20px;
-		maxlength: 50;
-		margin-top: 5px;
-		margin-bottom: 5px;
-		margin-left: 30px;
-	}
-	.div-animal{
-		float: left;
-	}
-	.teste{
-	
-		float: left;
-	}
-	
-	.inputFc{
-	
-		width: 100px;
-		height: 20px;
-		maxlength: 50;
-		margin-top: 5px;
-		margin-bottom: 5px;
-		margin-left: 10px;
-		
-	}
-	
-	.inputFr{
-	
-		width: 100px;
-		height: 20px;
-		maxlength: 50;
-		margin-top: 5px;
-		margin-bottom: 5px;
-		margin-left: 10px;
-	
-	}
-	
-	.inputP{
-	
-		width: 100px;
-		height: 20px;
-		maxlength: 50;
-		margin-top: 5px;
-		margin-bottom: 5px;
-		margin-left: 10px;
-	
-	}
-	
-	.inputT{
-	
-		width: 100px;
-		height: 20px;
-		maxlength: 50;
-		margin-top: 5px;
-		margin-bottom: 5px;
-		margin-left: 10px;
-	
-	
-	}
-	.inputData{
-		width: 100px;
-		height: 20px;
-		maxlength: 50;
-		margin-top: 5px;
-		margin-bottom: 5px;
-		margin-left: 10px;
-	
-	}
-	.inputSexo{
-	
-		width: 100px;
-		height: 30px;
-	
-	
-	}
-	
-	.outPutTexts{
-		padding-left: 10px;
-		font-size: 15px;
-	
-	}
-	
-	.outPutTextFc{
-	
+.fieldset-animal {
+	float: left;
+}
+
+.label-cpf {
+	padding-left: 80px;
+}
+
+.panel-proprietario {
+	width: 100%;
+	font-size: 30px;
+}
+
+.panel-animal {
+	float: left;
+}
+
+.inputs {
+	width: 300px;
+	height: 20px;
+	maxlength: 50;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 30px;
+}
+
+.div-animal {
+	float: left;
+}
+
+.teste {
+	float: left;
+}
+
+.inputFc {
+	width: 100px;
+	height: 20px;
+	maxlength: 50;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+}
+
+.inputFr {
+	width: 100px;
+	height: 20px;
+	maxlength: 50;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+}
+
+.inputP {
+	width: 100px;
+	height: 20px;
+	maxlength: 50;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+}
+
+.inputT {
+	width: 100px;
+	height: 20px;
+	maxlength: 50;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+}
+
+.inputData {
+	width: 100px;
+	height: 20px;
+	maxlength: 50;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+}
+
+.inputSexo {
+	width: 100px;
+	height: 30px;
+}
+
+.outPutTexts {
+	padding-left: 10px;
 	font-size: 15px;
-	}
-	
-	.outPutTextFr{
-	
-		font-size: 15px;
-		padding-left: 10px;
-	}
-	
-	.outPutTextP{
-		font-size: 15px;
-		padding-left: 10px;
-	
-	}
-	
-	.outPutTextT{
-		font-size: 15px;
-		padding-left: 10px;
-	}
-	.inputTextArea{
-	
-	width:80%;
-	}
-	
-	.inputTextAreaEndereco{
-		height:50px;
-		width:40%;
-	}
-	.btn-cadastrar{
-	
-		width:100px;
-		height: 40px;
-		font-size: 15px;
-		background-color:#6ab125;
-	}
-	.panel-proprietario{
-	
-		font-size: 15px;
-	}
-	.carregando{
-		width:50px;
-	}
-	.data{
-	
-	    display: block !important;
-	       font-size: 11px !important;
-	       float:left;
-	}
-	.tituloDescricao{
-		float:right;
-	}
-	.ui-inputfield {
-		height:30px;
-	       border-color: #6699CC  !important;
-	       font-weight: normal !important;
-	}
-	button.ui-button{
-		  background-color:#6ab125;
-		  border:0px;
-	  }
-	  button.ui-button:hover{
-	  	background-color:#78b83b;
-	  }
-	.div-top{
-	
-	    width: 100% !important;
-	    background: url(../resources/imagens/bg.jpg) repeat-x !important;
+}
+
+.outPutTextFc {
+	font-size: 15px;
+}
+
+.outPutTextFr {
+	font-size: 15px;
+	padding-left: 10px;
+}
+
+.outPutTextP {
+	font-size: 15px;
+	padding-left: 10px;
+}
+
+.outPutTextT {
+	font-size: 15px;
+	padding-left: 10px;
+}
+
+.inputTextArea {
+	width: 80%;
+}
+
+.inputTextAreaEndereco {
+	height: 50px;
+	width: 40%;
+}
+
+.btn-cadastrar {
+	width: 100px;
+	height: 40px;
+	font-size: 15px;
+	background-color: #6ab125;
+}
+
+.panel-proprietario {
+	font-size: 15px;
+}
+
+.carregando {
+	width: 50px;
+}
+
+.data {
+	display: block !important;
+	font-size: 11px !important;
+	float: left;
+}
+
+.tituloDescricao {
+	float: right;
+}
+
+.ui-inputfield {
+	height: 30px;
+	border-color: #6699CC !important;
+	font-weight: normal !important;
+}
+
+button.ui-button {
+	background-color: #6ab125;
+	border: 0px;
+}
+
+button.ui-button:hover {
+	background-color: #78b83b;
+}
+
+.div-top {
+	width: 100% !important;
+	background: url(../resources/imagens/bg.jpg) repeat-x !important;
 	padding: 15px 0 0 0 !important;
 	background-color: black;
-	}
-	.ui-clock{
-	    background-color: black;
-	}
+}
 
+.ui-clock {
+	background-color: black;
+}
 </style>
 
-<div class="div-top">
-<img src="../resources/imagens/SamiaVet.png" class="img-samiavet" style="width:20%"/>
-<div style="float:right; margin-top:10px;">
-        <p:clock pattern="HH:mm:ss"/>
-</div>
+	<div class="div-top">
+		<img src="../resources/imagens/SamiaVet.png" class="img-samiavet"
+			style="width: 20%" />
+		<div style="float: right; margin-top: 10px;">
+			<p:clock pattern="HH:mm:ss" />
+		</div>
 
-</div>
+	</div>
 
-<h:form>  
- 
-    <p:menubar>
-        <p:submenu label="FICHAS" icon="pi pi-file">
-            <p:menuitem value="Cadastrar animal"  url="cadastro.xhtml"/>
-  <p:separator />
-            <p:menuitem value="Consultar animal" url="consultaFichas.xhtml"/>
-            <p:separator />
-            <p:menuitem value="Agendar evento" url="agendamentos.xhtml" />
-        </p:submenu>
- 
-        <p:submenu label="PRODUTOS" icon="pi pi-tags">
-             <p:menuitem value="Cadastrar produto"  url="cadastroProdutos.xhtml"/>
-        </p:submenu>
- 
-        <p:submenu label="VENDAS" icon="pi pi-shopping-cart">
-          <p:menuitem value="Cadastrar venda"  url="vendas.xhtml"/>
-  <p:separator />
-            <p:menuitem value="Consultar vendas" url="consultaVendas.xhtml"/>
-        </p:submenu>
- 
-        <p:submenu label="ARQUIVOS" icon="pi pi-folder-open">
-              <p:menuitem value="Upload" url="upload.xhtml"/>
-  <p:separator />
-            <p:menuitem value="Arquivos" url="arquivos.xhtml"/>
-        </p:submenu>
- 
-       
-  <p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
-              <p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml"/>
-  <p:separator />
-            <p:menuitem value="Consultar serviços" url="consultaServicos.xhtml"/>
-        </p:submenu>
-        <f:facet name="options">
-           
-  <p:commandButton id="basic" icon ="pi pi-user"  type="button" style="background-color:#f8f9fa; color: black; border:0px;"/>
-  <p:overlayPanel for="basic" style="width:350px">
-    <p:commandButton value="Sair" actionListener="#{user.Sair}"  style="width:100%;border-color:white; "/>
-        </p:overlayPanel>    
-        </f:facet>
-    </p:menubar>
-</h:form>
+	<h:form>
 
-<p:growl id="msgGlobal" life="5000" />
+		<p:menubar>
+			<p:submenu label="FICHAS" icon="pi pi-file">
+				<p:menuitem value="Cadastrar animal" url="cadastro.xhtml" />
+				<p:separator />
+				<p:menuitem value="Consultar animal" url="consultaFichas.xhtml" />
+				<p:separator />
+				<p:menuitem value="Agendar evento" url="agendamentos.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="PRODUTOS" icon="pi pi-tags">
+				<p:menuitem value="Cadastrar produto" url="cadastroProdutos.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="VENDAS" icon="pi pi-shopping-cart">
+				<p:menuitem value="Cadastrar venda" url="vendas.xhtml" />
+				<p:separator />
+				<p:menuitem value="Consultar vendas" url="consultaVendas.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="ARQUIVOS" icon="pi pi-folder-open">
+				<p:menuitem value="Upload" url="upload.xhtml" />
+				<p:separator />
+				<p:menuitem value="Arquivos" url="arquivos.xhtml" />
+			</p:submenu>
 
 
-<h5>TESTE</h5>
+			<p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
+				<p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml" />
+				<p:separator />
+				<p:menuitem value="Consultar serviços" url="consultaServicos.xhtml" />
+			</p:submenu>
+			<f:facet name="options">
 
-<h:form id="formCadastrar">
-       
-        <p:card >
-             <p:tabView style="background-color:white;">
-       <p:tab title="DADOS PROPRIETÁRIO: ">
-               
-		                   <h:outputText  value="Nome: " styleClass="outPutTexts"/>
-		   <p:inputText  styleClass="inputs"  value="#{MBFichaClinica.fichaClinica.nome_proprietario}" placeholder="Nome"/>
-		
-		
-		   <h:outputText  value="CPF: " styleClass="outPutTexts"/>
-		   <p:inputMask   mask="999.999.999-99" styleClass="inputData" value="#{MBFichaClinica.fichaClinica.cpf}" placeholder="CPF"/>
-		
-		
-		                  <br/>
-		<br/>
-		   <h:outputText  value="E-mail: " styleClass="outPutTexts"/>
-		   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.email}" placeholder="E-mail"/>
-		<br/>
-		<br/>
-		
-		                   <h:outputText value="Telefone: " styleClass="outPutTexts"/>
-		<p:inputMask   mask="(99) 99999-9999" styleClass="inputData" value="#{MBFichaClinica.fichaClinica.telefone}" placeholder="Telefone"/>
-		<br/>
-		<br/>
-		
-		                   <h:outputText value="Endereço: " styleClass="outPutTexts"/>
-		                   <br/>
-		<br/>
-		<p:inputTextarea rows="6" cols="33" styleClass="inputTextAreaEndereco"  value="#{MBFichaClinica.fichaClinica.endereco}" placeholder="EndereÃ§o"/>                    
-		                   
-		             
-       </p:tab>
-        <p:tab title="DADOS ANIMAL:">
-                 <p:tab title="DADOS PROPRIETÁRIO: ">
-	                  <h:outputText  value="ID: " styleClass="outPutTexts"/>
-	   <p:inputText  styleClass="inputs"  value="#{MBFichaClinica.fichaClinica.identificador}" placeholder="Identificador" style="width:100px;"/>
-	                  <br/>
-	<br/>  
-	<br/>
-	
-	                 
-	   <h:outputText  value="Nome: " styleClass="outPutTexts"/>
-	   <p:inputText  styleClass="inputs"  value="#{MBFichaClinica.fichaClinica.nomeAnimal}" placeholder="Nome"/>
-	
-	<br/>
-	<br/>
-	   <h:outputText  value="Espécie: " styleClass="outPutTexts"/>
-	   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.especie_animal}" placeholder="Espécie"/>
-	
-	<br/>
-	<br/>
-	  <h:outputText  value="Raça: " styleClass="outPutTexts"/>
-	   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.raca_animal}" placeholder="Raça"/>
-	
-	<br/>
-	<br/>
-	   <h:outputText  value="Pelugem: " styleClass="outPutTexts"/>
-	   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.pelugem_animal}" placeholder="Pelugem"/>
-	   
-	   
-	   
-	<br/>
-	<br/>
-	   <h:outputText  value="Sexo:" styleClass="outPutTexts"/>
-	   <br/>
-	   <br/>
-	   <p:selectOneMenu id="selectOne" styleClass="inputSexo" value="#{MBFichaClinica.fichaClinica.sexo_animal}" placeholder="Sexo">
-	       <f:selectItem itemLabel="Macho" itemValue="MACHO" />
-	       <f:selectItem itemLabel="Fêmea" itemValue="FÃŠMEA" />
-	   </p:selectOneMenu>
-	   
-	   
-	   <br/>
-	   <br/>
-	   <h:outputText  value="FC. " styleClass="outPutTextFc"/>
-	   <p:inputText  styleClass="inputFc" value="#{MBFichaClinica.fichaClinica.fc_animal}" placeholder="FC."/>
-	   
-	   
-	   <h:outputText  value="FR. " styleClass="outPutTextFr"/>
-	   <p:inputText styleClass="inputFr" value="#{MBFichaClinica.fichaClinica.fr_animal}" placeholder="FR."/>
-	   
-	    <h:outputText  value="P. " styleClass="outPutTextP"/>
-	   
-	   <p:inputText  styleClass="inputP" value="#{MBFichaClinica.fichaClinica.p_animal}" placeholder="P."/>
-	   
-	    <h:outputText  value="T(°C) " styleClass="outPutTextT"/>
-	   <p:inputText  styleClass="inputT" value="#{MBFichaClinica.fichaClinica.t_animal}" placeholder="T(°C)"/>
-	   
-	   <br/>
-	   <br/>
-	   <h:outputText  value="Data Nascimento: " styleClass="outPutTexts"/>
-	   <p:inputMask id="date"  mask="99/99/9999" styleClass="inputData" value="#{MBFichaClinica.fichaClinica.data_nascimento_animal}" placeholder="Data Nasc."/>
-	   
-	   <h:outputText  value="Peso: " styleClass="outPutTextT"/>
-	   <p:inputMask   mask="99,999 KG" styleClass="inputData" value="#{MBFichaClinica.fichaClinica.peso_animal}" placeholder="Peso"/>
-	   
-	   
-	   <br/>
-	   <br/>
-	<h:outputText  value="Histórico: " styleClass="outPutTexts"/>    
-	<br/>
-	   <br/>
-	<p:inputTextarea rows="6" cols="33" styleClass="inputTextArea" value="#{MBFichaClinica.fichaClinica.historico_animal}" placeholder="Histórico"/>
-	<br/>
-	   <br/>
-	<p:commandButton value="CADASTRAR" style="width:100px;height: 40px; font-size: 15px; background-color:#6ab125;" actionListener="#{MBFichaClinica.cadastrar}" update=":formCadastrar :msgGlobal"/>
-	   
-	      </p:tab>
-	      </p:tab>
-	    </p:tabView>
-	       
- </p:card>
- 
-    </h:form>
+				<p:commandButton id="basic" icon="pi pi-user" type="button"
+					style="background-color:#f8f9fa; color: black; border:0px;" />
+				<p:overlayPanel for="basic" style="width:350px">
+					<p:commandButton value="Sair" actionListener="#{user.Sair}"
+						style="width:100%;border-color:white; " />
+				</p:overlayPanel>
+			</f:facet>
+		</p:menubar>
+	</h:form>
+
+	<p:growl id="msgGlobal" life="5000" />
 
 
-  
-    <p:dialog header="EVENTOS DO DIA" widgetVar="dialogEventos" showEffect="blind" visible="#{scheduleJava8View.mostrarDialog}" hideEffect="explode"  closable="true" draggable="false" resizable="false" modal="true" appendTo="@(body)" id="dialogEventos">
+	<h5>TESTE</h5>
+
+	<h:form id="formCadastrar">
+
+		<p:card>
+			<p:tabView style="background-color:white;">
+				<p:tab title="DADOS PROPRIETÁRIO: ">
+
+					<h:outputText value="Nome: " styleClass="outPutTexts" />
+					<p:inputText styleClass="inputs"
+						value="#{MBFichaClinica.fichaClinica.nome_proprietario}"
+						placeholder="Nome" />
 
 
-            <h:form id="formEventos">
-
-	          	 <p:dataTable var="eventos" value="#{scheduleJava8View.agendamentosDataInicio}"  emptyMessage="Nenhum evento agendado para o dia de hoje"   id="tabelaEventos"  style="width:400px;">
-            
-            				<p:column headerText="Horário de início" style="width:100px;">
-            				
-            						<h:outputText value="#{eventos.horaInicioSemData}" />
-            				
-            				</p:column>
-            				
-            				<p:column headerText="Titulo" style="width:100px;">
-            				
-            						<h:outputText value="#{eventos.titulo}" />
-            				
-            				</p:column>
-            
-            
-            				<f:facet name="footer">
-            				
-            					<p:commandButton value="Não mostrar novamente" oncomplete="PF('dialogEventos').hide()"  actionListener="#{scheduleJava8View.naoMostrarAlert}" update=":formEventos :msgGlobal"/>
-            				
-            				</f:facet>
-            	</p:dataTable>
-            </h:form>
+					<h:outputText value="CPF: " styleClass="outPutTexts" />
+					<p:inputMask mask="999.999.999-99" styleClass="inputData"
+						value="#{MBFichaClinica.fichaClinica.cpf}" placeholder="CPF" />
 
 
-    </p:dialog> 
+					<br />
+					<br />
+					<h:outputText value="E-mail: " styleClass="outPutTexts" />
+					<p:inputText styleClass="inputs"
+						value="#{MBFichaClinica.fichaClinica.email}" placeholder="E-mail" />
+					<br />
+					<br />
+
+					<h:outputText value="Telefone: " styleClass="outPutTexts" />
+					<p:inputMask mask="(99) 99999-9999" styleClass="inputData"
+						value="#{MBFichaClinica.fichaClinica.telefone}"
+						placeholder="Telefone" />
+					<br />
+					<br />
+
+					<h:outputText value="Endereço: " styleClass="outPutTexts" />
+					<br />
+					<br />
+					<p:inputTextarea rows="6" cols="33"
+						styleClass="inputTextAreaEndereco"
+						value="#{MBFichaClinica.fichaClinica.endereco}"
+						placeholder="EndereÃ§o" />
+
+
+				</p:tab>
+				<p:tab title="DADOS ANIMAL:">
+					<p:tab title="DADOS PROPRIETÁRIO: ">
+						<h:outputText value="ID: " styleClass="outPutTexts" />
+						<p:inputText styleClass="inputs"
+							value="#{MBFichaClinica.fichaClinica.identificador}"
+							placeholder="Identificador" style="width:100px;" />
+						<br />
+						<br />
+						<br />
+
+
+						<h:outputText value="Nome: " styleClass="outPutTexts" />
+						<p:inputText styleClass="inputs"
+							value="#{MBFichaClinica.fichaClinica.nomeAnimal}"
+							placeholder="Nome" />
+
+						<br />
+						<br />
+						<h:outputText value="Espécie: " styleClass="outPutTexts" />
+						<p:inputText styleClass="inputs"
+							value="#{MBFichaClinica.fichaClinica.especie_animal}"
+							placeholder="Espécie" />
+
+						<br />
+						<br />
+						<h:outputText value="Raça: " styleClass="outPutTexts" />
+						<p:inputText styleClass="inputs"
+							value="#{MBFichaClinica.fichaClinica.raca_animal}"
+							placeholder="Raça" />
+
+						<br />
+						<br />
+						<h:outputText value="Pelugem: " styleClass="outPutTexts" />
+						<p:inputText styleClass="inputs"
+							value="#{MBFichaClinica.fichaClinica.pelugem_animal}"
+							placeholder="Pelugem" />
 
 
 
-    <script>
-   
-   
-    function chamar(){
+						<br />
+						<br />
+						<h:outputText value="Sexo:" styleClass="outPutTexts" />
+						<br />
+						<br />
+						<p:selectOneMenu id="selectOne" styleClass="inputSexo"
+							value="#{MBFichaClinica.fichaClinica.sexo_animal}"
+							placeholder="Sexo">
+							<f:selectItem itemLabel="Macho" itemValue="MACHO" />
+							<f:selectItem itemLabel="Fêmea" itemValue="FÃŠMEA" />
+						</p:selectOneMenu>
 
-	
-	
-	var data = new Date();
-	var dia = String(data.getDate()).padStart(2, '0');
-	var mes = String(data.getMonth() + 1).padStart(2, '0');
-	var ano = data.getFullYear();
-	dataAtual = dia + '/' + mes + '/' + ano;
-	console.log(dataAtual);
-	
-	document.querySelector('.data').textContent = dataAtual
-	}
 
-   
-    </script>
+						<br />
+						<br />
+						<h:outputText value="FC. " styleClass="outPutTextFc" />
+						<p:inputText styleClass="inputFc"
+							value="#{MBFichaClinica.fichaClinica.fc_animal}"
+							placeholder="FC." />
 
- 
-<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
 
-<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" >
-            <p:graphicImage value="/resources/imagens/carregando.gif" alt="" style="width:50px; margin-top:15px;"/>
-</p:dialog>
+						<h:outputText value="FR. " styleClass="outPutTextFr" />
+						<p:inputText styleClass="inputFr"
+							value="#{MBFichaClinica.fichaClinica.fr_animal}"
+							placeholder="FR." />
+
+						<h:outputText value="P. " styleClass="outPutTextP" />
+
+						<p:inputText styleClass="inputP"
+							value="#{MBFichaClinica.fichaClinica.p_animal}" placeholder="P." />
+
+						<h:outputText value="T(°C) " styleClass="outPutTextT" />
+						<p:inputText styleClass="inputT"
+							value="#{MBFichaClinica.fichaClinica.t_animal}"
+							placeholder="T(°C)" />
+
+						<br />
+						<br />
+						<h:outputText value="Data Nascimento: " styleClass="outPutTexts" />
+						<p:inputMask id="date" mask="99/99/9999" styleClass="inputData"
+							value="#{MBFichaClinica.fichaClinica.data_nascimento_animal}"
+							placeholder="Data Nasc." />
+
+						<h:outputText value="Peso: " styleClass="outPutTextT" />
+						<p:inputMask mask="99,999 KG" styleClass="inputData"
+							value="#{MBFichaClinica.fichaClinica.peso_animal}"
+							placeholder="Peso" />
+
+
+						<br />
+						<br />
+						<h:outputText value="Histórico: " styleClass="outPutTexts" />
+						<br />
+						<br />
+						<p:inputTextarea rows="6" cols="33" styleClass="inputTextArea"
+							value="#{MBFichaClinica.fichaClinica.historico_animal}"
+							placeholder="Histórico" />
+						<br />
+						<br />
+						<p:commandButton value="CADASTRAR"
+							style="width:100px;height: 40px; font-size: 15px; background-color:#6ab125;"
+							actionListener="#{MBFichaClinica.cadastrar}"
+							update=":formCadastrar :msgGlobal" />
+
+					</p:tab>
+				</p:tab>
+			</p:tabView>
+
+		</p:card>
+
+	</h:form>
+
+
+
+	<p:dialog header="EVENTOS DO DIA" widgetVar="dialogEventos"
+		showEffect="blind" visible="#{scheduleJava8View.mostrarDialog}"
+		hideEffect="explode" closable="true" draggable="false"
+		resizable="false" modal="true" appendTo="@(body)" id="dialogEventos">
+
+
+		<h:form id="formEventos">
+
+			<p:dataTable var="eventos"
+				value="#{scheduleJava8View.agendamentosDataInicio}"
+				emptyMessage="Nenhum evento agendado para o dia de hoje"
+				id="tabelaEventos" style="width:400px;">
+
+				<p:column headerText="Horário de início" style="width:100px;">
+
+					<h:outputText value="#{eventos.horaInicioSemData}" />
+
+				</p:column>
+
+				<p:column headerText="Titulo" style="width:100px;">
+
+					<h:outputText value="#{eventos.titulo}" />
+
+				</p:column>
+
+
+				<f:facet name="footer">
+
+					<p:commandButton value="Não mostrar novamente"
+						oncomplete="PF('dialogEventos').hide()"
+						actionListener="#{scheduleJava8View.naoMostrarAlert}"
+						update=":formEventos :msgGlobal" />
+
+				</f:facet>
+			</p:dataTable>
+		</h:form>
+
+
+	</p:dialog>
+
+
+
+	<script>
+		function chamar() {
+
+			var data = new Date();
+			var dia = String(data.getDate()).padStart(2, '0');
+			var mes = String(data.getMonth() + 1).padStart(2, '0');
+			var ano = data.getFullYear();
+			dataAtual = dia + '/' + mes + '/' + ano;
+			console.log(dataAtual);
+
+			document.querySelector('.data').textContent = dataAtual
+		}
+	</script>
+
+
+	<p:ajaxStatus onstart="PF('statusDialog').show()"
+		onsuccess="PF('statusDialog').hide()" />
+
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+		closable="false" resizable="false" showHeader="false">
+		<p:graphicImage value="/resources/imagens/carregando.gif" alt=""
+			style="width:50px; margin-top:15px;" />
+	</p:dialog>
 
 
 
