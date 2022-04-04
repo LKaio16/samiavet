@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -91,8 +91,8 @@
         </p:submenu>
  
        
- 		 <p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
-              <p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml"/>
+ 		 <p:submenu label="SERVIÃ‡OS" icon="pi pi-folder-open">
+              <p:menuitem value="Cadastrar serviÃ§os" url="cadastroServicos.xhtml"/>
  			<p:separator />
             <p:menuitem value="Consultar servicos" url="consultaServicos.xhtml"/>
         </p:submenu>
@@ -139,11 +139,11 @@
 								        	<p:outputLabel value="Id: " styleClass="labels"/>
 								        	<p:outputLabel value="#{item.id}"/>
 								        	
-								            <p:outputLabel for="title" value="Título:" styleClass="labels"/>
+								            <p:outputLabel for="title" value="TÃ­tulo:" styleClass="labels"/>
 								            <p:outputLabel id="title" value="#{item.titulo}" />
 								 
 								 
-								            <p:outputLabel for="title" value="Proprietário animal:" styleClass="labels"/>
+								            <p:outputLabel for="title" value="ProprietÃ¡rio animal:" styleClass="labels"/>
 								            <p:outputLabel  value="#{item.nomeProprietario}"/>
 								            
 								            <p:outputLabel for="title" value="Nome animal:" styleClass="labels"/>
@@ -158,7 +158,7 @@
 								            <p:outputLabel  value="Termino" styleClass="labels"/>
 								            <p:outputLabel  value="#{item.dataTermino}" pattern="dd/MM/yyyy" showTime="true" appendTo="@(body)" />
 								 
-								            <h:outputText  value="Observações:  "  styleClass="labels"/>                                    
+								            <h:outputText  value="ObservaÃ§Ãµes:  "  styleClass="labels"/>                                    
 								            <p:outputLabel rows="6" cols="33" styleClass="inputTextArea" value="#{item.observacao}" />    
 								            
 								            
@@ -209,11 +209,11 @@
     <p:dialog widgetVar="eventDialog" header="DETALHES:" showEffect="clip" hideEffect="clip" height="500" modal="true" maximizable="true" minimizable="true">
        <p:panel header="AGENDAMENTO">
         <h:panelGrid id="eventDetails" columns="2">
-            <p:outputLabel for="title" value="Título:" />
+            <p:outputLabel for="title" value="TÃ­tulo:" />
             <p:inputText id="title" value="#{scheduleJava8View.agendamento.titulo}" />
  
  
-            <p:outputLabel for="title" value="Proprietário animal:" />
+            <p:outputLabel for="title" value="ProprietÃ¡rio animal:" />
             <p:inputText  value="#{scheduleJava8View.agendamento.nomeProprietario}"/>
             
              <p:outputLabel for="title" value="Nome animal:" />
@@ -235,7 +235,7 @@
             <p:outputLabel for="to" value="Termino" />
             <p:datePicker id="to" value="#{scheduleJava8View.event.endDate}" pattern="dd/MM/yyyy" showTime="true" appendTo="@(body)" locale="pt" />
  
-             <h:outputText  value="Observações:  " styleClass="outPutTexts"/>                                    
+             <h:outputText  value="ObservaÃ§Ãµes:  " styleClass="outPutTexts"/>                                    
             <p:inputTextarea rows="6" cols="33" styleClass="inputTextArea" value="#{scheduleJava8View.agendamento.observacao}" />    
             
              </h:panelGrid>
@@ -265,11 +265,11 @@
  
         
         
-            <p:outputLabel for="title" value="Título:" />
+            <p:outputLabel for="title" value="TÃ­tulo:" />
             <p:inputText id="title" value="#{scheduleJava8View.agendamento.titulo}" />
  
  
-            <p:outputLabel for="title" value="Proprietário animal:" />
+            <p:outputLabel for="title" value="ProprietÃ¡rio animal:" />
             <p:inputText  value="#{scheduleJava8View.agendamento.nomeProprietario}"/>
             
              <p:outputLabel for="title" value="Nome animal:" />
@@ -291,7 +291,7 @@
             <p:outputLabel for="to" value="Termino" />
             <p:inputText id="to" value="#{scheduleJava8View.agendamento.dataTermino}" pattern="dd/MM/yyyy" showTime="true" appendTo="@(body)" />
  
-             <h:outputText  value="Observações:  " styleClass="outPutTexts"/>                                    
+             <h:outputText  value="ObservaÃ§Ãµes:  " styleClass="outPutTexts"/>                                    
             <p:inputTextarea rows="6" cols="33" styleClass="inputTextArea" value="#{scheduleJava8View.agendamento.observacao}" />    
             
              </h:panelGrid>
@@ -319,7 +319,7 @@
            <br/>
            <br/>
            <p:commandButton value="SIM" actionListener="#{scheduleJava8View.deletar}"  update=":formAgendamentos" oncomplete="resetar();"/>
-           <p:commandButton value="NÃO" onclick="PF('dialogExcluir').hide()" style="margin-left:5px;"/> 
+           <p:commandButton value="NÃƒO" onclick="PF('dialogExcluir').hide()" style="margin-left:5px;"/> 
    
     
     
@@ -340,12 +340,12 @@
 		PrimeFaces.locales['pt'] = {
                 closeText: 'Fechar',
                 prevText: 'Anterior',
-                nextText: 'Próximo',
-                currentText: 'Começo',
-                monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+                nextText: 'PrÃ³ximo',
+                currentText: 'ComeÃ§o',
+                monthNames: ['Janeiro','Fevereiro','MarÃ§o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
                 monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
-                dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+                dayNames: ['Domingo','Segunda','TerÃ§a','Quarta','Quinta','Sexta','SÃ¡bado'],
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','SÃ¡b'],
                 dayNamesMin: ['D','S','T','Q','Q','S','S'],
                 weekHeader: 'Semana',
                 firstDay: 1,
@@ -358,7 +358,7 @@
                 secondText: 'Segundo',
                 currentText: 'Data Atual',
                 ampm: false,
-                month: 'Mês',
+                month: 'MÃªs',
                 week: 'Semana',
                 day: 'Dia',
                 allDayText : 'Todo Dia'
