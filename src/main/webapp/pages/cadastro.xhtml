@@ -227,10 +227,10 @@ button.ui-button:hover {
 			</p:submenu>
 
 
-			<p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
-				<p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml" />
+			<p:submenu label="SERVIÃ‡OS" icon="pi pi-folder-open">
+				<p:menuitem value="Cadastrar serviÃ§os" url="cadastroServicos.xhtml" />
 				<p:separator />
-				<p:menuitem value="Consultar serviços" url="consultaServicos.xhtml" />
+				<p:menuitem value="Consultar serviÃ§os" url="consultaServicos.xhtml" />
 			</p:submenu>
 			<f:facet name="options">
 
@@ -246,14 +246,11 @@ button.ui-button:hover {
 
 	<p:growl id="msgGlobal" life="5000" />
 
-
-	<h5>TESTE</h5>
-
 	<h:form id="formCadastrar">
 
 		<p:card>
 			<p:tabView style="background-color:white;">
-				<p:tab title="DADOS PROPRIETÁRIO: ">
+				<p:tab title="DADOS PROPRIETÃÂRIO: ">
 
 					<h:outputText value="Nome: " styleClass="outPutTexts" />
 					<p:inputText styleClass="inputs"
@@ -281,18 +278,18 @@ button.ui-button:hover {
 					<br />
 					<br />
 
-					<h:outputText value="Endereço: " styleClass="outPutTexts" />
+					<h:outputText value="EndereÃ§o: " styleClass="outPutTexts" />
 					<br />
 					<br />
 					<p:inputTextarea rows="6" cols="33"
 						styleClass="inputTextAreaEndereco"
 						value="#{MBFichaClinica.fichaClinica.endereco}"
-						placeholder="EndereÃ§o" />
+						placeholder="EndereÃƒÂ§o" />
 
 
 				</p:tab>
 				<p:tab title="DADOS ANIMAL:">
-					<p:tab title="DADOS PROPRIETÁRIO: ">
+					<p:tab title="DADOS PROPRIETÃRIO: ">
 						<h:outputText value="ID: " styleClass="outPutTexts" />
 						<p:inputText styleClass="inputs"
 							value="#{MBFichaClinica.fichaClinica.identificador}"
@@ -309,17 +306,17 @@ button.ui-button:hover {
 
 						<br />
 						<br />
-						<h:outputText value="Espécie: " styleClass="outPutTexts" />
+						<h:outputText value="EspÃ©cie: " styleClass="outPutTexts" />
 						<p:inputText styleClass="inputs"
 							value="#{MBFichaClinica.fichaClinica.especie_animal}"
-							placeholder="Espécie" />
+							placeholder="EspÃ©cie" />
 
 						<br />
 						<br />
-						<h:outputText value="Raça: " styleClass="outPutTexts" />
+						<h:outputText value="RaÃ§a: " styleClass="outPutTexts" />
 						<p:inputText styleClass="inputs"
 							value="#{MBFichaClinica.fichaClinica.raca_animal}"
-							placeholder="Raça" />
+							placeholder="RaÃ§a" />
 
 						<br />
 						<br />
@@ -339,7 +336,7 @@ button.ui-button:hover {
 							value="#{MBFichaClinica.fichaClinica.sexo_animal}"
 							placeholder="Sexo">
 							<f:selectItem itemLabel="Macho" itemValue="MACHO" />
-							<f:selectItem itemLabel="Fêmea" itemValue="FÃŠMEA" />
+							<f:selectItem itemLabel="FÃªmea" itemValue="FÃƒÅ MEA" />
 						</p:selectOneMenu>
 
 
@@ -361,10 +358,10 @@ button.ui-button:hover {
 						<p:inputText styleClass="inputP"
 							value="#{MBFichaClinica.fichaClinica.p_animal}" placeholder="P." />
 
-						<h:outputText value="T(°C) " styleClass="outPutTextT" />
+						<h:outputText value="T(Â°C) " styleClass="outPutTextT" />
 						<p:inputText styleClass="inputT"
 							value="#{MBFichaClinica.fichaClinica.t_animal}"
-							placeholder="T(°C)" />
+							placeholder="T(Â°C)" />
 
 						<br />
 						<br />
@@ -381,12 +378,12 @@ button.ui-button:hover {
 
 						<br />
 						<br />
-						<h:outputText value="Histórico: " styleClass="outPutTexts" />
+						<h:outputText value="HistÃ³rico: " styleClass="outPutTexts" />
 						<br />
 						<br />
 						<p:inputTextarea rows="6" cols="33" styleClass="inputTextArea"
 							value="#{MBFichaClinica.fichaClinica.historico_animal}"
-							placeholder="Histórico" />
+							placeholder="HistÃ³rico" />
 						<br />
 						<br />
 						<p:commandButton value="CADASTRAR"
@@ -417,7 +414,7 @@ button.ui-button:hover {
 				emptyMessage="Nenhum evento agendado para o dia de hoje"
 				id="tabelaEventos" style="width:400px;">
 
-				<p:column headerText="Horário de início" style="width:100px;">
+				<p:column headerText="HorÃ¡rio de inÃ­cio" style="width:100px;">
 
 					<h:outputText value="#{eventos.horaInicioSemData}" />
 
@@ -432,7 +429,7 @@ button.ui-button:hover {
 
 				<f:facet name="footer">
 
-					<p:commandButton value="Não mostrar novamente"
+					<p:commandButton value="NÃ£o mostrar novamente"
 						oncomplete="PF('dialogEventos').hide()"
 						actionListener="#{scheduleJava8View.naoMostrarAlert}"
 						update=":formEventos :msgGlobal" />
