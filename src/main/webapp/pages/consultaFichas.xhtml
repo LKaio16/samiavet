@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://java.sun.com/jsf/html"
@@ -296,8 +296,8 @@ background-color: black;
         </p:submenu>
  
        
-  <p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
-              <p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml"/>
+  <p:submenu label="SERVIÃ‡OS" icon="pi pi-folder-open">
+              <p:menuitem value="Cadastrar serviÃ§os" url="cadastroServicos.xhtml"/>
   <p:separator />
             <p:menuitem value="Consultar servicos" url="consultaServicos.xhtml"/>
         </p:submenu>
@@ -340,7 +340,7 @@ background-color: black;
        <p:column headerText="ID FICHA" >
            <h:outputText value="#{item.identificador}" />
        </p:column>
-       <p:column headerText="NOME PROPRIETÁRIO">
+       <p:column headerText="NOME PROPRIETÃRIO">
            <h:outputText value="#{item.nome_proprietario}" />
        </p:column>
        <p:column headerText="CPF">
@@ -352,7 +352,7 @@ background-color: black;
        <p:column headerText="TELEFONE">
            <h:outputText value="#{item.telefone}" />
        </p:column>
-       <p:column headerText="ENDEREÇO">
+       <p:column headerText="ENDEREÃ‡O">
            <h:outputText value="#{item.endereco}" />
         </p:column>
        
@@ -370,10 +370,10 @@ background-color: black;
           <h:outputText value="Nome:" styleClass="tituloDado"/>
           <h:outputText value="#{item.nomeAnimal}" />
 
-          <h:outputText value="Espécie: " styleClass="tituloDado"/>
+          <h:outputText value="EspÃ©cie: " styleClass="tituloDado"/>
           <h:outputText value="#{item.especie_animal}" />
 
-          <h:outputText value="Raça: " styleClass="tituloDado"/>
+          <h:outputText value="RaÃ§a: " styleClass="tituloDado"/>
           <h:outputText value="#{item.raca_animal}" />
          
           <h:outputText value="Data nascimento: " styleClass="tituloDado"/>
@@ -401,14 +401,14 @@ background-color: black;
            <h:outputText value="P: " styleClass="tituloDado"/>
           <h:outputText value="#{item.p_animal}" />
          
-           <h:outputText value="T(C°): " styleClass="tituloDado"/>
+           <h:outputText value="T(CÂ°): " styleClass="tituloDado"/>
           <h:outputText value="#{item.t_animal}" />
 
       </p:panelGrid>
      
       <p:panelGrid  columns="1" columnClasses="label" style="width:300px">
 
-  <h:outputText value="Histórico: " styleClass="tituloDado"/>
+  <h:outputText value="HistÃ³rico: " styleClass="tituloDado"/>
           <h:outputText value="#{item.historico_animal}" styleClass="inputTextHistorico" />
          
       </p:panelGrid>
@@ -448,7 +448,7 @@ background-color: black;
    
         <fieldset>
                    <p:outputPanel styleClass="tituloTabela">
-              <p>DADOS PROPRIETÁRIO </p>
+              <p>DADOS PROPRIETÃRIO </p>
       </p:outputPanel>
     </fieldset>
    
@@ -478,10 +478,10 @@ background-color: black;
 <br/>
 <br/>
 
-                   <h:outputText value="Endereço: " styleClass="outPutTexts"/>
+                   <h:outputText value="EndereÃ§o: " styleClass="outPutTexts"/>
                    <br/>
 <br/>
-<p:inputTextarea rows="6" cols="33" styleClass="inputTextAreaEndereco"  value="#{MBFichaClinica.fichaClinica.endereco}" placeholder="Endereço"/>                    
+<p:inputTextarea rows="6" cols="33" styleClass="inputTextAreaEndereco"  value="#{MBFichaClinica.fichaClinica.endereco}" placeholder="EndereÃ§o"/>                    
                  
                  
                    <p:separator/>
@@ -502,13 +502,13 @@ background-color: black;
 
 <br/>
 <br/>
-   <h:outputText  value="Espécie: " styleClass="outPutTexts"/>
-   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.especie_animal}" placeholder="Espécie"/>
+   <h:outputText  value="EspÃ©cie: " styleClass="outPutTexts"/>
+   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.especie_animal}" placeholder="EspÃ©cie"/>
 
 <br/>
 <br/>
-  <h:outputText  value="Raça: " styleClass="outPutTexts"/>
-   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.raca_animal}" placeholder="Raça"/>
+  <h:outputText  value="RaÃ§a: " styleClass="outPutTexts"/>
+   <p:inputText  styleClass="inputs" value="#{MBFichaClinica.fichaClinica.raca_animal}" placeholder="RaÃ§a"/>
 
 <br/>
 <br/>
@@ -524,7 +524,7 @@ background-color: black;
    <br/>
    <p:selectOneMenu id="selectOne" styleClass="inputSexo" value="#{MBFichaClinica.fichaClinica.sexo_animal}" placeholder="Sexo">
        <f:selectItem itemLabel="Macho" itemValue="MACHO" />
-       <f:selectItem itemLabel="Fêmea" itemValue="FÊMEA" />
+       <f:selectItem itemLabel="FÃªmea" itemValue="FÃŠMEA" />
    </p:selectOneMenu>
    
    
@@ -541,8 +541,8 @@ background-color: black;
    
    <p:inputText  styleClass="inputP" value="#{MBFichaClinica.fichaClinica.p_animal}" placeholder="P."/>
    
-    <h:outputText  value="T(°C) " styleClass="outPutTextT"/>
-   <p:inputText  styleClass="inputT" value="#{MBFichaClinica.fichaClinica.t_animal}" placeholder="T°C"/>
+    <h:outputText  value="T(Â°C) " styleClass="outPutTextT"/>
+   <p:inputText  styleClass="inputT" value="#{MBFichaClinica.fichaClinica.t_animal}" placeholder="TÂ°C"/>
    
    <br/>
    <br/>
@@ -555,10 +555,10 @@ background-color: black;
    
    <br/>
    <br/>
-<h:outputText  value="Histórico: " styleClass="outPutTexts"/>    
+<h:outputText  value="HistÃ³rico: " styleClass="outPutTexts"/>    
 <br/>
    <br/>
-<p:inputTextarea rows="6" cols="33" styleClass="inputTextArea" value="#{MBFichaClinica.fichaClinica.historico_animal}" placeholder="Histórico"/>
+<p:inputTextarea rows="6" cols="33" styleClass="inputTextArea" value="#{MBFichaClinica.fichaClinica.historico_animal}" placeholder="HistÃ³rico"/>
 <br/>
    <br/>
         <p:commandButton value="SALVAR"  actionListener = "#{MBFichaClinica.editar}" update=":formCadastroFichas:tabelaFichas :msgGlobal" onclick="PF('dialogEditar').hide()" />
