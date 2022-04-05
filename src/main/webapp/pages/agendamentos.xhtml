@@ -65,6 +65,7 @@ button.ui-button:hover {
 
 	</div>
 
+
 	<h:form>
 
 		<p:menubar>
@@ -439,9 +440,8 @@ button.ui-button:hover {
 			day : 'Dia',
 			allDayText : 'Todo Dia'
 		};
-	</script>
-	<script>
-		function chamar() {
+    
+    function chamar() {
 
 			var data = new Date();
 			var dia = String(data.getDate()).padStart(2, '0');
@@ -451,8 +451,8 @@ button.ui-button:hover {
 			console.log(dataAtual);
 
 			document.querySelector('.data').textContent = dataAtual
-		}
 	</script>
+	
 
 	<p:ajaxStatus onstart="PF('statusDialog').show()"
 		onsuccess="PF('statusDialog').hide()" />
