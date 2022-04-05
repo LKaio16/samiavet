@@ -498,7 +498,7 @@ public class ServicosPrestadosBean {
 	}
 
 	public void gerarComprovante() {
-		this.file = DefaultStreamedContent.builder().contentType("application/pdf").name(this.nomeAnimal + ".pdf")
+		this.file = DefaultStreamedContent.builder().contentType("application/pdf").name(this.guardarNomeAnimal + ".pdf")
 				.stream(() -> FacesContext.getCurrentInstance().getExternalContext()
 						.getResourceAsStream("/resources/comprovantes/" + this.guardarNomeAnimal + ".pdf"))
 				.build();
