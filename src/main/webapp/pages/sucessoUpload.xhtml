@@ -1,217 +1,221 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	  
-	  
-	  
-	 xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
-	  
-	  <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
-	  
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous" />
+
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; UTF-8" />
 	<title>SAMIAVET</title>
-	<h:outputStylesheet library="css" name="style.css"/>
-	<h:outputScript library="js" name="scripts.js"/>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputScript library="js" name="scripts.js" />
 	<link rel="icon" href="../resources/imagens/SamiaVet.png" />
-	
+
 	<style type="text/css">
-	
-		body{
-  background:white;
+body {
+	background: white;
 }
-label{
 
-  border: 4px dashed #6ab125;
+label {
+	border: 4px dashed #6ab125;
 }
-label{
-  width: 500px;
-  height: 200px;
-  text-align: center;
-  line-height: 170px;
-  color: black;
-  font-family: Arial;
-}
-.upload{
-  margin: 0;
-  padding: 0;
-  width: 10px;
-  height: 10px;
-  outline: none;
-  opacity: 0;
 
+label {
+	width: 500px;
+	height: 200px;
+	text-align: center;
+	line-height: 170px;
+	color: black;
+	font-family: Arial;
 }
-.botao{
-  margin: 0;
-  color: #fff;
-  background: #6ab125;
-  border: none;
-  width: 508px;
-  height: 35px;
-  margin-top: -20px;
-  margin-left: -4px;
-  border-radius: 4px;
-  border-bottom: 4px solid #117A60;
-  transition: all .2s ease;
-  outline: none;
- 
+
+.upload {
+	margin: 0;
+	padding: 0;
+	width: 10px;
+	height: 10px;
+	outline: none;
+	opacity: 0;
 }
-.botao:hover{
-  background: #78b83a;
-    color: white;
-    }
-.botao:active{
-  border:0;
+
+.botao {
+	margin: 0;
+	color: #fff;
+	background: #6ab125;
+	border: none;
+	width: 508px;
+	height: 35px;
+	margin-top: -20px;
+	margin-left: -4px;
+	border-radius: 4px;
+	border-bottom: 4px solid #117A60;
+	transition: all .2s ease;
+	outline: none;
 }
-		.div-upload{
-		
-			margin-left: 30px;
-			margin-top: 30px;
-		}
-		.img-samiavet{
-			width:40%;
-		}
-		
-		.separator{
-		
-			width:100%;
-			height: 10px;
-			margin-top: 10px;
-			
-		}
-		.titulo{
-			font-weight: bold;
-		
-		}
-		.data{
-			font-weight: bold;
-	.div-top{
-		 
-		     width: 100% !important;
-		     background: url(../resources/imagens/bg.jpg) repeat-x !important;
-			 padding: 15px 0 0 0 !important;
-			 background-color: black;
-		}
-		.ui-clock{
-    		background-color: black;
-		}
-	</style>
-	</h:head>
-	
-	<h:body onload="chamar()">
-		<div class="div-top">
-					<img src="../resources/imagens/SamiaVet.png" class="img-samiavet" style="width:20%"/>
-					<div style="float:right; margin-top:10px;">
-	        			<p:clock pattern="HH:mm:ss"/>
-					</div>
-		
+
+.botao:hover {
+	background: #78b83a;
+	color: white;
+}
+
+.botao:active {
+	border: 0;
+}
+
+.div-upload {
+	margin-left: 30px;
+	margin-top: 30px;
+}
+
+.img-samiavet {
+	width: 40%;
+}
+
+.separator {
+	width: 100%;
+	height: 10px;
+	margin-top: 10px;
+}
+
+.titulo {
+	font-weight: bold;
+}
+
+.data {
+	font-weight: bold; . div-top { width : 100% !important;
+	background: url(../resources/imagens/bg.jpg) repeat-x !important;
+	padding: 15px 0 0 0 !important;
+	background-color: black;
+}
+
+.ui-clock {
+	background-color: black;
+}
+</style>
+</h:head>
+
+<h:body onload="chamar()">
+	<div class="div-top">
+		<img src="../resources/imagens/SamiaVet.png" class="img-samiavet"
+			style="width: 20%" />
+		<div style="float: right; margin-top: 10px;">
+			<p:clock pattern="HH:mm:ss" />
 		</div>
-		
-<h:form>  
- 
-    <p:menubar>
-        <p:submenu label="FICHAS" icon="pi pi-file">
-            <p:menuitem value="Cadastrar animal"  url="cadastro.xhtml"/>
- 			<p:separator />
-            <p:menuitem value="Consultar animal" url="consultaFichas.xhtml"/>
-           	<p:separator />
-            <p:menuitem value="Agendar evento" url="agendamentos.xhtml" />
-        </p:submenu>
- 
-        <p:submenu label="PRODUTOS" icon="pi pi-tags">
-             <p:menuitem value="Cadastrar produto"  url="cadastroProdutos.xhtml"/>
-        </p:submenu>
- 
-        <p:submenu label="VENDAS" icon="pi pi-shopping-cart">
-          <p:menuitem value="Cadastrar venda"  url="vendas.xhtml"/>
- 			<p:separator />
-            <p:menuitem value="Consultar vendas" url="consultaVendas.xhtml"/>
-        </p:submenu>
- 
-        <p:submenu label="ARQUIVOS" icon="pi pi-folder-open">
-              <p:menuitem value="Upload" url="upload.xhtml"/>
- 			<p:separator />
-            <p:menuitem value="Arquivos" url="arquivos.xhtml"/>
-        </p:submenu>
- 
-       
- 		 <p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
-              <p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml"/>
- 			<p:separator />
-            <p:menuitem value="Consultar servicos" url="consultaServicos.xhtml"/>
-        </p:submenu>
-        <f:facet name="options">
-           
- 			<p:commandButton id="basic" icon ="pi pi-user"  type="button" style="background-color:#f8f9fa; color: black; border:0px;"/>			
- 			<p:overlayPanel for="basic" style="width:350px">
-		     <p:commandButton value="Sair" actionListener="#{user.Sair}"  style="width:100%;border-color:white; "/>
-        </p:overlayPanel>	     
-        </f:facet>
-    </p:menubar>
-</h:form>
-	
-	<p:growl id="msgGlobal" life="5000" showDetail="true"/>
-	
-<div class="card text-center">
-  <div class="card-header">
-   <p class="titulo">FAÇA O UPLOAD DE QUALQUER ARQUIVO</p>
-  </div>
-  <div class="card-body">
-    <div class="container">    
-    <form  action="/upload" enctype="multipart/form-data" id="formulario"  method="post"> 
-  <label for="file"  id="label">
-       <center>
-           <input type="file"  name="upload" id="file" class="upload"/>
-        <span class="text" >Clique aqui para selecionar um arquivo</span>
 
-       </center>
-  </label>
+	</div>
 
- <br/> <br/><button id="botao" onclick="chamar()" class="botao">Fazer upload</button>
-</form>
+	<h:form>
 
-        </div>
-  </div>
-  <div class="card-footer text-muted">
-    <p class="data"></p>
-  </div>
-</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>            
-      
-        <script type="text/javascript">
-        
-        
-        
-        
-        
-        	document.querySelector('#file').addEventListener('change' , function(){
-        		
-        		
-        		document.querySelector('.text').textContent = this.files[0].name;
-        		
-        		
-        	})
-       
-        	
-        	function chamar(){
-        		bootbox.alert({
-            message: "UPLOAD REALIZADO COM SUCESSO!!",
-        	closeButton: false,
-            callback: function () {
-    			window.location.href = "/br.com.projetoSamiavet-0.0.1-SNAPSHOT/pages/upload.xhtml"; 
-            }
-        })
-        	}
-        
-        
-        </script>
+		<p:menubar>
+			<p:submenu label="FICHAS" icon="pi pi-file">
+				<p:menuitem value="Cadastrar animal" url="cadastro.xhtml" />
+				<p:separator />
+				<p:menuitem value="Consultar animal" url="consultaFichas.xhtml" />
+				<p:separator />
+				<p:menuitem value="Agendar evento" url="agendamentos.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="PRODUTOS" icon="pi pi-tags">
+				<p:menuitem value="Cadastrar produto" url="cadastroProdutos.xhtml" />
+				<p:separator />
+				<p:menuitem value="Consultar produtos" url="consultaProdutos.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="VENDAS" icon="pi pi-shopping-cart">
+				<p:menuitem value="Cadastrar venda" url="vendas.xhtml" />
+				<p:separator />
+				<p:menuitem value="Consultar vendas" url="consultaVendas.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="ARQUIVOS" icon="pi pi-folder-open">
+				<p:menuitem value="Upload" url="upload.xhtml" />
+				<p:separator />
+				<p:menuitem value="Arquivos" url="arquivos.xhtml" />
+			</p:submenu>
+
+
+			<p:submenu label="SERVIÇOS" icon="pi pi-folder-open">
+				<p:menuitem value="Cadastrar serviços" url="cadastroServicos.xhtml" />
+				<p:separator />
+				<p:menuitem value="Consultar servicos" url="consultaServicos.xhtml" />
+			</p:submenu>
+			<f:facet name="options">
+
+				<p:commandButton id="basic" icon="pi pi-user" type="button"
+					style="background-color:#f8f9fa; color: black; border:0px;" />
+				<p:overlayPanel for="basic" style="width:350px">
+					<p:commandButton value="Sair" actionListener="#{user.Sair}"
+						style="width:100%;border-color:white; " />
+				</p:overlayPanel>
+			</f:facet>
+		</p:menubar>
+	</h:form>
+
+	<p:growl id="msgGlobal" life="5000" showDetail="true" />
+
+	<div class="card text-center">
+		<div class="card-header">
+			<p class="titulo">FAÇA O UPLOAD DE QUALQUER ARQUIVO</p>
+		</div>
+		<div class="card-body">
+			<div class="container">
+				<form action="/upload" enctype="multipart/form-data" id="formulario"
+					method="post">
+					<label for="file" id="label">
+						<center>
+							<input type="file" name="upload" id="file" class="upload" /> <span
+								class="text">Clique aqui para selecionar um arquivo</span>
+
+						</center>
+					</label> <br /> <br />
+					<button id="botao" onclick="chamar()" class="botao">Fazer
+						upload</button>
+				</form>
+
+			</div>
+		</div>
+		<div class="card-footer text-muted">
+			<p class="data"></p>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		document.querySelector('#file').addEventListener('change', function() {
+
+			document.querySelector('.text').textContent = this.files[0].name;
+
+		})
+
+		function chamar() {
+			bootbox
+					.alert({
+						message : "UPLOAD REALIZADO COM SUCESSO!!",
+						closeButton : false,
+						callback : function() {
+							window.location.href = "/br.com.projetoSamiavet-0.0.1-SNAPSHOT/pages/upload.xhtml";
+						}
+					})
+		}
+	</script>
 
 </h:body>
 

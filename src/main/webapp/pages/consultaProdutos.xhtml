@@ -17,7 +17,6 @@
 	style="background-color:white; font-family: 'Open Sans', sans-serif !important;"
 	onload="chamar()">
 	<style>
-
 .inputs {
 	width: 200px;
 	height: 30px;
@@ -50,14 +49,6 @@
 	display: block !important;
 	font-size: 11px !important;
 	float: left;
-}
-
-.tituloDescricao {
-	float: right;
-}
-
-.inputCodigo {
-	height: 40px;
 }
 
 button.ui-button {
@@ -139,6 +130,7 @@ button.ui-button:hover {
 
 	<p:growl id="msgGlobal" life="5000" />
 
+
 	<script>
 		function chamar() {
 
@@ -153,20 +145,137 @@ button.ui-button:hover {
 		}
 	</script>
 
-	<p:fieldset toggleable="true" toggleSpeed="500">
-		<h:form id="formCadastrar">
 
-			<p:panel header="CADASTRAR UM NOVO PRODUTO">
+	<p:panel style="margin-top: 30px;">
+		<h:form id="pesquisa">
+			<p:autoComplete value="#{produtosBean.nomeBusca}" id="input1"
+				placeholder="Buscar produto.." styleClass="input"
+				completeMethod="#{produtosBean.completarNome}" scrollHeight="250" />
+			<p:commandButton actionListener="#{produtosBean.pesquisarProdutos}"
+				style="margin-left:5px;" icon="pi pi-search"
+				update=":formProdutos :pesquisa :msgGlobal"
+				styleClass="botaoPesquisar" />
+			<p:commandButton icon="pi pi-undo" style="margin-left:5px;"
+				actionListener="#{produtosBean.resetarBuscaNome}"
+				update=":formProdutos :pesquisa :msgGlobal"
+				styleClass="botaoResetar" />
 
-				<br></br>
-				<h:outputText value="Código de barras: " styleClass="outPutTexts" />
-				<p:inputText styleClass="inputCodigo"
-					value="#{produtosBean.produto.codigoBarras}"
-					placeholder="Codigo Barras" />
 
-				<br />
-				<br />
-				<br />
+			<p:autoComplete inputStyle="width: 200px" style="margin-left:20px;"
+				value="#{produtosBean.codigoBusca}" id="input2"
+				placeholder="Buscar por código de barras.." styleClass="input"
+				completeMethod="#{produtosBean.completarCodigoBarra}"
+				scrollHeight="250" />
+
+			<p:commandButton
+				actionListener="#{produtosBean.pesquisarCodigoProdutos}"
+				style="margin-left:5px;" icon="pi pi-search"
+				update=":formProdutos :pesquisa :msgGlobal"
+				styleClass="botaoPesquisar" />
+
+			<p:commandButton icon="pi pi-undo" style="margin-left:5px;"
+				actionListener="#{produtosBean.resetarBuscaCodigoBarras}"
+				update=":formProdutos :msgGlobal" styleClass="botaoResetar" />
+		</h:form>
+
+	</p:panel>
+
+	<h:form id="formProdutos">
+		<p:dataTable var="produto" value="#{produtosBean.produtos}"
+			stickyHeader="true" stickyTopAt=".layout-topbar"
+			emptyMessage="Nenhum cadastro inserido" paginator="true" rows="10"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink}  {PageLinks} {NextPageLink} {RowsPerPageDropdown}"
+			currentPageReportTemplate="{startRecord}-{endRecord}"
+			rowsPerPageTemplate="10,20,30,40,50" id="tabelaProdutos">
+
+
+			<p:column headerText="CÓDIGO DE BARRAS">
+				<p:barcode value="#{produto.codigoBarras}" type="code39" />
+			</p:column>
+
+			<p:column headerText="NOME">
+				<h:outputText value="#{produto.nome}" />
+			</p:column>
+
+			<p:column headerText="PREÇO COMPRA (R$)" style="width:80px;">
+				<h:outputText value="#{produto.preco_compra}" />
+			</p:column>
+
+			<p:column headerText="PREÇO VENDA (R$)" style="width:80px;">
+				<h:outputText value="#{produto.preco_venda}" />
+			</p:column>
+
+			<p:column headerText="PREÇO UNIT (R$)" style="width:80px;">
+				<h:outputText value="#{produto.preco_unitario}" />
+			</p:column>
+
+			<p:column headerText="DISTRUIBUIDORA" style="width:100px;">
+				<h:outputText value="#{produto.distribuidora}" />
+			</p:column>
+
+			<p:column headerText="EMPRESA">
+				<h:outputText value="#{produto.empresa}" />
+			</p:column>
+
+			<p:column headerText="DATA REGISTRO">
+				<h:outputText value="#{produto.data_registro}" />
+			</p:column>
+
+			<p:column headerText="DATA VALIDADE">
+				<h:outputText value="#{produto.data_validade}" />
+			</p:column>
+
+			<p:column headerText="ESTOQUE UNIT">
+				<h:outputText value="#{produto.estoque_unitario}" />
+			</p:column>
+
+
+
+
+			<p:column headerText="ESTOQUE" style="width:50px;">
+				<div
+					style="#{produto.quantidade_estoque >= 4 ? 'background-color: #0df672' : 'background-color: #f31d1d'};
+	      			 #{produto.quantidade_estoque == 2 or produto.quantidade_estoque == 3 ? 'background-color: #f3f01d' : ''};
+	      			 #{produto.quantidade_estoque >= 4 ? 'color: black' : 'color: white'};
+	      			 #{produto.quantidade_estoque == 2 or produto.quantidade_estoque == 3 ? 'color: black' : ''};   ">
+
+					<h3 style="margin-left: 20px; font-weight: bold; margin-top: 20px;">#{produto.quantidade_estoque}</h3>
+
+				</div>
+			</p:column>
+
+			<p:column headerText="OPÇÕES" style="width:50px;">
+
+				<p:commandButton icon="pi pi-pencil"
+					oncomplete="PF('dialogEditar').show()" update=":formEditar">
+					<f:setPropertyActionListener target="#{produtosBean.produto}"
+						value="#{produto}" />
+				</p:commandButton>
+
+
+				<p:commandButton icon="pi pi-trash" style="margin-top:5px;"
+					update=":formExcluir" onclick="PF('dialogExcluir').show()">
+
+					<f:setPropertyActionListener target="#{produtosBean.produto}"
+						value="#{produto}" />
+
+				</p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+	<p:dialog header="EDITAR PRODUTO" showEffect="blind"
+		hideEffect="explode" widgetVar="dialogEditar" height="500"
+		minimizable="true" maximizable="true" closable="true"
+		draggable="false" resizable="false" modal="true" appendTo="@(body)"
+		id="dialogEditar">
+
+
+		<h:form id="formEditar">
+
+			<p:panel header="EDITAR #{produtosBean.produto.nome.toUpperCase()}">
+
+
 				<h:outputText value="Nome do produto: " styleClass="outPutTexts" />
 				<p:inputText styleClass="inputs"
 					value="#{produtosBean.produto.nome}" placeholder="Nome produto" />
@@ -177,29 +286,35 @@ button.ui-button:hover {
 
 
 				<h:outputText value="Preço compra: " styleClass="outPutTexts" />
-				<p:inputNumber id="input1" value="#{produtosBean.precoCompra}"
+				<p:inputText id="input1"
+					value="#{produtosBean.produto.preco_compra}"
 					placeholder="Preço Compra" style="margin-left:5px;" />
 
+
+
+
 				<h:outputText value="Preço venda: " styleClass="outPutTexts" />
-				<p:inputNumber value="#{produtosBean.precoVenda}"
+				<p:inputText value="#{produtosBean.produto.preco_venda}"
 					placeholder="Precço venda" style="margin-left:5px;" />
+
 				<br />
 				<br />
 				<h:outputText value="Preço unit: " styleClass="outPutTexts" />
-				<p:inputNumber value="#{produtosBean.preco_unitario}"
+				<p:inputNumber value="#{produtosBean.produto.preco_unitario}"
 					placeholder="Precço venda" style="margin-left:5px;" />
 
 				<h:outputText value="Estoque: " styleClass="outPutTexts" />
-				<p:spinner min="0" suffix=" UNIDADES" placeholder="Estoque"
+				<p:spinner id="minMax" min="0" suffix=" UNIDADES"
+					placeholder="Estoque"
 					value="#{produtosBean.produto.quantidade_estoque}"
 					style="margin-left:5px;" />
-
+				<br />
+				<br />
 
 				<h:outputText value="Estoque unit: " styleClass="outPutTexts" />
 				<p:spinner min="0" suffix=" UNIDADES" placeholder="Estoque unitário"
 					value="#{produtosBean.produto.estoque_unitario}"
 					style="margin-left:5px;" />
-
 				<br />
 				<br />
 				<h:outputText value="Distribuidora: " styleClass="outPutTexts" />
@@ -222,15 +337,49 @@ button.ui-button:hover {
 
 				<br />
 				<br />
-				<p:commandButton value="CADASTRAR"
-					actionListener="#{produtosBean.cadastrar}"
-					update=":formCadastrar :msgGlobal"
+				<p:commandButton value="EDITAR"
+					actionListener="#{produtosBean.editarCadastro()}"
+					oncomplete="PF('dialogEditar').hide()"
+					update="formProdutos:tabelaProdutos :msgGlobal"
 					style="width:200px;" />
+
+
 			</p:panel>
 		</h:form>
-	</p:fieldset>
 
-	
+	</p:dialog>
+
+
+
+	<p:dialog header="EXCLUIR PRODUTO" widgetVar="dialogExcluir"
+		showEffect="blind" hideEffect="explode" height="130" closable="true"
+		draggable="false" resizable="false" modal="true" appendTo="@(body)"
+		id="dialogExcluir">
+
+
+
+		<h:form id="formExcluir">
+
+			<h:outputText value="CODIGO DE BARRAS: " styleClass="titulo"
+				style="margin-left:10px; font-weight:bold;" />
+			<br />
+			<p:barcode value="#{produtosBean.produto.codigoBarras}" type="code39" />
+
+
+			<br />
+			<br />
+			<p:commandButton value="EXCLUIR" styleClass="botaoDeletar"
+				actionListener="#{produtosBean.excluir}"
+				update=":formProdutos:tabelaProdutos :msgGlobal"
+				oncomplete="PF('dialogExcluir').hide()" />
+			<p:commandButton value="CANCELAR"
+				onclick="PF('dialogExcluir').hide()" style="margin-left:5px;" />
+
+
+		</h:form>
+
+
+	</p:dialog>
 	<p:ajaxStatus onstart="PF('statusDialog').show()"
 		onsuccess="PF('statusDialog').hide()" />
 
