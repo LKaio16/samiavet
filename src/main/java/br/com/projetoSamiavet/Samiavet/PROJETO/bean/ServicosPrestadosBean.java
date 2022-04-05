@@ -38,58 +38,56 @@ import br.com.projetoSamiavet.Samiavet.PROJETO.service.ServicosPrestadosService;
 import br.com.projetoSamiavet.Samiavet.PROJETO.service.ServicosPrestadosTempService;
 import br.com.projetoSamiavet.Samiavet.PROJETO.util.JsfUtil;
 
-@Named(value="MBServicos")
+@Named(value = "MBServicos")
 @ViewScoped
 public class ServicosPrestadosBean {
 
 	private ServicosPrestados servico;
-	
-	
+
 	private ServicosPrestadosTemp servicoTemp;
-	
+
 	private List<ServicosPrestados> servicos;
-	
+
 	private List<ServicosPrestadosTemp> listaServicoTemp;
-	
+
 	@Autowired
 	private ServicosPrestadosService servicosService;
 
 	@Autowired
 	private ServicosPrestadosTempService servicosPrestadosTempService;
-	
+
 	private Long nomeComprovante;
 
-	
 	private Double total;
 
 	private String guardarNomeAnimal;
-	
+
 	private ExcelOptions excelOpt;
 
-    private PDFOptions pdfOpt;
-    
-    private String  formaPag;
-    
-    private Double taxa;
-    
-    private String nomeCliente;
-    
-    private String cpf; 
-    
-    private Integer parcelas;
-    
-    private Double valorDesconto;
-    
-    private Double valorTotalDesconto;
-    
-    private String nomeAnimal;
-    
+	private PDFOptions pdfOpt;
+
+	private String formaPag;
+
+	private Double taxa;
+
+	private String nomeCliente;
+
+	private String cpf;
+
+	private Integer parcelas;
+
+	private Double valorDesconto;
+
+	private Double valorTotalDesconto;
+
+	private String nomeAnimal;
+
 	private String email;
 
-    private StreamedContent file;
+	private StreamedContent file;
 
-    private Double totalServicos;
-    
+	private Double totalServicos;
+
 	public ServicosPrestadosBean() {
 		this.servico = new ServicosPrestados();
 		this.servicoTemp = new ServicosPrestadosTemp();
@@ -111,7 +109,6 @@ public class ServicosPrestadosBean {
 		this.servicos = servicos;
 	}
 
-	
 	public List<ServicosPrestadosTemp> getListaServicoTemp() {
 		return listaServicoTemp;
 	}
@@ -120,7 +117,6 @@ public class ServicosPrestadosBean {
 		this.listaServicoTemp = listaServicoTemp;
 	}
 
-	
 	public Long getNomeComprovante() {
 		return nomeComprovante;
 	}
@@ -152,8 +148,7 @@ public class ServicosPrestadosBean {
 	public void setPdfOpt(PDFOptions pdfOpt) {
 		this.pdfOpt = pdfOpt;
 	}
- 
-	
+
 	public ServicosPrestadosTemp getServicoTemp() {
 		return servicoTemp;
 	}
@@ -161,8 +156,6 @@ public class ServicosPrestadosBean {
 	public void setServicoTemp(ServicosPrestadosTemp servicoTemp) {
 		this.servicoTemp = servicoTemp;
 	}
-
-
 
 	public String getFormaPag() {
 		return formaPag;
@@ -204,7 +197,6 @@ public class ServicosPrestadosBean {
 		this.parcelas = parcelas;
 	}
 
-	
 	public Double getValorDesconto() {
 		return valorDesconto;
 	}
@@ -213,7 +205,6 @@ public class ServicosPrestadosBean {
 		this.valorDesconto = valorDesconto;
 	}
 
-	
 	public Double getValorTotalDesconto() {
 		return valorTotalDesconto;
 	}
@@ -222,8 +213,6 @@ public class ServicosPrestadosBean {
 		this.valorTotalDesconto = valorTotalDesconto;
 	}
 
-	
-	
 	public String getNomeAnimal() {
 		return nomeAnimal;
 	}
@@ -232,8 +221,6 @@ public class ServicosPrestadosBean {
 		this.nomeAnimal = nomeAnimal;
 	}
 
-	
-	
 	public String getEmail() {
 		return email;
 	}
@@ -242,8 +229,6 @@ public class ServicosPrestadosBean {
 		this.email = email;
 	}
 
-	
-	
 	public StreamedContent getFile() {
 		return file;
 	}
@@ -252,8 +237,6 @@ public class ServicosPrestadosBean {
 		this.file = file;
 	}
 
-	
-	
 	public Double getTotalServicos() {
 		return totalServicos;
 	}
@@ -262,8 +245,6 @@ public class ServicosPrestadosBean {
 		this.totalServicos = totalServicos;
 	}
 
-	
-	
 	public String getGuardarNomeAnimal() {
 		return guardarNomeAnimal;
 	}
@@ -277,64 +258,61 @@ public class ServicosPrestadosBean {
 		this.servicos = new ArrayList<ServicosPrestados>(this.servicosService.listar());
 		this.listaServicoTemp = new ArrayList<ServicosPrestadosTemp>(this.servicosPrestadosTempService.listar());
 		customizationOptions();
-		
 
 		this.totalServicos = 0.0;
-		
-		for(int cont = 0; cont < this.servicosService.listar().size(); cont++) {
+
+		for (int cont = 0; cont < this.servicosService.listar().size(); cont++) {
 			this.totalServicos += this.servicosService.listar().get(cont).getValor();
 
 		}
 
-		
 	}
-	
-	public void customizationOptions() {
-        excelOpt = new ExcelOptions();
-        excelOpt.setFacetFontSize("10");
-        excelOpt.setFacetFontStyle("BOLD");
-        excelOpt.setCellFontSize("8");
-        excelOpt.setFontName("Verdana");
 
-        pdfOpt = new PDFOptions();
-        
-        pdfOpt.setFacetFontStyle("BOLD");
-        pdfOpt.setCellFontSize("12");
-        pdfOpt.setFontName("Courier");
-        pdfOpt.setOrientation(PDFOrientationType.LANDSCAPE);
-    }
+	public void customizationOptions() {
+		excelOpt = new ExcelOptions();
+		excelOpt.setFacetFontSize("10");
+		excelOpt.setFacetFontStyle("BOLD");
+		excelOpt.setCellFontSize("8");
+		excelOpt.setFontName("Verdana");
+
+		pdfOpt = new PDFOptions();
+
+		pdfOpt.setFacetFontStyle("BOLD");
+		pdfOpt.setCellFontSize("12");
+		pdfOpt.setFontName("Courier");
+		pdfOpt.setOrientation(PDFOrientationType.LANDSCAPE);
+	}
+
 	public void adicionarServicoLista() {
-		
-		
+
 		this.servicosPrestadosTempService.cadastrar(this.servicoTemp);
-		
+
 		this.servicoTemp = new ServicosPrestadosTemp();
-		
+
 		JsfUtil.adicionarMensagemDeSucesso("Serviço adicionado a lista", null);
-		
+
 		carregar();
 	}
-	
-	
+
 	public void calcularTotal() {
-		
+
 		this.total = 0.0;
-		
-		for(int cont = 0; cont < this.servicosPrestadosTempService.listar().size(); cont++) {
+
+		for (int cont = 0; cont < this.servicosPrestadosTempService.listar().size(); cont++) {
 			this.total += this.servicosPrestadosTempService.listar().get(cont).getValor();
 
 		}
 
 	}
+
 	public void cadastrar() {
-		
+
 		try {
-		
-			for(int cont = 0; cont < this.servicosPrestadosTempService.listar().size(); cont++) {
-				
-				
+
+			for (int cont = 0; cont < this.servicosPrestadosTempService.listar().size(); cont++) {
+
 				ServicosPrestados servicos = new ServicosPrestados();
-				
+
 				servicos.setNome_cliente(this.nomeCliente);
 				servicos.setForma_pagamento(formaPag);
 				servicos.setParcelas(this.parcelas);
@@ -343,191 +321,189 @@ public class ServicosPrestadosBean {
 				servicos.setTitulo(this.servicosPrestadosTempService.listar().get(cont).getTitulo());
 				servicos.setData(String.valueOf(LocalDate.now()));
 				servicos.setValor(this.servicosPrestadosTempService.listar().get(cont).getValor());
-				
-				
-				
-				
+
 				this.servicosService.salvar(servicos);
 
 			}
-		
-			
-			
-			
+
 			Document document = new Document();
 
-			 try {
-		            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\comprovantes\\" + this.nomeAnimal + ".pdf"));
-		            
-		            document.open();
-		            document.add(new Paragraph("----------------------------------------------------------------------------------------------------------------------"));
-		            String filename = "C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\imagens\\samiavet-copia.png";
-		            Font fonteTexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12,Font.NORMAL);
+			try {
+				PdfWriter.getInstance(document, new FileOutputStream(
+						"C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\comprovantes\\"
+								+ this.nomeAnimal + ".pdf"));
 
-		            Font fonteNegrito = FontFactory.getFont(FontFactory.COURIER, 17,Font.BOLD );
-		            Font fonteNegrito2 = FontFactory.getFont(FontFactory.COURIER, 15,Font.BOLD );
+				document.open();
+				document.add(new Paragraph(
+						"----------------------------------------------------------------------------------------------------------------------"));
+				String filename = "C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\imagens\\samiavet-copia.png";
+				Font fonteTexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
 
+				Font fonteNegrito = FontFactory.getFont(FontFactory.COURIER, 17, Font.BOLD);
+				Font fonteNegrito2 = FontFactory.getFont(FontFactory.COURIER, 15, Font.BOLD);
 
-		            Image image;
-					try {
-						image = Image.getInstance(filename);
-			            document.add(image);
-			            document.add(new Paragraph("----------------------------------------------------------------------------------------------------------------------"));
-			            document.add(new Paragraph("PAGAMENTO: " + this.formaPag + "                   "  + "TOTAL: " + this.total + "R$",fonteNegrito2));
-			            document.add(new Paragraph("N° PARCELAS: " + this.parcelas, fonteNegrito2 ));
-			            document.add(new Paragraph("DATA: " + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() 
-			            		+ "        " + "HORA: "  + LocalDateTime.now().getHour() + ":" + LocalDateTime.now().getMinute()
-			            		,fonteNegrito2));
-			            
-			            document.add(new Paragraph("CLIENTE: " + this.nomeCliente ,fonteNegrito2));
-			            document.add(new Paragraph("NOME ANIMAL: " + this.nomeAnimal,fonteNegrito2));
-			            document.add(new Paragraph("-"));
-			            document.add(new Paragraph("-"));
-			            document.add(new Paragraph("-"));
-			            document.add(new Paragraph("-"));
-			            document.add(new Paragraph("-"));
+				Image image;
+				try {
+					image = Image.getInstance(filename);
+					document.add(image);
+					document.add(new Paragraph(
+							"----------------------------------------------------------------------------------------------------------------------"));
+					document.add(new Paragraph(
+							"PAGAMENTO: " + this.formaPag + "                   " + "TOTAL: " + this.total + "R$",
+							fonteNegrito2));
+					document.add(new Paragraph("N° PARCELAS: " + this.parcelas, fonteNegrito2));
+					document.add(new Paragraph("DATA: " + LocalDate.now().getDayOfMonth() + "/"
+							+ LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + "        " + "HORA: "
+							+ LocalDateTime.now().getHour() + ":" + LocalDateTime.now().getMinute(), fonteNegrito2));
 
+					document.add(new Paragraph("CLIENTE: " + this.nomeCliente, fonteNegrito2));
+					document.add(new Paragraph("NOME ANIMAL: " + this.nomeAnimal, fonteNegrito2));
+					document.add(new Paragraph("-"));
+					document.add(new Paragraph("-"));
+					document.add(new Paragraph("-"));
+					document.add(new Paragraph("-"));
+					document.add(new Paragraph("-"));
 
-						for(int cont = 0; cont < this.servicosPrestadosTempService.listar().size(); cont++) {
-				          document.add(new Paragraph("----------------------------------------------------------------------------------------------------------------------"));
+					for (int cont = 0; cont < this.servicosPrestadosTempService.listar().size(); cont++) {
+						document.add(new Paragraph(
+								"----------------------------------------------------------------------------------------------------------------------"));
 
-				          document.add(new Paragraph("ATENDIMENTO: " +  this.servicosPrestadosTempService.listar().get(cont).getTipo() ,fonteNegrito2));
-				          document.add(new Paragraph("DESCRIÇÃO: " +  this.servicosPrestadosTempService.listar().get(cont).getDescricao() ,fonteNegrito2));
-				          document.add(new Paragraph("VALOR: " +  this.servicosPrestadosTempService.listar().get(cont).getValor() ,fonteNegrito2));
-					      document.add(new Paragraph("----------------------------------------------------------------------------------------------------------------------"));
+						document.add(new Paragraph(
+								"ATENDIMENTO: " + this.servicosPrestadosTempService.listar().get(cont).getTipo(),
+								fonteNegrito2));
+						document.add(new Paragraph(
+								"DESCRIÇÃO: " + this.servicosPrestadosTempService.listar().get(cont).getDescricao(),
+								fonteNegrito2));
+						document.add(new Paragraph(
+								"VALOR: " + this.servicosPrestadosTempService.listar().get(cont).getValor(),
+								fonteNegrito2));
+						document.add(new Paragraph(
+								"----------------------------------------------------------------------------------------------------------------------"));
 
-
-			            }
-					} catch (MalformedURLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
-		        } catch (DocumentException ex) {
-		            System.out.println("Error:"+ex);
-		        } catch (FileNotFoundException ex) {
-		            System.out.println("Error:"+ex);
-		        }finally{
-		            document.close();
-		        }
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (DocumentException ex) {
+				System.out.println("Error:" + ex);
+			} catch (FileNotFoundException ex) {
+				System.out.println("Error:" + ex);
+			} finally {
+				document.close();
+			}
 
-			
 			this.servicosPrestadosTempService.deletarTodos();
-			
+
 			JsfUtil.adicionarMensagemDeSucesso("Serviço salvo com sucesso!", null);
 			carregar();
-	
-			
-			
+
 			setNomeCliente(null);
-			
+
 			this.servico = new ServicosPrestados();
-			
+
 			this.servicoTemp = new ServicosPrestadosTemp();
-			
-			
-			
-		}catch(Exception erro) {
+
+			this.guardarNomeAnimal = this.nomeAnimal;
+
+			this.setNomeAnimal(null);
+
+		} catch (Exception erro) {
 			JsfUtil.adicionarMensagemDeSucesso("Serviços salvos com sucesso", null);
 		}
-		
-		
-		
+
 	}
-	
+
 	public void calcularDesconto() {
-		
+
 		this.valorTotalDesconto = 0.0;
-		
-		Double calcularTaxa = (this.taxa / 100)  * this.valorDesconto;
-		
-		
+
+		Double calcularTaxa = (this.taxa / 100) * this.valorDesconto;
+
 		this.valorTotalDesconto = this.valorDesconto - calcularTaxa;
-		
+
 		setValorDesconto(null);
-		
-		
+
 		setTaxa(null);
 	}
-	
-	
+
 	public void excluir() {
 		this.servicosPrestadosTempService.deletar(this.servicoTemp.getIdServico());
 		carregar();
 		JsfUtil.adicionarMensagemDeSucesso("Serviço deletado com sucesso!", null);
 
 		this.total = 0.0;
-		
-		for(int cont = 0; cont < this.servicosPrestadosTempService.listar().size(); cont++) {
+
+		for (int cont = 0; cont < this.servicosPrestadosTempService.listar().size(); cont++) {
 			this.total += this.servicosPrestadosTempService.listar().get(cont).getValor();
 
 		}
 	}
+
 	public void cancelarServicos() {
 		this.servicosPrestadosTempService.deletarTodos();
 		carregar();
 		JsfUtil.adicionarMensagemDeSucesso("Serviços excluídos com sucesso!", null);
 
 		this.total = 0.0;
-		
-		for(int cont = 0; cont < this.servicosPrestadosTempService.listar().size(); cont++) {
+
+		for (int cont = 0; cont < this.servicosPrestadosTempService.listar().size(); cont++) {
 			this.total += this.servicosPrestadosTempService.listar().get(cont).getValor();
 
 		}
-		
+
 	}
-	
-	
+
 	public void enviarEmail() {
 		String meuEmail = "tirsopottim04@gmail.com";
 		String minhaSenha = "191991tirso";
-		
+
 		MultiPartEmail email = new MultiPartEmail();
 		email.setHostName("smtp.gmail.com");
-		//email.setSmtpPort(587);
-		email.setAuthenticator(new DefaultAuthenticator(meuEmail,minhaSenha));
+		// email.setSmtpPort(587);
+		email.setAuthenticator(new DefaultAuthenticator(meuEmail, minhaSenha));
 		email.setSSLOnConnect(true);
-		
-		
-		
+
 		try {
-			
-			
+
 			email.setFrom(meuEmail);
 			email.setSubject("_COMPROVANTE_SAMIAVET(ATENDIMENTO)");
-			email.setMsg("Comprovante de atendimento realizado. DATA: " + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + " HORA: " + LocalDateTime.now().getHour() + ":" + LocalDateTime.now().getMinute());
+			email.setMsg("Comprovante de atendimento realizado. DATA: " + LocalDate.now().getDayOfMonth() + "/"
+					+ LocalDate.now().getMonthValue() + "/" + LocalDate.now().getYear() + " HORA: "
+					+ LocalDateTime.now().getHour() + ":" + LocalDateTime.now().getMinute());
 			email.addTo(this.email);
 			EmailAttachment anexo = new EmailAttachment();
-			anexo.setPath("C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\comprovantes\\" + this.nomeAnimal + ".pdf");
-			anexo.setName(this.nomeAnimal + ".pdf");
+			anexo.setPath(
+					"C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\comprovantes\\"
+							+ this.guardarNomeAnimal + ".pdf");
+			anexo.setName(this.guardarNomeAnimal + ".pdf");
 			email.attach(anexo);
-			
-			
+
 			email.send();
-			
+
 			System.out.println("email enviado com sucesso!!");
-			JsfUtil.adicionarMensagemDeSucesso("EMAIL ENVIADO PARA O EMAIL: " + this.email + " CONFIRA NA CAIXA DE ENTRADA!!", null);
-		}catch(Exception erro) {
-			erro.printStackTrace();			
+			JsfUtil.adicionarMensagemDeSucesso(
+					"EMAIL ENVIADO PARA O EMAIL: " + this.email + " CONFIRA NA CAIXA DE ENTRADA!!", null);
+		} catch (Exception erro) {
+			erro.printStackTrace();
 			JsfUtil.adicionarMensagemDeErro("Ocorreu um erro inesperado", null);
 
 		}
-		
+
 		setEmail(null);
-	
+
 	}
-	
-	
+
 	public void gerarComprovante() {
-		this.file = DefaultStreamedContent.builder()
-                .contentType("application/pdf")
-                .name(this.nomeAnimal + ".pdf")
-                .stream(() -> FacesContext.getCurrentInstance().getExternalContext().getResourceAsStream("/resources/comprovantes/" +  this.nomeAnimal + ".pdf"))
-                .build();
+		this.file = DefaultStreamedContent.builder().contentType("application/pdf").name(this.guardarNomeAnimal + ".pdf")
+				.stream(() -> FacesContext.getCurrentInstance().getExternalContext()
+						.getResourceAsStream("/resources/comprovantes/" + this.guardarNomeAnimal + ".pdf"))
+				.build();
 	}
-	
+
 	public void deletar() {
 		this.servicosService.deletarTodos();
 		carregar();
