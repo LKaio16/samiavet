@@ -25,14 +25,16 @@ public class ProdutosBean {
 
 	private Double precoCompra = Double.valueOf(0);
 	private Double precoVenda = Double.valueOf(0);
-	
+
 	private Double preco_unitario = Double.valueOf(0);
-	
+
 	@Autowired
 	private ProdutosService produtosService;
 
 	private String nomeBusca;
 
+	private String codigoBusca;
+	
 	public ProdutosBean() {
 
 		this.produto = new Produtos();
@@ -86,6 +88,15 @@ public class ProdutosBean {
 	public void setNomeBusca(String nomeBusca) {
 		this.nomeBusca = nomeBusca;
 	}
+
+	public String getCodigoBusca() {
+		return codigoBusca;
+	}
+
+	public void setCodigoBusca(String codigoBusca) {
+		this.codigoBusca = codigoBusca;
+	}
+
 	
 	public Double getPreco_unitario() {
 		return preco_unitario;
@@ -177,6 +188,16 @@ public class ProdutosBean {
 		return listaNomes.stream().filter(t -> t.toLowerCase().startsWith(queryLowerCase)).collect(Collectors.toList());
 	}
 
+	public List<String> completarCodigoBarra(String query) {
+		List<String> listaCodigos = new ArrayList<>();
+		List<Produtos> produtos = this.produtosService.listarProdutos();
+		for (Produtos codigosProdutos : produtos) {
+			listaCodigos.add(codigosProdutos.getCodigoBarras());
+		}
+
+		return listaCodigos.stream().collect(Collectors.toList());
+	}
+
 	public void pesquisarProdutos() {
 		this.produtos = new ArrayList<Produtos>(this.produtosService.listarProdutosPorNome(nomeBusca));
 		JsfUtil.adicionarMensagemDeSucesso("Resultados para: " + this.nomeBusca, nomeBusca);
@@ -185,9 +206,22 @@ public class ProdutosBean {
 
 	}
 
-	public void resetar() {
+	public void pesquisarCodigoProdutos() {
+		this.produtos = new ArrayList<Produtos>(this.produtosService.listarProdutosPorId(codigoBusca));
+		JsfUtil.adicionarMensagemDeSucesso("Resultados para: " + this.codigoBusca, codigoBusca);
+
+		setCodigoBusca(null);
+
+	}
+
+	public void resetarBuscaNome() {
 		this.produtos = new ArrayList<Produtos>(this.produtosService.listarProdutos());
 		setNomeBusca(null);
 
+	}
+	public void resetarBuscaCodigoBarras() {
+		this.produtos = new ArrayList<Produtos>(this.produtosService.listarProdutos());
+		setCodigoBusca(null);
+		
 	}
 }

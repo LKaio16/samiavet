@@ -34,7 +34,7 @@ public class ProdutosService {
 	public List<Produtos> listarProdutos(){
 		return this.produtosRepository.findAll();
 	}
-	
+
 	public void salvarLista(List<Produtos> lista) {
 		
 		this.produtosRepository.saveAll(lista);
