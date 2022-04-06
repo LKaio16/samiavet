@@ -17,7 +17,6 @@
 	style="background-color:white; font-family: 'Open Sans', sans-serif !important;"
 	onload="chamar()">
 	<style>
-
 .inputs {
 	width: 200px;
 	height: 30px;
@@ -40,6 +39,12 @@
 	padding-left: 10px;
 	font-size: 15px;
 	font-weight: bold;
+}
+
+.inputTextArea {
+	width: 80%;
+	margin-top: 10px;
+	margin-left: 10px;
 }
 
 .carregando {
@@ -222,16 +227,20 @@ button.ui-button:hover {
 					value="#{produtosBean.produto.data_validade}" />
 
 				<br />
+				<h:outputText value="Descrição: " styleClass="outPutTexts"/> <br/>
+				<p:inputTextarea rows="6" cols="33" styleClass="inputTextArea"
+					placeholder="Descrição" value="#{produtosBean.produto.descricao}" />
+				
+				<br />
 				<br />
 				<p:commandButton value="CADASTRAR"
 					actionListener="#{produtosBean.cadastrar}"
-					update=":formCadastrar :msgGlobal"
-					style="width:200px;" />
+					update=":formCadastrar :msgGlobal" style="width:200px;" />
 			</p:panel>
 		</h:form>
 	</p:fieldset>
 
-	
+
 	<p:ajaxStatus onstart="PF('statusDialog').show()"
 		onsuccess="PF('statusDialog').hide()" />
 

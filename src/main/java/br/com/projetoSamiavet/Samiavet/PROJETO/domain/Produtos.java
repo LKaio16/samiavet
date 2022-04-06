@@ -19,6 +19,7 @@ public class Produtos {
 	private String empresa;
 	private String data_registro;
 	private String data_validade;
+	private String descricao;
 	private Integer quantidade_estoque;
 	private Double preco_unitario;
 	private Integer estoque_unitario;
@@ -102,6 +103,14 @@ public class Produtos {
 
 	public void setData_validade(String data_validade) {
 		this.data_validade = data_validade;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public Integer getQuantidade_estoque() {
