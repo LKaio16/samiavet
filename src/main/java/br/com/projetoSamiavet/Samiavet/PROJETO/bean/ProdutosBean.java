@@ -189,13 +189,15 @@ public class ProdutosBean {
 	}
 
 	public List<String> completarCodigoBarra(String query) {
+		String queryLowerCase = query.toLowerCase();
 		List<String> listaCodigos = new ArrayList<>();
 		List<Produtos> produtos = this.produtosService.listarProdutos();
 		for (Produtos codigosProdutos : produtos) {
 			listaCodigos.add(codigosProdutos.getCodigoBarras());
 		}
+		
+		return listaCodigos.stream().filter(t -> t.toLowerCase().startsWith(queryLowerCase)).collect(Collectors.toList());
 
-		return listaCodigos.stream().collect(Collectors.toList());
 	}
 
 	public void pesquisarProdutos() {
