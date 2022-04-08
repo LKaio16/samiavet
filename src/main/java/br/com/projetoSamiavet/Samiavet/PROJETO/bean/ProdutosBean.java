@@ -226,4 +226,11 @@ public class ProdutosBean {
 		setCodigoBusca(null);
 		
 	}
+	public void resetarProdutos() {
+		this.produto = new Produtos();
+		precoCompra = 0d;
+		precoVenda = 0d;
+		preco_unitario = 0d;
+
+	}
 }

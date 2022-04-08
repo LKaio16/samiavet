@@ -236,6 +236,12 @@ button.ui-button:hover {
 				<p:commandButton value="CADASTRAR"
 					actionListener="#{produtosBean.cadastrar}"
 					update=":formCadastrar :msgGlobal" style="width:200px;" />
+					
+				<p:commandButton icon="pi pi-undo" style="margin-left:5px;"
+				actionListener="#{produtosBean.resetarProdutos}" styleClass="botaoResetar" 
+				update=":formCadastrar" />
+				
+
 			</p:panel>
 		</h:form>
 	</p:fieldset>

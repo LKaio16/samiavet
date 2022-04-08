@@ -26,12 +26,6 @@
 	margin-left: 5px;
 }
 
-.inputTextArea {
-	width: 80%;
-	margin-top: 10px;
-	margin-left: 10px;
-}
-
 .inputData {
 	width: 100px;
 	height: 30px;
@@ -192,12 +186,8 @@ button.ui-button:hover {
 			emptyMessage="Nenhum cadastro inserido" paginator="true" rows="10"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink}  {PageLinks} {NextPageLink} {RowsPerPageDropdown}"
 			currentPageReportTemplate="{startRecord}-{endRecord}"
-			rowsPerPageTemplate="10,20,30,40,50" id="tabelaProdutos"
-			rowKey="#{produto.codigoBarras}">
+			rowsPerPageTemplate="10,20,30,40,50" id="tabelaProdutos">
 
-			<p:column style="width:16px">
-				<p:rowToggler />
-			</p:column>
 
 			<p:column headerText="CÓDIGO DE BARRAS">
 				<p:barcode value="#{produto.codigoBarras}" type="code39" />
@@ -234,14 +224,6 @@ button.ui-button:hover {
 			<p:column headerText="DATA VALIDADE">
 				<h:outputText value="#{produto.data_validade}" />
 			</p:column>
-
-			<p:rowExpansion>
-				<h:outputText value="Descrição: " style="font-weight: bold;" />
-				<p:panelGrid columns="1"
-					style="margin-top: 5px; width: 40%; height:auto;">
-					<h:outputText value="#{produto.descricao}" />
-				</p:panelGrid>
-			</p:rowExpansion>
 
 			<p:column headerText="ESTOQUE UNIT">
 				<h:outputText value="#{produto.estoque_unitario}" />
@@ -353,12 +335,6 @@ button.ui-button:hover {
 					placeholder="Data Valid."
 					value="#{produtosBean.produto.data_validade}" />
 
-				<br />
-				<br />
-				<h:outputText value="Descrição: " styleClass="outPutTexts" />
-				<p:inputTextarea rows="6" cols="33" styleClass="inputTextArea"
-					placeholder="Descrição" value="#{produtosBean.produto.descricao}" />				
-				
 				<br />
 				<br />
 				<p:commandButton value="EDITAR"
