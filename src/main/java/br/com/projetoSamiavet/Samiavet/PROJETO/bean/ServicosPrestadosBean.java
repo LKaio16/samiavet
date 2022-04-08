@@ -517,7 +517,7 @@ public class ServicosPrestadosBean {
 
 		try {
 			PdfWriter.getInstance(document, new FileOutputStream(
-					"F:\\qnobi-workspace\\samiavet\\src\\main\\webapp\\resources\\arquivos\\" + "Servicos" + ".pdf"));
+					"C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\arquivos\\" + "Servicos" + ".pdf"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (DocumentException e) {
@@ -525,7 +525,7 @@ public class ServicosPrestadosBean {
 		}
 
 		document.open();
-		String filename = "F:\\qnobi-workspace\\samiavet\\src\\main\\webapp\\resources\\imagens\\SamiaVetLogoComprovanteHorizontal2.png";
+		String filename = "C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\imagens\\SamiaVetLogoComprovanteHorizontal2.png";
 		Font fonteTexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
 		Font fonteTexto2 = FontFactory.getFont(FontFactory.COURIER, 9, Font.NORMAL);
 		Font fonteTexto3 = FontFactory.getFont(FontFactory.COURIER_BOLD, 10, Font.NORMAL);
@@ -647,8 +647,7 @@ public class ServicosPrestadosBean {
 		document.close();
 
 		JsfUtil.adicionarMensagemDeSucesso("Relatório gerado com sucesso", null);
-
-		String path = "F:\\qnobi-workspace\\samiavet\\src\\main\\webapp\\resources\\arquivos\\Servicos.pdf";
+		String path = "C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\arquivos\\Servicos.pdf";
 		File file = new File(path);
 		try {
 			if (file.exists()) {
