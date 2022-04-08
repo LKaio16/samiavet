@@ -340,11 +340,11 @@ button.ui-button:hover {
 							fileName="Servicos" options="#{MBServicos.excelOpt}" />
 					</p:commandLink>
 
-					<p:commandLink style="margin-left:10px;">
+					<p:commandLink style="margin-left:10px; " actionListener="#{MBServicos.gerarRelatorioServicos}">
 						<p:graphicImage value="/resources/imagens/iconPdf.png"
 							style="width:30px;" styleClass="botaoExporter" />
-						<p:dataExporter type="pdf" target="tabelaServicos"
-							fileName="Servicos" options="#{MBServicos.pdfOpt}" />
+
+						<p:fileDownload value="#{MBServicos.fileRelatorioServicos}" />
 
 					</p:commandLink>
 				</div>

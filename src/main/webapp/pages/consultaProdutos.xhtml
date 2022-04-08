@@ -167,12 +167,12 @@ button.ui-button:hover {
 				styleClass="botaoResetar" />
 
 
+
 			<p:autoComplete inputStyle="width: 200px" style="margin-left:20px;"
 				value="#{produtosBean.codigoBusca}" id="input2"
 				placeholder="Buscar por código de barras.." styleClass="input"
 				completeMethod="#{produtosBean.completarCodigoBarra}"
 				scrollHeight="250" />
-
 			<p:commandButton
 				actionListener="#{produtosBean.pesquisarCodigoProdutos}"
 				style="margin-left:5px;" icon="pi pi-search"

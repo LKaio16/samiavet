@@ -79,13 +79,13 @@
  <dependency>
         <groupId>com.itextpdf</groupId>
         <artifactId>kernel</artifactId>
-        <version>7.1.4</version>
+        <version>7.1.7</version>
     </dependency>
 
   <dependency>
         <groupId>com.itextpdf</groupId>
         <artifactId>itext7-core</artifactId>
-        <version>7.0.4</version>
+        <version>7.1.7</version>
         <type>pom</type>
     </dependency>
 
@@ -93,33 +93,33 @@
     <dependency>
         <groupId>com.itextpdf</groupId>
         <artifactId>kernel</artifactId>
-        <version>7.0.4</version>
+        <version>7.1.7</version>
     </dependency>
     <dependency>
         <groupId>com.itextpdf</groupId>
         <artifactId>io</artifactId>
-        <version>7.0.4</version>
+        <version>7.1.7</version>
     </dependency>
 
     <dependency>
         <groupId>com.itextpdf</groupId>
         <artifactId>layout</artifactId>
-        <version>7.0.4</version>
+        <version>7.1.7</version>
     </dependency>
     <dependency>
         <groupId>com.itextpdf</groupId>
         <artifactId>forms</artifactId>
-        <version>7.0.4</version>
+        <version>7.1.7</version>
     </dependency>
     <dependency>
         <groupId>com.itextpdf</groupId>
         <artifactId>pdfa</artifactId>
-        <version>7.0.4</version>
+        <version>7.1.7</version>
     </dependency>
     <dependency>
         <groupId>com.itextpdf</groupId>
         <artifactId>pdftest</artifactId>
-        <version>7.0.4</version>
+        <version>7.1.7</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/com.itextpdf/html2pdf -->
     <dependency>

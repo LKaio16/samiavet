@@ -1,5 +1,7 @@
 package br.com.projetoSamiavet.Samiavet.PROJETO.bean;
 
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,12 +26,17 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import br.com.projetoSamiavet.Samiavet.PROJETO.domain.ServicosPrestados;
@@ -85,7 +92,7 @@ public class ServicosPrestadosBean {
 	private String email;
 
 	private StreamedContent file;
-
+	private StreamedContent fileRelatorioServicos;
 	private Double totalServicos;
 
 	public ServicosPrestadosBean() {
@@ -251,6 +258,14 @@ public class ServicosPrestadosBean {
 
 	public void setGuardarNomeAnimal(String guardarNomeAnimal) {
 		this.guardarNomeAnimal = guardarNomeAnimal;
+	}
+
+	public StreamedContent getFileRelatorioServicos() {
+		return fileRelatorioServicos;
+	}
+
+	public void setFileRelatorioServicos(StreamedContent fileRelatorioServicos) {
+		this.fileRelatorioServicos = fileRelatorioServicos;
 	}
 
 	@PostConstruct
@@ -497,10 +512,169 @@ public class ServicosPrestadosBean {
 
 	}
 
+	public void gerarRelatorioServicos() throws DocumentException, IOException {
+		Document document = new Document(PageSize.A4.rotate());
+
+		try {
+			PdfWriter.getInstance(document, new FileOutputStream(
+					"F:\\qnobi-workspace\\samiavet\\src\\main\\webapp\\resources\\arquivos\\" + "Servicos" + ".pdf"));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+
+		document.open();
+		String filename = "F:\\qnobi-workspace\\samiavet\\src\\main\\webapp\\resources\\imagens\\SamiaVetLogoComprovanteHorizontal2.png";
+		Font fonteTexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
+		Font fonteTexto2 = FontFactory.getFont(FontFactory.COURIER, 9, Font.NORMAL);
+		Font fonteTexto3 = FontFactory.getFont(FontFactory.COURIER_BOLD, 10, Font.NORMAL);
+
+		Font fonteNegrito = FontFactory.getFont(FontFactory.COURIER, 17, Font.BOLD);
+		Font fonteNegrito2 = FontFactory.getFont(FontFactory.COURIER, 15, Font.BOLD);
+		Font fonteNegrito3 = FontFactory.getFont(FontFactory.COURIER, 10, Font.BOLD);
+
+		Image image = null;
+
+		try {
+			image = Image.getInstance(filename);
+
+			image.scaleToFit(PageSize.A4.getWidth(), PageSize.A4.getHeight());
+
+		} catch (BadElementException e) {
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			document.add(image);
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		document.add(new Paragraph(" "));
+		document.add(new Paragraph(" "));
+
+		float[] pointColumnWidths = { 40F, 40F, 60F, 40F, 40F, 40F, 40F, 60F, 40F };
+		PdfPTable table = new PdfPTable(pointColumnWidths);
+		PdfPCell cell;
+
+		cell = new PdfPCell(new Phrase("ID", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("TIPO", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("DESCRIÇÃO", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("ANIMAL", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("CLIENTE", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("PAG.", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("PARCELAS", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("DATA", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("VALOR", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		Double soma = 0.0;
+		for (int cont = 0; cont < this.servicosService.listar().size(); cont++) {
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.servicosService.listar().get(cont).getIdServico()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.servicosService.listar().get(cont).getTipo()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.servicosService.listar().get(cont).getDescricao()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.servicosService.listar().get(cont).getNomeAnimal()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.servicosService.listar().get(cont).getNome_cliente()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.servicosService.listar().get(cont).getForma_pagamento()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.servicosService.listar().get(cont).getParcelas()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.servicosService.listar().get(cont).getData()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.servicosService.listar().get(cont).getValor()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			soma += this.servicosService.listar().get(cont).getValor();
+
+		}
+
+		document.add(table);
+
+		float[] pointColumnWidths2 = { 350F, 90F };
+		PdfPTable table2 = new PdfPTable(pointColumnWidths2);
+		PdfPCell cell2;
+
+		cell2 = new PdfPCell(new Phrase("Total Vendas: ", new Font(fonteNegrito3)));
+		table2.addCell(cell2);
+
+		cell2 = new PdfPCell(new Phrase(soma + "R$", new Font(fonteNegrito3)));
+		table2.addCell(cell2);
+		document.add(table2);
+
+		document.close();
+
+		JsfUtil.adicionarMensagemDeSucesso("Relatório gerado com sucesso", null);
+
+		String path = "F:\\qnobi-workspace\\samiavet\\src\\main\\webapp\\resources\\arquivos\\Servicos.pdf";
+		File file = new File(path);
+		try {
+			if (file.exists()) {
+				Process pro = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + path);
+				pro.waitFor();
+			} else {
+				System.out.println("file does not exist");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+
 	public void gerarComprovante() {
-		this.file = DefaultStreamedContent.builder().contentType("application/pdf").name(this.guardarNomeAnimal + ".pdf")
+		this.file = DefaultStreamedContent.builder().contentType("application/pdf")
+				.name(this.guardarNomeAnimal + ".pdf")
 				.stream(() -> FacesContext.getCurrentInstance().getExternalContext()
 						.getResourceAsStream("/resources/comprovantes/" + this.guardarNomeAnimal + ".pdf"))
+				.build();
+	}
+
+	public void gerarComprovanteServicos() {
+		this.fileRelatorioServicos = DefaultStreamedContent.builder().contentType("application/pdf")
+				.name("Servicos" + ".pdf").stream(() -> FacesContext.getCurrentInstance().getExternalContext()
+						.getResourceAsStream("/resources/arquivos/" + "Servicos" + ".pdf"))
 				.build();
 	}
 

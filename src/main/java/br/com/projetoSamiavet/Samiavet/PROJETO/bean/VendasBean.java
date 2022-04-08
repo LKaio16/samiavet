@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,11 +15,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.MultiPartEmail;
@@ -27,7 +32,6 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.itextpdf.layout.element.Cell;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -36,6 +40,8 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
@@ -60,6 +66,7 @@ public class VendasBean {
 	private Double totalVendas;
 
 	private StreamedContent file;
+	private StreamedContent fileRelatorioVendas;
 
 	private String conversaoCodigoBarras;
 
@@ -133,6 +140,14 @@ public class VendasBean {
 
 	public void setFile(StreamedContent file) {
 		this.file = file;
+	}
+
+	public StreamedContent getFileRelatorioVendas() {
+		return fileRelatorioVendas;
+	}
+
+	public void setFileRelatorioVendas(StreamedContent fileRelatorioVendas) {
+		this.fileRelatorioVendas = fileRelatorioVendas;
 	}
 
 	public void setQuantidadeEstoque(String quantidadeEstoque) {
@@ -521,12 +536,15 @@ public class VendasBean {
 				Document document = new Document();
 
 				try {
-					PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\comprovantes\\" + this.vendas.getId_venda() + ".pdf"));
+					PdfWriter.getInstance(document, new FileOutputStream(
+							"C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\comprovantes\\"
+									+ this.vendas.getId_venda() + ".pdf"));
 
 					document.open();
 					document.add(new Paragraph(
 							"----------------------------------------------------------------------------------------------------------------------"));
-					String filename = "C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\imagens\\samiavet-copia.png";					Font fonteTexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
+					String filename = "C:\\Users\\User\\Downloads\\Apache-tomcat\\webapps\\br.com.projetoSamiavet-0.0.1-SNAPSHOT\\resources\\imagens\\samiavet-copia.png";
+					Font fonteTexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
 
 					Font fonteNegrito = FontFactory.getFont(FontFactory.COURIER, 17, Font.BOLD);
 					Font fonteNegrito2 = FontFactory.getFont(FontFactory.COURIER, 15, Font.BOLD);
@@ -542,12 +560,13 @@ public class VendasBean {
 								+ "                   " + "VALOR: " + this.vendas.getValor() + "R$", fonteNegrito2));
 						document.add(new Paragraph("N° PARCELAS: " + this.vendas.getParcelas(), fonteNegrito2));
 						document.add(new Paragraph(
-								"DATA: " + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue()
-										+ "/" + LocalDate.now().getYear() + "        " + "HORA: "
+								"DATA: " + LocalDate.now().getDayOfMonth() + "/" + LocalDate.now().getMonthValue() + "/"
+										+ LocalDate.now().getYear() + "        " + "HORA: "
 										+ LocalDateTime.now().getHour() + ":" + LocalDateTime.now().getMinute(),
 								fonteNegrito2));
 
-						document.add(new Paragraph("CLIENTE: " + this.vendas.getNome_cliente() + "             " + "NOME ANIMAL: " + this.vendas.getNomeAnimal() , fonteNegrito2));
+						document.add(new Paragraph("CLIENTE: " + this.vendas.getNome_cliente() + "             "
+								+ "NOME ANIMAL: " + this.vendas.getNomeAnimal(), fonteNegrito2));
 						document.add(new Paragraph("CPF: " + this.vendas.getCpf(), fonteNegrito2));
 						document.add(new Paragraph("-"));
 						document.add(new Paragraph("-"));
@@ -555,35 +574,34 @@ public class VendasBean {
 						document.add(new Paragraph("-"));
 						document.add(new Paragraph("-"));
 
-
 						for (int cont = 0; cont < this.listaProdutosSelecionados.size(); cont++) {
 
-							
 							document.add(new Paragraph(
 									"=========================================================================="));
-							
+
 							if (this.listaProdutosSelecionados.get(cont)
 									.getQuantidade_estoque_unitario_subtracao() != null
 									|| this.listaProdutosSelecionados.get(cont)
 											.getQuantidade_estoque_unitario_subtracao() != 0) {
 
-								document.add(new Paragraph(this.vendas.getProdutos().get(cont).getNome()
-										+ "  -----------------------------  QTD UNT: "
-										+ this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_unitario_subtracao(),
-										fonteNegrito2));
+								document.add(
+										new Paragraph(
+												this.vendas.getProdutos().get(cont).getNome()
+														+ "  -----------------------------  QTD UNT: "
+														+ this.listaProdutosSelecionados.get(cont)
+																.getQuantidade_estoque_unitario_subtracao(),
+												fonteNegrito2));
 
 							}
-							
-								
-								document.add(new Paragraph(this.vendas.getProdutos().get(cont).getNome()
-										+ "  -----------------------------  QTD: "
-										+ this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_subtracao(),
-										fonteNegrito2));
 
-								document.add(new Paragraph(
-										"=========================================================================="));
-							
-							
+							document.add(new Paragraph(this.vendas.getProdutos().get(cont).getNome()
+									+ "  -----------------------------  QTD: "
+									+ this.listaProdutosSelecionados.get(cont).getQuantidade_estoque_subtracao(),
+									fonteNegrito2));
+
+							document.add(new Paragraph(
+									"=========================================================================="));
+
 						}
 					} catch (MalformedURLException e) {
 						// TODO Auto-generated catch block
@@ -784,7 +802,163 @@ public class VendasBean {
 		setEmail(null);
 
 	}
+	
+	
+	public void gerarRelatorioVendas() throws DocumentException, IOException {
+		Document document = new Document(PageSize.A4.rotate());
 
+		try {
+			PdfWriter.getInstance(document, new FileOutputStream(
+					"F:\\qnobi-workspace\\samiavet\\src\\main\\webapp\\resources\\arquivos\\" + "Vendas" + ".pdf"));
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		document.open();
+		String filename = "F:\\qnobi-workspace\\samiavet\\src\\main\\webapp\\resources\\imagens\\SamiaVetLogoComprovanteHorizontal2.png";
+		Font fonteTexto = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
+		Font fonteTexto2 = FontFactory.getFont(FontFactory.COURIER, 9, Font.NORMAL);
+		Font fonteTexto3 = FontFactory.getFont(FontFactory.COURIER_BOLD, 10, Font.NORMAL);
+
+		Font fonteNegrito = FontFactory.getFont(FontFactory.COURIER, 17, Font.BOLD);
+		Font fonteNegrito2 = FontFactory.getFont(FontFactory.COURIER, 15, Font.BOLD);
+		Font fonteNegrito3 = FontFactory.getFont(FontFactory.COURIER, 10, Font.BOLD);
+
+		Image image = null;
+
+		try {
+			image = Image.getInstance(filename);
+
+			image.scaleToFit(PageSize.A4.getWidth(), PageSize.A4.getHeight());
+
+		} catch (BadElementException e) {
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			document.add(image);
+		} catch (DocumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		document.add(new Paragraph(" "));
+		document.add(new Paragraph(" "));
+
+		float[] pointColumnWidths = { 40F, 40F, 40F, 60F, 60F, 40F, 40F, 40F, 40F };
+		PdfPTable table = new PdfPTable(pointColumnWidths);
+		PdfPCell cell;
+
+		cell = new PdfPCell(new Phrase("ID", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("CLIENTE", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("ANIMAL", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("CPF", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("DATA", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("PAG.", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("PARCELAS", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("TAXA(%)", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		cell = new PdfPCell(new Phrase("VALOR", new Font(fonteNegrito3)));
+		table.addCell(cell);
+
+		Double soma = 0.0;
+		for (int cont = 0; cont < this.vendasService.listar().size(); cont++) {
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.vendasService.listar().get(cont).getId_venda()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.vendasService.listar().get(cont).getNome_cliente()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.vendasService.listar().get(cont).getNomeAnimal()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(
+					new Phrase(String.valueOf(this.vendasService.listar().get(cont).getCpf()), new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.vendasService.listar().get(cont).getData_venda()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.vendasService.listar().get(cont).getForma_pagamento()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.vendasService.listar().get(cont).getParcelas()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(
+					new Phrase(String.valueOf(this.vendasService.listar().get(cont).getTaxa()), new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			cell = new PdfPCell(new Phrase(String.valueOf(this.vendasService.listar().get(cont).getValor()),
+					new Font(fonteTexto2)));
+			table.addCell(cell);
+
+			soma += this.vendasService.listar().get(cont).getValor();
+
+		}
+
+		document.add(table);
+
+		float[] pointColumnWidths2 = { 320F, 80F };
+		PdfPTable table2 = new PdfPTable(pointColumnWidths2);
+		PdfPCell cell2;
+
+		cell2 = new PdfPCell(new Phrase("Total Vendas: ", new Font(fonteNegrito3)));
+		table2.addCell(cell2);
+
+		cell2 = new PdfPCell(new Phrase(soma + "R$", new Font(fonteNegrito3)));
+		table2.addCell(cell2);
+		document.add(table2);
+
+		document.close();
+
+		JsfUtil.adicionarMensagemDeSucesso("RelatÃ³rio gerado com sucesso", null);
+		
+	    String path = "F:\\qnobi-workspace\\samiavet\\src\\main\\webapp\\resources\\arquivos\\Vendas.pdf";
+	    File file = new File(path);
+	    try {
+	      if (file.exists()) {
+	        Process pro = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + path);
+	        pro.waitFor();
+	      } else {
+	        System.out.println("file does not exist");
+	      }
+	    } catch (Exception e) {
+	      System.out.println(e);
+	    }
+
+	}
+
+    
 	public void gerarComprovante() {
 		this.file = DefaultStreamedContent.builder().contentType("application/pdf").name(this.nomeComprovante + ".pdf")
 				.stream(() -> FacesContext.getCurrentInstance().getExternalContext()
